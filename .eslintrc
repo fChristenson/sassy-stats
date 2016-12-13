@@ -1,0 +1,15 @@
+{
+  "extends": "eslint:recommended",
+  "env": {
+      "node": true
+  },
+  "rules": {
+    "indent": ["error", 2],
+    "semi": ["error"],
+    "space-in-parens": ["error"],
+    "no-mixed-spaces-and-tabs": ["error"],
+    "space-before-function-paren": ["error"],
+    "no-console": 0,
+    "quotes": ["error", "single"]
+  }
+}

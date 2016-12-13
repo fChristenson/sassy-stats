@@ -2,7 +2,7 @@
   "name": "sassy",
   "version": "1.0.0",
   "description": "CLI for displaying usefull information about your sass",
-  "main": "bin/index.js",
+  "main": "bin/sassy.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node bin/index.js test"

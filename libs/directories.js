@@ -1,7 +1,8 @@
 var fs = require('fs');
 var path = require('path');
 var flattenDeep = require('lodash').flattenDeep;
-var fileToCssRule = require('./files').fileToCssRule;
+var thematic = require('sass-thematic');
+
 
 // Path->[{}]
 function walk (dir) {
@@ -15,7 +16,7 @@ function walk (dir) {
       result.push(walk(filePath));
     }
     else {
-      result.push(fileToCssRule(filePath));
+      result.push(thematic.parseASTSync({file: filePath}));
     }
 
   });

@@ -1,17 +1,15 @@
 var util = require('util');
 var dirExists = require('../libs/directories').dirExists;
 var walk = require('../libs/directories').walk;
-var astDataToVariableStats = require('../libs/variable_stats').astDataToVariableStats;
+var findNodesOfType = require('../libs/nodes').findNodesOfType;
 
-var rootDir = process.argv[2];
+var rootDir = process.argv[2] || 'test';
 
 if (dirExists(rootDir)) {
   var astData = walk(rootDir);
-  //console.log(util.inspect(astData[0], false, 2));
+  var nodes = findNodesOfType('declaration', astData);
 
-  var variableStats = astDataToVariableStats(astData);
-  console.log('----------------------');
-  console.log(util.inspect(variableStats, false, 4));
+  console.log(util.inspect(nodes, false, 5));
 }
 else {
   console.log(rootDir + ' is not a valid directory!');

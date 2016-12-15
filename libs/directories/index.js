@@ -37,6 +37,5 @@ function dirExists (dir) {
 
 module.exports = {
   walk: walk,
-  isDir: isDir,
   dirExists: dirExists
 };

@@ -5,7 +5,7 @@
   "main": "bin/sassy.js",
   "scripts": {
     "test": "mocha ./libs/**/__tests__/*_test.js",
-    "start": "node bin/sassy.js test"
+    "tdd": "mocha --watch ./libs/**/*.js ./libs/**/__tests__/*_test.js"
   },
   "author": "Fredrik Christenson",
   "license": "MIT",

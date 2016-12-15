@@ -3,7 +3,7 @@ var dirExists = require('../libs/directories').dirExists;
 var walk = require('../libs/directories').walk;
 var findNodesOfType = require('../libs/nodes').findNodesOfType;
 
-var rootDir = process.argv[2] || 'test';
+var rootDir = process.argv[2];
 
 if (dirExists(rootDir)) {
   var astData = walk(rootDir);

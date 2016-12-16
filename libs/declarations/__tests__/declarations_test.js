@@ -16,6 +16,12 @@ describe('declarations', function () {
       expect(D.countUsages('foo', nodes)).to.equal(1);
     });
 
+    it('returns 0 if a variable is not found', function () {
+      var data = walk(path.join(__dirname, 'testing_dir'));
+      var nodes = findNodesOfType('declaration', data);
+      expect(D.countUsages('fail', nodes)).to.equal(0);
+    });
+
     it('returns 2 if a variable is declared once and is references once', function () {
       var data = walk(path.join(__dirname, 'testing_dir2'));
       var nodes = findNodesOfType('declaration', data);

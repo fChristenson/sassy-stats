@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 var V = require('../');
 var path = require('path');
-var findNodesOfType = require('../../nodes').findNodesOfType;
+var findDeclarationNodes = require('../../nodes').findDeclarationNodes;
 var walk = require('../../directories').walk;
 
 describe('variables', function () {
@@ -13,7 +13,7 @@ describe('variables', function () {
     it('returns an object where each key is the var name and the value is the number of references', 
     function () {
       var data = walk(path.join(__dirname, 'testing_dir'));
-      var nodes = findNodesOfType('declaration', data);
+      var nodes = findDeclarationNodes(data);
       var stats = V.nodesToVariableUsages(nodes);
       expect(stats.bar).to.equal(1);
       expect(stats.baz).to.equal(2);
@@ -22,7 +22,7 @@ describe('variables', function () {
     it('should not have any other keys apart from the names of the variables found', 
     function () {
       var data = walk(path.join(__dirname, 'testing_dir'));
-      var nodes = findNodesOfType('declaration', data);
+      var nodes = findDeclarationNodes(data);
       var stats = V.nodesToVariableUsages(nodes);
       expect(stats.bar).to.equal(1);
       expect(stats.baz).to.equal(2);
@@ -32,7 +32,7 @@ describe('variables', function () {
     it('counts var usages over multiple files', 
     function () {
       var data = walk(path.join(__dirname, 'testing_dir2'));
-      var nodes = findNodesOfType('declaration', data);
+      var nodes = findDeclarationNodes(data);
       var stats = V.nodesToVariableUsages(nodes);
       expect(stats.bar).to.equal(4);
     });

@@ -47,17 +47,17 @@ describe('nodes', function () {
     });
   });
 
-  describe('findNodesOfType', function () {
+  describe('findDeclarationNodes', function () {
     it('finds a node', function () {
       var data = walk(path.join(__dirname, 'testing_dir'));
-      var nodes = N.findNodesOfType('declaration', data);
+      var nodes = N.findDeclarationNodes(data);
       expect(nodes.length).to.equal(1);
       expect(nodes[0].type).to.equal('declaration');
     });
 
     it('returns an emtpy array if no match is found', function () {
-      var data = walk(path.join(__dirname, 'testing_dir'));
-      var nodes = N.findNodesOfType('fail', data);
+      var data = walk(path.join(__dirname, 'testing_dir2'));
+      var nodes = N.findDeclarationNodes(data);
       expect(nodes.length).to.equal(0);
     });
   });

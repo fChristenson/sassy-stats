@@ -12,40 +12,40 @@ function astDataToContent (node) {
   return get(node, 'content', []);
 }
 
-// String->AstData->Boolean
-function nodeIsFound (type, node) {
-  return get(node, 'type') === type;
-}
-
 // []->Number
 function len (array) {
   return get(array, 'length', 0);
 }
 
-// String->[AstData]->[]
-function findNodesOfType (type, nodes) {
-
+// String->String->[AstData]->[]
+var findNodes = curry(function (prop, id, nodes) {
   if (len(nodes) <= 0) return [];
 
   if (len(nodes) === 1 && !nodeHasArrayContent(head(nodes))) {
-    return nodeIsFound(type, head(nodes)) ? nodes : [];
+    return get(head(nodes), prop) === id ? nodes : [];
   }
 
-  return nodes
-  .reduce(addNodes(type), []);
-}
+  return nodes.reduce(addNodes(prop, id), []);
+});
+
+// String->[AstData]->[]
+var findNodesOfType = findNodes('type');
+
+// String->[AstData]->[]
+var findNodesWithContent = findNodes('content');
 
 // String->[]->AstData
-var addNodes = curry(function (type, acc, node) {
-  if (nodeIsFound(type, node)) acc.push(node);
+var addNodes = curry(function (prop, id, acc, node) {
+  if (get(node, prop) === id) acc.push(node);
 
   if (nodeHasArrayContent(node)) {
-    acc = acc.concat(findNodesOfType(type, astDataToContent(node)));
+    acc = acc.concat(findNodes(prop, id, astDataToContent(node)));
   }
 
   return acc;
 });
 
 module.exports = {
-  findNodesOfType: findNodesOfType
+  findNodesOfType: findNodesOfType,
+  findNodesWithContent: findNodesWithContent
 };

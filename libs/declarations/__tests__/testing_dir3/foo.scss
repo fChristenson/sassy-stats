@@ -1,0 +1,15 @@
+$foo: 1px;
+
+.bar {
+  margin: $foo;
+
+  #foo {
+    .bar {
+      .baz {
+        a {
+          padding: $foo;
+        }
+      }
+    }
+  }
+}

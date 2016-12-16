@@ -1,6 +1,8 @@
+var findNodesWithContent = require('../nodes').findNodesWithContent;
+
 // String->[AstData]->Number
 function countUsages (name, nodes) {
-  return 12;
+  return findNodesWithContent(name, nodes).length;
 }
 
 module.exports = {

@@ -1,15 +1,11 @@
 var get = require('lodash').get;
 var head = require('lodash').head;
 var curry = require('lodash').curry;
+var astDataToContent = require('../common').astDataToContent;
 
 // String->AstData->Boolean
 function nodeHasArrayContent (node) {
   return Array.isArray(astDataToContent(node));
-}
-
-// AstData->[AstData]
-function astDataToContent (node) {
-  return get(node, 'content', []);
 }
 
 // []->Number
@@ -29,6 +25,9 @@ var findNodes = curry(function (prop, id, nodes) {
 });
 
 // String->[AstData]->[]
+var findValueNodes = findNodes('type', 'value');
+
+// String->[AstData]->[]
 var findNodesOfType = findNodes('type');
 
 // String->[AstData]->[]
@@ -45,7 +44,14 @@ var addNodes = curry(function (prop, id, acc, node) {
   return acc;
 });
 
+// AstData->Boolean
+function isVariableNode (node) {
+  return get(node, 'type') === 'variable';
+}
+
 module.exports = {
+  isVariableNode: isVariableNode,
   findNodesOfType: findNodesOfType,
-  findNodesWithContent: findNodesWithContent
+  findNodesWithContent: findNodesWithContent,
+  findValueNodes: findValueNodes
 };

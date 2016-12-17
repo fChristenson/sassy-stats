@@ -3,7 +3,6 @@ var expect = require('chai').expect;
 var path = require('path');
 var findIncludeNodes = require('../../nodes').findIncludeNodes;
 var walk = require('../../directories').walk;
-var util = require('util');
 
 describe('mixins', function () {
   it('has a module', function () {

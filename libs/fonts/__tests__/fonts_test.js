@@ -34,7 +34,7 @@ describe('fonts', function () {
       expect(stats.helvetica).to.equal(2);
     });
 
-    it('returns spaced font names', function () {
+    it('returns spaced font names as slugs', function () {
       var data = walk(path.join(__dirname, 'testing_dir3'));
       var nodes = findDeclarationNodes(data);
       var stats = F.nodesToFontUsages(nodes);

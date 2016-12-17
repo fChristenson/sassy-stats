@@ -28,6 +28,9 @@ var findNodes = curry(function (prop, id, nodes) {
 var findValueNodes = findNodes('type', 'value');
 
 // String->[AstData]->[]
+var findIncludeNodes = findNodes('type', 'include');
+
+// String->[AstData]->[]
 var findDeclarationNodes = findNodes('type', 'declaration');
 
 // String->[AstData]->[]
@@ -53,6 +56,9 @@ var isNodeType = curry(function (id, node) {
 var isVariableNode = isNodeType('variable');
 
 // AstData->Boolean
+var isSimpleSelectorNode = isNodeType('simpleSelector');
+
+// AstData->Boolean
 var isFunctionNode = isNodeType('function');
 
 // []->AstData->[AstData]
@@ -64,7 +70,9 @@ function collectAstDataValueNodes (acc, node) {
 var isIdentNode = isNodeType('ident');
 
 module.exports = {
+  findIncludeNodes: findIncludeNodes,
   isIdentNode: isIdentNode,
+  isSimpleSelectorNode: isSimpleSelectorNode,
   collectAstDataValueNodes: collectAstDataValueNodes,
   isFunctionNode: isFunctionNode,
   isVariableNode: isVariableNode,

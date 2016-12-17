@@ -53,6 +53,9 @@ var isNodeType = curry(function (id, node) {
 });
 
 // AstData->Boolean
+var isNumberNode = isNodeType('number');
+
+// AstData->Boolean
 var isVariableNode = isNodeType('variable');
 
 // AstData->Boolean
@@ -90,6 +93,7 @@ function collectAstDataValueNodes (acc, node) {
 var isIdentNode = isNodeType('ident');
 
 module.exports = {
+  isNumberNode: isNumberNode,
   isStringNode: isStringNode,
   isFontDeclaration: isFontDeclaration,
   findIncludeNodes: findIncludeNodes,

@@ -21,7 +21,7 @@ function nodesToFontUsages (nodes) {
   .map(function (str) {
     return str
            .replace(/[\s-]/g, '_') // slug font names
-           .replace(/["]/g, '');
+           .replace(/["]/g, ''); // strip "" from names
   })
   .reduce(countProps, {});
 }

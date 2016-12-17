@@ -45,11 +45,28 @@ var addNodes = curry(function (prop, id, acc, node) {
 });
 
 // AstData->Boolean
-function isVariableNode (node) {
-  return get(node, 'type') === 'variable';
+var isNodeType = curry(function (id, node) {
+  return get(node, 'type') === id;
+});
+
+// AstData->Boolean
+var isVariableNode = isNodeType('variable');
+
+// AstData->Boolean
+var isFunctionNode = isNodeType('function');
+
+// []->AstData->[AstData]
+function collectAstDataValueNodes (acc, node) {
+  return acc.concat(findValueNodes(astDataToContent(node)));
 }
 
+// _->Number->Boolean
+var isIdentNode = isNodeType('ident');
+
 module.exports = {
+  isIdentNode: isIdentNode,
+  collectAstDataValueNodes: collectAstDataValueNodes,
+  isFunctionNode: isFunctionNode,
   isVariableNode: isVariableNode,
   findNodesWithContent: findNodesWithContent,
   findValueNodes: findValueNodes,

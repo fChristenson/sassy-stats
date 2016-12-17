@@ -12,12 +12,31 @@ function inspect (val) {
   return val;
 }
 
+// a->a
+function line (val) {
+  console.log('----------------------------------');
+  return val;
+}
+
 // []->[]->[]
 function concat (array1, array2) {
   return array1.concat(array2);
 }
 
+// {}->String->{}
+function countProps (acc, prop) {
+  if (acc[prop] === undefined) {
+    acc[prop] = 1;
+  }
+  else {
+    acc[prop] += 1;
+  }
+  return acc;
+}
+
 module.exports = {
+  countProps: countProps,
+  line: line,
   concat: concat,
   astDataToContent: astDataToContent,
   inspect: inspect

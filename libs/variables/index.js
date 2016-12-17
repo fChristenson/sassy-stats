@@ -6,7 +6,8 @@ var countProps = require('../common').countProps;
 
 // [astData]->{}
 function nodesToVariableUsages (nodes) {
-  return nodes.reduce(collectAstDataValueNodes, [])
+  return nodes
+  .reduce(collectAstDataValueNodes, [])
   .map(astDataToContent)
   .reduce(concat, [])
   .filter(isVariableNode)

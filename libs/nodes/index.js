@@ -59,7 +59,27 @@ var isVariableNode = isNodeType('variable');
 var isSimpleSelectorNode = isNodeType('simpleSelector');
 
 // AstData->Boolean
+function isFontNode (node) {
+  return astDataToContent(node) === 'font';
+}
+
+// AstData->Boolean
+function isFontDeclaration (node) {
+  var firstContentNode = head(astDataToContent(node));
+  var firstOfContentNode = head(astDataToContent(firstContentNode));
+
+  return isPropertyNode(firstContentNode)
+  && isFontNode(firstOfContentNode);
+}
+
+// AstData->Boolean
+var isPropertyNode = isNodeType('property');
+
+// AstData->Boolean
 var isFunctionNode = isNodeType('function');
+
+// AstData->Boolean
+var isStringNode = isNodeType('string');
 
 // []->AstData->[AstData]
 function collectAstDataValueNodes (acc, node) {
@@ -70,6 +90,8 @@ function collectAstDataValueNodes (acc, node) {
 var isIdentNode = isNodeType('ident');
 
 module.exports = {
+  isStringNode: isStringNode,
+  isFontDeclaration: isFontDeclaration,
   findIncludeNodes: findIncludeNodes,
   isIdentNode: isIdentNode,
   isSimpleSelectorNode: isSimpleSelectorNode,

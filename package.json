@@ -1,7 +1,7 @@
 {
   "name": "sassy",
   "version": "1.0.0",
-  "description": "CLI for displaying usefull information about your sass",
+  "description": "CLI for displaying your usage statistics of things like colors, variables and fonts",
   "main": "bin/sassy.js",
   "scripts": {
     "test": "mocha ./libs/**/__tests__/*_test.js",

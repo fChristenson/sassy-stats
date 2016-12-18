@@ -2,7 +2,6 @@ var walk = require('../../libs/directories').walk;
 var lib = require('../../libs');
 var expect = require('chai').expect;
 var path = require('path');
-var util = require('util');
 
 module.exports = function () {
   this.Given('I have a Sass file', function (callback) {

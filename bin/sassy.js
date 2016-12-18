@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 var dirExists = require('../libs/directories').dirExists;
 var walk = require('../libs/directories').walk;
 var lib = require('../libs');

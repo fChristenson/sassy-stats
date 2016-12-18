@@ -20,8 +20,7 @@ if (dirExists(rootDir)) {
     console.log(key.toUpperCase().green);
     console.log('----------------------------'.green);
     
-    var counts = countsToArray(data[key]);
-    printCounts(counts);
+    printCounts(countsToArray(data[key]));
 
     console.log('');
   });

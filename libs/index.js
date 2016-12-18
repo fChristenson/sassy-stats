@@ -7,9 +7,9 @@ var Colors = require('./colors');
 module.exports = function (astData) {
 
   return {
-    vars: Variables.nodesToVariableUsages(astData),
+    variables: Variables.nodesToVariableUsages(astData),
     mixins: Mixins.nodesToMixinUsages(astData),
-    funcs: Functions.nodesToFunctionUsages(astData),
+    functions: Functions.nodesToFunctionUsages(astData),
     colors: Colors.nodesToColorUsages(astData),
     fonts: Fonts.nodesToFontUsages(astData)
   };

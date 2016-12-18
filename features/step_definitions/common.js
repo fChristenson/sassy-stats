@@ -77,17 +77,17 @@ module.exports = function () {
 
 function verifyFunctions (output) {
   expect(typeof output).to.equal('object');
-  expect(typeof output.funcs).to.equal('object');
+  expect(typeof output.functions).to.equal('object');
  
-  expect(output.funcs.foo).to.equal(1);
+  expect(output.functions.foo).to.equal(1);
 }
 
 function verifyVariables (output) {
   expect(typeof output).to.equal('object');
-  expect(typeof output.vars).to.equal('object');
+  expect(typeof output.variables).to.equal('object');
  
-  expect(output.vars.bar).to.equal(1);
-  expect(output.vars.baz).to.equal(2);
+  expect(output.variables.bar).to.equal(1);
+  expect(output.variables.baz).to.equal(2);
 }
 
 function verifyMixins (output) {

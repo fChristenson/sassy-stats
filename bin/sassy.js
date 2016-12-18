@@ -1,7 +1,7 @@
 var dirExists = require('../libs/directories').dirExists;
 var walk = require('../libs/directories').walk;
 var lib = require('../libs');
-var util = require('util');
+require('colors');
 
 var rootDir = process.argv[2];
 
@@ -10,12 +10,19 @@ if (dirExists(rootDir)) {
   var data = lib(astData);
 
   printName();
-  console.log('----------------------------');
   console.log('');
 
   Object.keys(data)
   .forEach(function (key) {
-    console.log(key + ': ' + util.inspect(data[key], false, Infinity));
+    console.log(key.toUpperCase().green);
+    console.log('----------------------------'.green);
+    
+    Object.keys(data[key])
+    .forEach(function (countKey) {
+      console.log(countKey.yellow + ': ' + data[key][countKey].toString().red);
+    });
+
+    console.log('');
   });
 
   console.log('');
@@ -25,8 +32,8 @@ else {
 }
 
 function printName () {
-  console.log(' ____   __   ____  ____  _  _ ');
-  console.log('/ ___) / _\\ / ___)/ ___)( \\/ )');
-  console.log('\\___ \\/    \\\\___ \\\\___ \\ )  / ');
-  console.log('(____/\\_/\\_/(____/(____/(__/  ');
+  console.log(' ____   __   ____  ____  _  _ '.magenta);
+  console.log('/ ___) / _\\ / ___)/ ___)( \\/ )'.magenta);
+  console.log('\\___ \\/    \\\\___ \\\\___ \\ )  / '.magenta);
+  console.log('(____/\\_/\\_/(____/(____/(__/  '.magenta);
 }

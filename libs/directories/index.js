@@ -32,8 +32,7 @@ function isDir (file) {
 
 // Path->Bool
 function dirExists (dir) {
-  var stats = fs.statSync(dir);
-  return dir && fs.existsSync(dir) && stats.isDirectory();
+  return dir && fs.existsSync(dir) && fs.statSync(dir).isDirectory();
 }
 
 module.exports = {

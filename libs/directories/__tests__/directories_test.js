@@ -27,7 +27,7 @@ describe('directories', function () {
       expect(D.dirExists(path.join(__dirname, 'testing_dir'))).to.equal(true);
     });
 
-    it('returns false if the dir exists', function () {
+    it('returns false if the dir does not exists', function () {
       expect(D.dirExists(path.join(__dirname, 'fail'))).to.equal(false);
     });
   });

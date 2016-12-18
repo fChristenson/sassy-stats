@@ -1,5 +1,6 @@
 var isIdentNode = require('../nodes').isIdentNode;
 var isFunctionNode = require('../nodes').isFunctionNode;
+var isFontDeclaration = require('../nodes').isFontDeclaration;
 var isNumberNode = require('../nodes').isNumberNode;
 var collectAstDataValueNodes = require('../nodes').collectAstDataValueNodes;
 var astDataToContent = require('../common').astDataToContent;
@@ -8,10 +9,14 @@ var countProps = require('../common').countProps;
 var head = require('lodash').head;
 var get = require('lodash').get;
 var rgbHex = require('rgb-hex');
+var findDeclarationNodes = require('../nodes').findDeclarationNodes;
 
 // [astData]->{}
 function nodesToColorUsages (nodes) {
-  return nodes
+  return findDeclarationNodes(nodes)
+  .filter(function (node) {
+    return !isFontDeclaration(node);
+  })
   .reduce(collectAstDataValueNodes, [])
   .map(astDataToContent)
   .reduce(concat, [])
@@ -56,7 +61,9 @@ function isColorFunc (node) {
 // astData->Boolean
 function isColorNode (node) {
   var firstChild = head(astDataToContent(node));
-  var isColorFuncNode = isFunctionNode(node) && isIdentNode(firstChild) && isColorFunc(firstChild);
+  var isColorFuncNode = isFunctionNode(node) 
+  && isIdentNode(firstChild) 
+  && isColorFunc(firstChild);
 
   return isColorFuncNode || isColorString(astDataToContent(node));
 }

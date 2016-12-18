@@ -1,4 +1,4 @@
-# Sassy
+# Sassy-stats
 
 ## Description
 CLI for displaying your usage statistics of things like colors, variables and fonts

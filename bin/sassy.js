@@ -12,15 +12,16 @@ if (dirExists(rootDir)) {
   printName();
   console.log('');
 
-  Object.keys(data)
+  var modules = Object.keys(data);
+
+  modules
   .forEach(function (key) {
+    // print header
     console.log(key.toUpperCase().green);
     console.log('----------------------------'.green);
     
-    Object.keys(data[key])
-    .forEach(function (countKey) {
-      console.log(countKey.yellow + ': ' + data[key][countKey].toString().red);
-    });
+    var counts = countsToArray(data[key]);
+    printCounts(counts);
 
     console.log('');
   });
@@ -29,6 +30,24 @@ if (dirExists(rootDir)) {
 }
 else {
   console.log(rootDir + ' is not a valid directory!');
+}
+
+function printCounts (counts) {
+  counts.forEach(function (count) {
+    console.log(count.key.yellow + ': ' + count.val.toString().red);
+  });
+}
+
+// {}->[{}]
+function countsToArray (obj) {
+  return Object.keys(obj)
+  .reduce(function (acc, key) {
+    acc.push({key: key, val: obj[key]});
+    return acc;
+  }, [])
+  .sort(function (a, b) {
+    return b.val - a.val;
+  });
 }
 
 function printName () {

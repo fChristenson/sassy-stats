@@ -53,8 +53,8 @@ function countsToArray (obj) {
 }
 
 function printName () {
-  console.log(' ____   __   ____  ____  _  _ '.magenta);
-  console.log('/ ___) / _\\ / ___)/ ___)( \\/ )'.magenta);
-  console.log('\\___ \\/    \\\\___ \\\\___ \\ )  / '.magenta);
-  console.log('(____/\\_/\\_/(____/(____/(__/  '.magenta);
+  console.log(' ____   __   ____  ____  _  _      ____  ____  __  ____  ____ '.magenta);
+  console.log('/ ___) / _\\ / ___)/ ___)( \\/ )___ / ___)(_  _)/ _\\(_  _)/ ___)'.magenta);
+  console.log('\\___ \\/    \\\\___ \\\\___ \\ )  /(___)\\___ \\  )( /    \\ )(  \\___ \\'.magenta);
+  console.log('(____/\\_/\\_/(____/(____/(__/      (____/ (__)\\_/\\_/(__) (____/'.magenta);
 }

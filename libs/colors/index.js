@@ -15,6 +15,7 @@ function nodesToColorUsages (nodes) {
   .reduce(collectAstDataValueNodes, [])
   .map(astDataToContent)
   .reduce(concat, [])
+  .filter(isColorNode)
   .map(rgbNodeToColor)
   .reduce(countProps, {});
 }
@@ -50,6 +51,21 @@ function colorFuncNodeToColor (node) {
 // astData->Boolean
 function isColorFunc (node) {
   return astDataToContent(node) === 'rgb' || astDataToContent(node) === 'rgba';
+}
+
+// astData->Boolean
+function isColorNode (node) {
+  var firstChild = head(astDataToContent(node));
+  var isColorFuncNode = isFunctionNode(node) && isIdentNode(firstChild) && isColorFunc(firstChild);
+
+  return isColorFuncNode || isColorString(astDataToContent(node));
+}
+
+// String->Boolean
+function isColorString (str) {
+  return typeof str === 'string' 
+  && str.trim().length > 0
+  && /^[#a-zA-Z0-9]/.test(str.trim());
 }
 
 module.exports = {

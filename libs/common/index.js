@@ -9,11 +9,6 @@ function astDataToContent (node) {
 // a->a
 function inspect (val) {
   console.log(util.inspect(val, false, Infinity));
-  return val;
-}
-
-// a->a
-function line (val) {
   console.log('----------------------------------');
   return val;
 }
@@ -36,7 +31,6 @@ function countProps (acc, prop) {
 
 module.exports = {
   countProps: countProps,
-  line: line,
   concat: concat,
   astDataToContent: astDataToContent,
   inspect: inspect

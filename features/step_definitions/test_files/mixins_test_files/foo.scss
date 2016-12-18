@@ -1,0 +1,11 @@
+@mixin foo() {
+  padding: 10px;
+}
+
+.foo {
+  @include foo;
+}
+
+.bar {
+  @include foo();
+}

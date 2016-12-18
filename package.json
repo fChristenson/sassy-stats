@@ -5,7 +5,8 @@
   "main": "bin/sassy.js",
   "scripts": {
     "test": "mocha ./libs/**/__tests__/*_test.js",
-    "tdd": "mocha --watch ./libs/**/*.js ./libs/**/__tests__/*_test.js"
+    "tdd": "mocha --watch ./libs/**/*.js ./libs/**/__tests__/*_test.js",
+    "acceptance-test": "cucumber.js"
   },
   "author": "Fredrik Christenson",
   "license": "MIT",
@@ -16,6 +17,7 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "cucumber": "^2.0.0-rc.2",
     "mocha": "^3.2.0"
   }
 }

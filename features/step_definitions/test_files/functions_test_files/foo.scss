@@ -1,0 +1,7 @@
+@function foo() {
+  @return 10px;
+}
+
+.foo {
+  padding: foo();
+}

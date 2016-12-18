@@ -20,6 +20,13 @@ describe('directories', function () {
       expect(files[0].type).to.equal('stylesheet');
       expect(files[1].type).to.equal('stylesheet');
     });
+
+    it('ignores anything that is not a .scss file', function () {
+      var files = D.walk(path.join(__dirname, 'testing_dir3'));
+      expect(files.length).to.equal(2);
+      expect(files[0].type).to.equal('stylesheet');
+      expect(files[1].type).to.equal('stylesheet');
+    });
   });
 
   describe('dirExists', function () {

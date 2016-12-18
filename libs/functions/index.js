@@ -17,6 +17,10 @@ function nodesToFunctionUsages (nodes) {
   .reduce(concat, [])
   .filter(isIdentNode) // this collects the function name nodes
   .map(astDataToContent)
+  .filter(function (name) {
+    // we remove the standard css functions
+    return name !== 'rgb' && name !== 'rgba';
+  })
   .reduce(countProps, {});
 }
 

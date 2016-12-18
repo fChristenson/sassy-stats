@@ -15,7 +15,7 @@ function walk (dir) {
     if (isDir(filePath)) {
       result.push(walk(filePath));
     }
-    else {
+    else if (/\.scss$/.test(filePath)) {
       result.push(thematic.parseASTSync({file: filePath}));
     }
 

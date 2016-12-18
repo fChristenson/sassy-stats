@@ -72,7 +72,7 @@ function isColorNode (node) {
 function isColorString (str) {
   return typeof str === 'string' 
   && str.trim().length > 0
-  && /^[#a-zA-Z0-9]/.test(str.trim());
+  && /^[#a-zA-Z0-9]{3}/.test(str.trim());
 }
 
 module.exports = {

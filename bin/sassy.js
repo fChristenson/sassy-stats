@@ -17,44 +17,43 @@ if (dirExists(rootDir)) {
   var modules = Object.keys(data);
 
   modules
-  .forEach(function (key) {
-    // print header
-    console.log(key.toUpperCase().green);
-    console.log('----------------------------'.green);
-    
-    printCounts(countsToArray(data[key]));
+    .forEach(function(key) {
+      // print header
+      console.log(key.toUpperCase().green);
+      console.log('----------------------------'.green);
 
-    console.log('');
-  });
+      printCounts(countsToArray(data[key]));
+
+      console.log('');
+    });
 
   console.log('');
-}
-else {
+} else {
   console.log(rootDir + ' is not a valid directory!');
 }
 
-function printCounts (counts) {
-  counts.forEach(function (count) {
+function printCounts(counts) {
+  counts.forEach(function(count) {
     // we split so slugs get a space
     console.log(count.key.split('_').join(' ').yellow + ': ' + count.val.toString().red);
   });
 }
 
 // {}->[{}]
-function countsToArray (obj) {
+function countsToArray(obj) {
   return Object.keys(obj)
-  .reduce(function (acc, key) {
-    acc.push({key: key, val: obj[key]});
-    return acc;
-  }, [])
-  .sort(function (a, b) {
-    return b.val - a.val;
-  });
+    .reduce(function(acc, key) {
+      acc.push({ key: key, val: obj[key] });
+      return acc;
+    }, [])
+    .sort(function(a, b) {
+      return b.val - a.val;
+    });
 }
 
-function printName () {
+function printName() {
   console.log(' ____   __   ____  ____  _  _      ____  ____  __  ____  ____ '.magenta);
   console.log('/ ___) / _\\ / ___)/ ___)( \\/ )___ / ___)(_  _)/ _\\(_  _)/ ___)'.magenta);
-  console.log('\\___ \\/    \\\\___ \\\\___ \\ )  /(___)\\___ \\  )( /    \\ )(  \\___ \\'.magenta);
+  console.log('\\___ \\/    \\\\___ \\ \\___ \\ )  /(___)\\___ \\  )( /    \\ )(  \\___ \\'.magenta);
   console.log('(____/\\_/\\_/(____/(____/(__/      (____/ (__)\\_/\\_/(__) (____/'.magenta);
 }

@@ -1,0 +1,130 @@
+// TODO: this is legacy now and should be removed soon,
+// the new modal js and css is in react/components/common/modal
+
+.modal {
+  @include fadeAnimation;
+  @include modalBg;
+
+  display: flex;
+  font-size: 14px;
+  justify-content: center;
+  align-items: center;
+
+  .is-fullscreen &,
+  &.is-fullscreen {
+    position: fixed;
+  }
+
+  &.is-open {
+    z-index: 3;
+  }
+
+  .no-flexbox & {
+    display: block;
+  }
+}
+
+%modal__win,
+.modal__win {
+  @include scaleAnimation;
+
+  width: calc(100% - 50px);
+  max-height: 75%;
+  background-color: $reykjavik;
+  box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+
+  @include mediumlarge {
+    width: 460px;
+  }
+
+  .no-flexbox & {
+    margin: 40px auto;
+  }
+}
+
+.modal__win--ismmodal {
+  @extend %modal__win;
+}
+
+%modal__win__header,
+.modal__win__header {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $olympus;
+  flex-shrink: 0;
+  min-height: 52px;
+
+  .no-flexbox & {
+    overflow: hidden;
+  }
+}
+
+.modal__win--ismmodal__header {
+  @extend %modal__win__header;
+}
+
+%modal__win__title,
+.modal__win__title {
+  flex: 1;
+  margin: 0;
+  padding: #{2 * $v-spacing} #{2 * $h-spacing};
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  .no-flexbox & {
+    float: left;
+  }
+}
+
+.modal__win--ismmodal__title {
+  @extend %modal__win__title;
+}
+
+%modal__win__closebtn,
+.modal__win__closebtn {
+  @include btn(icon);
+
+  @include icon(menuClose) {
+    vertical-align: baseline;
+  }
+
+  padding: #{2 * $v-spacing} #{2 * $h-spacing};
+  font-size: 18px;
+  background: none;
+
+  .no-flexbox & {
+    float: right;
+  }
+}
+
+%modal__win__content,
+.modal__win__content {
+  max-height: 380px;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  h2 {
+    margin: 0;
+  }
+
+  @include mediumlarge {
+    .is-fullscreen & {
+      max-height: 75vh;
+    }
+  }
+}
+
+.modal__win--ismmodal__content {
+  @extend %modal__win__content;
+}
+
+.modal__win__footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  box-shadow: 0 -2px 8px 0 rgba(0, 0, 0, 0.25);
+}

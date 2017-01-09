@@ -1,0 +1,34 @@
+// https://cdn-images-1.medium.com/max/1600/1*-c4UabSTLW9fnz9OGwrP5Q.png
+// https://medium.com/eightshapes-llc/space-in-design-systems-188bcbae0d62#.imsl2z7fa
+
+$space-inset:    16px 16px 16px 16px;
+$space-inset-xs: 4px 4px 4px 4px;
+$space-inset-s:  8px 8px 8px 8px;
+$space-inset-m:  16px 16px 16px 16px;
+$space-inset-l:  32px 32px 32px 32px;
+$space-inset-xl: 64px 64px 64px 64px;
+
+$space-inset-squish: 8px 16px;
+$space-inset-squish-s: 4px 8px;
+$space-inset-squish-m: 8px 16px;
+$space-inset-squish-l: 16px 32px;
+
+$space-inset-stretch: 24px 16px;
+$space-inset-stretch-s: 12px 8px;
+$space-inset-stretch-m: 24px 16px;
+$space-inset-stretch-l: 36px 24px;
+
+$space-stack:    0 0 16px 0;
+$space-stack-xs: 0 0 4px 0;
+$space-stack-s:  0 0 8px 0;
+$space-stack-m:  0 0 16px 0;
+$space-stack-l:  0 0 32px 0;
+$space-stack-xl: 0 0 64px 0;
+
+$space:          16px;
+$space-xxs:      2px;
+$space-xs:       4px;
+$space-s:        8px;
+$space-m:        16px;
+$space-l:        32px;
+$space-xl:       64px;

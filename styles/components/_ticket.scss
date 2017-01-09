@@ -1,0 +1,149 @@
+$cellPadding: $v-spacing $h-spacing;
+$cellBorder: 1px solid colour(border-default);
+
+.ticket {
+  margin: 15px;
+  line-height: $line-height;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.25);
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.ticket__lid {
+  position: relative;
+  height: 16px;
+  border-radius: 6px 6px 0 0;
+  background-color: colour(border-primary);
+
+  &::after {
+    $shapeWidth: 50px;
+    $shapeHeight: 20px;
+
+    content: '';
+    position: absolute;
+    top: #{ - $shapeHeight / 2 - 2};
+    left: calc(50% - #{$shapeWidth / 2});
+    width: $shapeWidth;
+    height: $shapeHeight;
+    border-radius: 50%;
+    background-color: $verbier;
+  }
+}
+
+.ticket__header {
+  display: flex;
+  justify-content: space-between;
+  padding: $cellPadding;
+  border-right: $cellBorder;
+  border-left: $cellBorder;
+  background-color: colour(panel-light-bg);
+
+  .no-flexbox & {
+    @include clearfix;
+
+    display: block;
+  }
+}
+
+.ticket__title {
+  margin: 0;
+  font-family: font(strong);
+  font-size: 16px;
+
+  .no-flexbox & {
+    float: left;
+  }
+}
+
+.ticket__remove {
+  @include unstyledbutton;
+
+  padding: 0;
+  line-height: 1;
+  background-color: transparent;
+
+  @include icon(menuClose) {
+    color: colour(link-alert-color);
+
+    :hover > & {
+      color: darken(colour(link-alert-color), 25%);
+    }
+  }
+
+  .no-flexbox & {
+    float: right;
+  }
+}
+
+.ticket__content {
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  border-right: $cellBorder;
+  border-bottom: $cellBorder;
+  border-radius: 0 0 6px 6px;
+  background-color: colour(content-bg);
+}
+
+@mixin cellsPerRow($number) {
+  $width: #{100% / $number};
+
+  flex: 0 1 $width;
+  max-width: $width;
+
+  .no-flexbox & {
+    float: left;
+  }
+}
+
+.ticket__cell {
+  @include unstyleddl;
+  @include cellsPerRow(2); // default size
+
+  padding: $cellPadding;
+  border-top: $cellBorder;
+  border-left: $cellBorder;
+
+  [data-row1='1'] & {
+    &:first-child {
+      @include cellsPerRow(1);
+    }
+  }
+
+  [data-row1='2'] & {
+    &:first-child,
+    &:nth-child(2) {
+      @include cellsPerRow(2);
+    }
+  }
+
+  [data-row2='1'] & {
+    &:nth-last-child(1) {
+      @include cellsPerRow(1);
+    }
+  }
+
+  [data-row2='2'] & {
+    &:nth-last-child(1),
+    &:nth-last-child(2) {
+      @include cellsPerRow(2);
+    }
+  }
+
+  [data-row2='3'] & {
+    &:nth-last-child(1),
+    &:nth-last-child(2),
+    &:nth-last-child(3) {
+      @include cellsPerRow(3);
+    }
+  }
+}
+
+.ticket__cell__label {
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.ticket__cell__value {
+  font-family: font(strong);
+}

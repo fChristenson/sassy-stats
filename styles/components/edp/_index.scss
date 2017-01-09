@@ -1,0 +1,19 @@
+@import 'modal';
+@import 'modalpickers';
+@import 'notificationmessage';
+@import '../../../react/components/common/plusminus/plusminus';
+@import '../../../react/components/edp/eventinfo/eventinfo';
+@import '../../../react/components/edp/map/map';
+@import '../../../react/components/edp/map/controls';
+@import '../../../react/components/edp/legend/legend';
+@import '../../../react/components/edp/header/mapheader';
+@import '../../../react/components/edp/basket/basket';
+@import '../../../react/components/edp/basket/recap/basketrecap';
+@import '../../../react/components/edp/buyingloader/buyingloader';
+@import '../../../react/components/edp/sidebar/pricefilter';
+
+.ticketselection {
+  @include mediumlarge {
+    min-height: 705px;
+  }
+}

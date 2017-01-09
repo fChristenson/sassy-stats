@@ -1,0 +1,59 @@
+.cart__additional {
+
+}
+
+.cart__section, %cart__section{
+  position: relative;
+}
+
+.cart__section--divider {
+  @extend %cart__section;
+  border-bottom: 1px dotted colour(border-grey);
+}
+
+.cart__subheading {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 4px 10px;
+  line-height: 1.4;
+  font-size: 1.1em;
+  font-weight: bold;
+  background: colour(legacyLightHeadingBg);
+}
+
+.cart__subheadingtext {
+  padding-right: 15px;
+}
+
+.cart__remove {
+  @include unstyledbutton;
+
+  margin: -4px -10px !important; // override old styles
+  outline: 0;
+}
+
+.cart__item {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 30px 10px 10px;
+}
+
+
+
+.cart__item__label {
+  padding-right: 20px;
+}
+
+%cart__item__value,
+.cart__item__value {
+  display: block;
+  white-space: nowrap;
+  text-align: right;
+}
+
+.cart__item__value--sub {
+  @extend %cart__item__value;
+
+  font-size: 14px;
+}

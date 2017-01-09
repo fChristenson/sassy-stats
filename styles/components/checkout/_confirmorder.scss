@@ -1,0 +1,26 @@
+.confirmorder {
+
+}
+
+.confirmorder__heading {
+  @include paymentheading;
+}
+
+.confirmorder__terms {
+  margin: 20px;
+}
+
+.payment__submit {
+  $border-color: colour(border-grey);
+
+  padding: 20px;
+  border-right: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+  border-left: 1px solid $border-color;
+  text-align: center;
+  background-color: colour(content-bg);
+}
+
+.payment__submit__message {
+  margin: 20px 0 0;
+}

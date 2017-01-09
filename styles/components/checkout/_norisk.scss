@@ -1,0 +1,160 @@
+%norisk__details,
+.norisk__details {
+  margin: 0 -10px 10px -30px;
+  padding: 10px 10px 10px 30px;
+}
+
+.norisk__details--instalment {
+  @extend %norisk__details;
+
+  border: 1px solid colour(legacyHighlightBorder);
+}
+
+%norisk__options,
+.norisk__options {
+  margin-bottom: 20px;
+
+  @include mediumlarge {
+    display: flex;
+    align-items: flex-start;
+  }
+}
+
+.norisk__options--instalment {
+  @extend %norisk__options;
+}
+
+.norisk__options--single {
+  @extend %norisk__options;
+
+  margin: 20px 0 0;
+}
+
+.norisk__options__label {
+  margin: 0;
+  padding-bottom: 10px;
+
+  @include mediumlarge {
+    flex: 1 0 50%;
+    padding-right: 10px;
+    padding-bottom: 0;
+  }
+}
+
+.norisk__options__menu {
+  display: flex;
+  justify-content: space-between;
+
+  @include mediumlarge {
+    flex: 1 50%;
+  }
+}
+
+.norisk__options__preferencemenu {
+  @include mediumlarge {
+    max-width: 50%;
+    overflow: hidden;
+  }
+}
+
+.norisk__options__menu__select {
+  max-width: 250px;
+
+  @include mediumlarge {
+    max-width: 100%;
+  }
+}
+
+.norisk__options__text {
+  margin: 0;
+  font-weight: bold;
+}
+
+.norisk__options__info {
+  width: 40px;
+  font-size: 21px;
+  text-align: right;
+  color: colour(link-muted-color);
+}
+
+.norisk__options__info__tooltip {
+  right: 0;
+  left: auto;
+  text-align: left;
+}
+
+.norisk__privacypolicy {
+  margin-top: 20px;
+  font-size: 13px;
+}
+
+.form__item--pno__inputwrapper {
+  max-width: 250px;
+}
+
+.norisk__instalment__details {
+  font-size: 13px;
+}
+
+.norisk__instalment__details__table {
+  font-weight: bold;
+
+  @include mediumlarge {
+    display: flex;
+    justify-content: flex-end;
+
+    &::before {
+      content: '';
+      flex: 1 0 50%;
+    }
+  }
+}
+
+.norisk__instalmentdetails {
+  @include mediumlarge {
+    flex: 1 0 50%;
+  }
+}
+
+.norisk__instalmentdetails__value {
+  padding-left: 10px;
+  text-align: right;
+}
+
+.norisk__information {
+  margin: 10px -10px 10px -30px;
+  padding: 10px 20px 20px 30px;
+  background-color: colour(legacyHighlightInner);
+}
+
+.norisk__termsandconditions {
+  @include unstyledbutton;
+
+  color: $primary;
+  margin: 20px 0;
+  font-size: 14px;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.norisk__options__info {
+  @include icon(infoInverse);
+}
+
+.norisk__messagebox {
+  margin-top: 20px;
+}
+
+.norisk__creditbanner {
+  padding-top: 13%;
+  background-image: url('../../images/mop/balk_afm_mobile.jpg');
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  @include mediumlarge {
+    padding-top: 4%;
+    background-image: url('../../images/mop/balk_afm_desktop.jpg');
+  }
+}

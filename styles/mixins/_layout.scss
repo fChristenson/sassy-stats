@@ -1,0 +1,22 @@
+@mixin clearfix() {
+  &::before,
+  &::after {
+    content: ' '; // 1
+    display: table; // 2
+  }
+
+  &::after {
+    clear: both;
+  }
+}
+
+@mixin container() {
+  transition: max-width 0.5s;
+  min-width: $min-page-width;
+  max-width: $max-page-width;
+  margin: 0 auto;
+
+  .is-fullscreen & {
+    max-width: 100%;
+  }
+}

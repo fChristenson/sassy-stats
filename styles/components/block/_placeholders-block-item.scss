@@ -1,0 +1,202 @@
+%block__item {
+  display: block;
+  position: relative;
+  border: 1px solid colour(border-default);
+  text-decoration: none;
+  cursor: pointer;
+  background-color: colour(content-bg);
+
+  &:hover,
+  &:active {
+    //background-color: colour(panel-light-bg);
+  }
+
+  .no-flexbox & {
+    float: left;
+  }
+}
+
+%block__item--hover {
+  @extend %block__item;
+
+  &:hover,
+  &:active {
+    background-color: colour(content-bg);
+
+    @include icon(chevronRight) {
+      position: absolute;
+      top: 50%;
+      right: 9px;
+      transform: translateY(-50%);
+      color: colour(btn-primary-text);
+      z-index: 2;
+    }
+
+    &:after {
+      // blue bg
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 30px;
+      background-color: colour(btn-primary-bg);
+    }
+
+    .block__img {
+      position: relative;
+      opacity: 0.3;
+
+      &:after {
+        // darken img on hover
+        content: '';
+        @include stretchToFit(0);
+      }
+    }
+  }
+
+  @include small {
+
+    &:hover,
+    &:active {
+      background-color: darken(colour(panel-light-bg), 10%);
+
+      &:before,
+      &:after {
+        content: none;
+      }
+    }
+  }
+}
+
+%block__img {
+
+  img {
+    @extend %responsiveimg;
+
+    display: block;
+  }
+}
+
+%block__img--background,
+.block__img--background {
+  @extend %block__img;
+
+  div {
+    width: 100%;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+  }
+}
+
+%block__caption,
+.block__caption {
+  display: table;
+  width: 100%;
+  min-height: 56px;
+
+  @include large {
+    display: block;
+    padding-right: 30px;
+    min-height: inherit;
+    overflow: hidden;
+  }
+}
+
+%block__caption__heading {
+  display: table-cell;
+  margin: 0;
+  padding: 5px;
+  vertical-align: middle;
+  font-size: 18px;
+  color: colour(text-default-color);
+
+  @include medium {
+    font-size: 16px;
+  }
+
+  @include large {
+    display: block;
+    width: 100%;
+    padding: 12px 5px;
+    font-size: 16px;
+  }
+}
+
+%block__caption__description {
+  display: none;
+
+  @include mediumlarge {
+    display: block;
+    width: 100%;
+    margin: 0;
+    padding: 5px;
+    font-size: 13px;
+    color: colour(text-muted-color);
+  }
+}
+
+%block__button,
+.block__button {
+  @include icon(chevronRight, after);
+
+  display: table-cell;
+  width: 40px;
+  min-height: 40px;
+  padding: 0 10px;
+  vertical-align: middle;
+  letter-spacing: 0.04em;
+  text-align: center;
+  color: colour(btn-primary-bg);
+
+  @include large {
+    display: inline-block;
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    // TODO: @extend %button;
+    width: auto;
+    min-height: inherit;
+    padding: 0 15px;
+    font-size: 12px;
+    text-transform: uppercase;
+    background-color: colour(btn-primary-bg);
+    color: colour(btn-primary-text);
+
+    .block__item:hover &,
+    .block__item:active & {
+      background-color: darken(colour(btn-primary-bg), 10%);
+    }
+  }
+}
+
+%block__button__text,
+.block__button__text {
+  line-height: 35px;
+  vertical-align: middle;
+
+  @include smallmedium {
+    // TODO: @extend %visuallyhidden;
+    position: absolute; width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    clip: rect(0 0 0 0);
+    border: 0;
+    overflow: hidden;
+  }
+}
+
+%block__button__icon,
+.block__button__icon {
+  vertical-align: middle;
+
+  @include large {
+    display: inline;
+    padding-left: 5px;
+    line-height: 35px;
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,129 @@
+$ticketListBg: colour(panel-light-bg);
+$ticketStubBg: colour(panel-lighter-bg);
+$ticketStubSelected: #75cd79;
+$ticketStubBorder: colour(border-default);
+$ticketStubHeaderColor: colour(text-inverted-color);
+$ticketStubHeaderBorder: #ccc;
+$ticketStubLabel: colour(text-muted-color);
+$ticketStubUpsellItems: #808080;
+
+@import 'ticketstub_header';
+@import 'ticketstub_details';
+@import 'ticketstub_content';
+
+.ticketstub {
+  display: table;
+  width: 100%;
+  cursor: default;
+
+  &.is-downloadable {
+    cursor: pointer;
+
+    .checkbox {
+      display: block;
+    }
+
+    // Blue border
+    .ticketstub__header {
+      border-bottom: 1px solid colour(border-primary);
+    }
+
+    // Different label color if downloadable
+    .ticketstub__cell__label {
+      color: colour(text-primary-color);
+    }
+
+    // Darken header on :hover
+    &:hover .ticketstub__header {
+      background-color: darken($ticketStubHeaderColor, 3%);
+
+      &::before,
+      &::after {
+        border-bottom: 3px solid darken($ticketStubHeaderColor, 3%);
+      }
+
+      &::before {
+        border-right: 3px solid darken($ticketStubHeaderColor, 3%);
+      }
+
+      &::after {
+        border-left: 3px solid darken($ticketStubHeaderColor, 3%);
+      }
+    }
+
+    &:hover .ticketstub__content {
+      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  &.is-selected {
+
+    // Green header on selected
+    .ticketstub__header {
+      background-color: $ticketStubSelected;
+
+      &::before,
+      &::after {
+        border-bottom: 3px solid $ticketStubSelected;
+      }
+
+      &::before {
+        border-right: 3px solid $ticketStubSelected;
+      }
+
+      &::after {
+        border-left: 3px solid $ticketStubSelected;
+      }
+    }
+
+    // Darken header on :hover
+    &:hover .ticketstub__header {
+      background-color: darken($ticketStubSelected, 5%);
+
+      &::before,
+      &::after {
+        border-bottom: 3px solid darken($ticketStubSelected, 5%);
+      }
+
+      &::before {
+        border-right: 3px solid darken($ticketStubSelected, 5%);
+      }
+
+      &::after {
+        border-left: 3px solid darken($ticketStubSelected, 5%);
+      }
+    }
+
+    .ticketstub__content {
+      box-shadow: 1px 1px 10px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.ticketstub__header {
+  @extend %ticketstub__header;
+}
+
+.ticketstub__details {
+  @extend %ticketstub__details;
+}
+
+.ticketstub__content {
+  @extend %ticketstub__content;
+}
+
+.ticketstub__checkbox {
+  display: flex;
+  float: left;
+  position: relative;
+  width: 42px;
+  margin-top: 4px;
+  pointer-events: none;
+  justify-content: center;
+  align-self: center;
+
+  .checkbox {
+    display: none;
+    max-width: 20px;
+  }
+}

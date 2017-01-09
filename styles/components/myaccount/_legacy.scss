@@ -1,0 +1,174 @@
+/**
+ * This is intended to house styles for the legacy My Account pages when moving them into the view framework
+ but before they are redesigned.
+ */
+.form-block {
+  @extend %block__item;
+
+  &:hover,
+  &:active {
+    background-color: inherit;
+  }
+
+  display: block;
+  min-width: 450px;
+  margin: 0 0 10px;
+  border: 0;
+  font-family: inherit;
+  background-color: colour(content-bg);
+}
+
+.form-block__heading {
+  margin: 0;
+  padding: 7px 10px;
+  line-height: 1;
+  font-family: font('header');
+  font-size: 22px;
+  font-weight: normal;
+  background-color: colour(panel-dark-bg);
+  color: colour(panel-dark-text);
+}
+
+.form-block__content {
+  padding: 10px;
+
+  @include aboveSmall {
+    padding: 0;
+  }
+}
+
+.form-block__content .loginRegister-row {
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+.form-block__content .loginRegister-row input {
+  margin: 0 10px 5px 0;
+}
+
+.form-block__content .loginRegister-row label div {
+  margin-left: 0!important;
+}
+
+.form-block__content .loginRegister-row .categoryHeader {
+  font-size: 28px;
+  margin-top: 30px;
+}
+
+/*.form-block__content p {
+  line-height: 1.5;
+}
+
+.form-block__content p b {
+  margin-top: 10px;
+  display: block;
+}*/
+
+.form-block__content .infoText {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.form-block__content .requiredFields {
+  margin-bottom: 20px;
+  margin-top: 0;
+}
+
+.form-block__content center table {
+  margin-top: 0!important;
+}
+
+.form-block__content .errorMessage {
+  color: $etna;
+}
+
+.form-block__content table input {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 10px 5px;
+  border: 1px solid #dedede;
+  border-radius: 5px;
+  font-size: 16px;
+  color: #475058;
+  outline: none;
+  @include aboveSmall {
+    width: 100%;
+  }
+  @include bodyText;
+
+  &:focus {
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.form-block__content table select {
+  @include bodyText;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #dedede;
+  height: 40px;
+}
+
+.form-block__content .button {
+  background-color: colour(btn-primary-bg);
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 7px 20px;
+  width: 100%;
+
+  @include aboveSmall {
+    width: auto;
+  }
+
+  &:hover {
+    background-color: colour(btn-primary-bg--hover);
+  }
+}
+
+
+.form-block__content .required {
+  color: $etna;
+}
+
+
+.page--myaccount table {
+  width: 100%;
+  @include aboveSmall {
+    width: 100%;
+  }
+}
+
+.form-block__content table tr td:nth-child(1) {
+  margin-top: 10px;
+  width: 300px!important;
+  font-size: 14px;
+}
+
+.form-block__content table tr td {
+  display: block;
+}
+
+.page__title.page__title-subtitle {
+  font-size: 22px;
+  margin-top: 30px;
+  margin-bottom: 0;
+
+  @include aboveSmall {
+    font-size: 28px;
+  }
+}
+
+.maincontent--discovery__myaccount {
+  padding: 10px 10px 0 10px;
+  @include aboveSmall {
+    padding: 15px 15px 0 15px;
+  }
+}
+
+
+

@@ -1,0 +1,176 @@
+.ntfwrapper * {
+  box-sizing: border-box;
+}
+
+.ntfwrapper {
+  margin: 10px 0 15px;
+
+  @include mediumlarge {
+    margin: 20px 0 5px;
+  }
+}
+
+.ntf {
+  @extend %clearfix;
+
+  background-color: colour(legacyBlockBg);
+  border: 1px solid colour(legacyBorder);
+
+  &.is-error {
+    border: 3px solid colour(status-error);
+
+    .error__icon {
+      color: colour(status-error);
+    }
+  }
+
+  &.is-warning {
+    border: 3px solid colour(status-warning--legacy);
+
+    .error__icon {
+      color: colour(status-warning--legacy);
+    }
+  }
+}
+
+.ntf__header {
+  margin: 0 10px;
+  padding: 0 15px;
+  line-height: 36px;
+  background-color: colour(legacyHeadingBg);
+  color: colour(legacyHeadingText);
+  font-size: 17px;
+  font-weight: bold;
+}
+
+%ntfblock {
+  padding: 20px;
+}
+
+.error--ntf,
+.ntf__spinner,
+.resale,
+.platinum {
+  @extend %ntfblock;
+}
+
+.platinum-module--standalone {
+  margin: auto;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #bcbec0;
+}
+
+.ntf.is-msg-only .error--ntf {
+  width: 100%;
+}
+
+.resale {
+  position: relative;
+  border-top: 1px solid colour(legacyBorder);
+}
+
+.resale__logo {
+  padding-bottom: 20px;
+  display: block;
+  margin: 0 auto;
+  width: 372px;
+
+  @include mediumlarge {
+    float: left;
+  }
+
+  @include medium {
+    padding-right: 80px;
+  }
+
+  @include large {
+    padding-right: 104px;
+  }
+}
+
+.resale__desc {
+  margin-top: 10px;
+}
+
+.resale__disclaimer {
+  font-size: 11px;
+  text-align: right;
+}
+
+.tickettable {
+  width: 100%;
+  font-size: 15px;
+}
+
+.tickettable__row {
+  border-bottom: 1px solid colour(legacyBorder);
+
+  &:first-child {
+    border-top: 1px solid colour(legacyBorder);
+  }
+}
+
+%tickettable__cell {
+  padding: 6px 0;
+}
+
+.tickettable__section {
+  @extend %tickettable__cell;
+
+  width: 50%;
+
+  @include large {
+    width: 40%;
+  }
+}
+
+.tickettable__price {
+  @extend %tickettable__cell;
+
+  @include small {
+    text-align: right;
+  }
+}
+
+.tickettable__find {
+  @extend %tickettable__cell;
+
+  text-align: right;
+  padding: 10px 0;
+
+  @include small {
+    display: none;
+  }
+}
+
+.tickettable__find__icon {
+  @include icon(externalLink);
+}
+
+.tickettable__btn {
+  @extend %legacybutton;
+
+  white-space: nowrap;
+  font-size: 16px;
+  padding: 0.4em 2em;
+
+  @include mediumlarge {
+    font-size: 13px;
+    padding: 0.2em 1em;
+  }
+
+  > i {
+    margin-top: -4px;
+    font-size: 12px;
+  }
+}
+
+.tickettable__mobilebtn {
+  text-align: center;
+  display: none;
+
+  @include small {
+    display: block;
+  }
+}

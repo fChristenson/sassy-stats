@@ -1,0 +1,64 @@
+.searchdiscover {
+  padding-top: 2px;
+  padding-bottom: 2px;
+  overflow: hidden;
+}
+
+%searchdiscover__tab {
+  @include unstyledbutton;
+
+  display: block;
+  width: 50%;
+  height: 34px;
+  padding: 7px 10px;
+  border-bottom: 2px solid colour(border-light);
+  font-size: 16px;
+  text-align: left;
+  text-transform: uppercase;
+  background-color: colour(nav-tab-bg);
+  color: colour(nav-tab-text);
+
+  &::before {
+    padding-right: 12px;
+    padding-bottom: 3px;
+  }
+
+  &.is-active {
+    @include icon(menuClose) {
+      position: static;
+      font-size: 12px;
+    }
+
+    border: none;
+    background-color: colour(nav-ctrl-bg--active);
+    color: colour(nav-ctrl-text--active);
+  }
+
+  &.is-highlighted {
+    background-color: colour(nav-ctrl-bg--active);
+    color: colour(nav-ctrl-text--active);
+  }
+}
+
+.searchdiscover__tab--search {
+  @extend %searchdiscover__tab;
+
+  @include icon(search);
+
+  float: left;
+  border-right: 2px solid colour(border-light);
+}
+
+.searchdiscover__tab--discover {
+  @extend %searchdiscover__tab;
+
+  float: right;
+  border-left: 2px solid colour(border-light);
+
+  @include icon(eye) {
+    position: relative;
+    top: 5px;
+    line-height: 16px;
+    font-size: 25px;
+  }
+}

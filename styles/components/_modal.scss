@@ -1,0 +1,28 @@
+// Legacy: Used in myaccount, sould be replaced with common modal component
+.bmodal {
+  position: fixed;
+  display: none;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  min-width: $min-page-width;
+
+  &.is-opened {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.bmodal__bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 200%;
+
+  background: rgba(0,0,0,0.7);
+  cursor: pointer;
+}

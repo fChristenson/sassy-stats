@@ -1,0 +1,109 @@
+.messagebox,
+.messagebox--info {
+  border: 1px solid colour(status-info);
+  margin: 0 0 8px;
+  margin-left: 0;
+  margin-right: 0;
+}
+
+.messagebox__header {
+  display: flex;
+  align-items: center;
+  margin-left: 0;
+  margin-right: 0;
+
+  @include icon(info) {
+    flex-shrink: 0;
+    font-size: 20px;
+
+    .no-flexbox & {
+      display: block;
+      float: left;
+    }
+  }
+
+  padding: 8px 10px;
+  background-color: colour(status-info);
+
+  color: colour(text-light-color);
+
+  .no-flexbox & {
+    @include clearfix;
+
+    min-height: 35px;
+  }
+}
+
+.messagebox__heading {
+  padding-left: 10px;
+  margin: 0;
+  line-height: 1.2; // override old css
+  font-size: 16px;
+
+  .no-flexbox & {
+    display: block;
+    float: left;
+  }
+}
+
+.messagebox__message {
+  margin:0;
+  padding:8px 10px;
+  font-size: 14px;
+  background-color: colour(content-bg);
+  color: colour(text-default-color);
+}
+
+.messagebox--error {
+  @extend .messagebox;
+  border: 1px solid colour(status-error);
+  .messagebox__header {
+    background-color: colour(status-error);
+
+    @include icon(error) {
+      flex-shrink: 0;
+      font-size: 20px;
+
+      .no-flexbox & {
+        display: block;
+        float: left;
+      }
+    }
+  }
+}
+
+.messagebox--warning {
+  @extend .messagebox;
+  border: 1px solid colour(status-warning);
+  .messagebox__header {
+    background-color: colour(status-warning);
+
+    @include icon(warning) {
+      flex-shrink: 0;
+      font-size: 20px;
+
+      .no-flexbox & {
+        display: block;
+        float: left;
+      }
+    }
+  }
+}
+
+.messagebox--success {
+  @extend .messagebox;
+  border: 1px solid colour(status-success);
+  .messagebox__header {
+    background-color: colour(status-success);
+
+    @include icon(success) {
+      flex-shrink: 0;
+      font-size: 20px;
+
+      .no-flexbox & {
+        display: block;
+        float: left;
+      }
+    }
+  }
+}

@@ -1,0 +1,51 @@
+/*
+
+  Ticketstub content container
+
+ */
+
+%ticketstub__content {
+  display: flex;
+
+  position: relative;
+
+  width: 100%;
+
+  min-height: 106px;
+
+  // Smooth box shadow to simulate angeled corners
+  border-radius: 0 0 5px 5px;
+
+  background: $ticketStubBg;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+
+  transition: box-shadow 0.3s ease-in-out;
+  // Angled corners
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+
+    width: 0;
+    height: 0;
+
+    border-top: 3px solid $ticketStubBg;
+    border-bottom: 3px solid darken($ticketListBg, 3%);
+    background: $ticketStubBg;
+  }
+
+  // Angled corners positioning
+  &:before {
+    left: 0;
+
+    border-right: 3px solid $ticketStubBg;
+    border-left: 3px solid darken($ticketListBg, 3%);
+  }
+  &:after {
+    right: 0;
+
+    border-right: 3px solid darken($ticketListBg, 3%);
+    border-left: 3px solid $ticketStubBg;
+  }
+}

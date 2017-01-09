@@ -1,0 +1,40 @@
+.eventListing {
+  padding-bottom: 20px;
+}
+
+.eventlisting__events {
+  @include unstyledlist;
+
+  display: table;
+}
+
+.eventlisting__row {
+  @include unstyledlist;
+
+  display: table-row;
+}
+
+%eventlisting__row__item {
+  display: table-cell;
+  width: 25%;
+  padding: 10px 20px;
+  vertical-align: top;
+}
+
+.eventlisting__row__date {
+  @extend %eventlisting__row__item;
+}
+
+.eventlisting__row__name {
+  @extend %eventlisting__row__item;
+}
+
+.eventlisting__row__location {
+  @extend %eventlisting__row__item;
+}
+
+.eventlisting__row__availability {
+  @extend %eventlisting__row__item;
+
+  text-align: right;
+}

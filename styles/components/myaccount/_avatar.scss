@@ -1,0 +1,32 @@
+.avatar {
+  @include medium {
+    margin: 8px;
+    padding: 16px 0;
+  }
+
+  @include large {
+    margin-left: 10px;
+    padding: 20px 0;
+  }
+}
+
+.avatar__greeting {
+  font-size: 15px;
+  color: colour(text-accent-color);
+
+  @include aboveSmall {
+    font-size: 20px;
+  }
+}
+
+.avatar__greeting--name {
+  font-size: 15px;
+  text-transform: uppercase;
+  color: colour(text-default-color);
+
+  @include mediumlarge {
+    display: block;
+    margin-top: 2px;
+    font-size: 20px;
+  }
+}

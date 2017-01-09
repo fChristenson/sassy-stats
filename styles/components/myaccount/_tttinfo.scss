@@ -1,0 +1,25 @@
+/*
+  This file contains the styles for the TTT account info embedded (iframe) GUI.
+
+  We make the iframe responsive by:
+
+  * Position the container relative
+  * Provide height for the iframe through the padding-bottom property. (Using percentages maintains teh aspect ratio
+    but we need a height
+  * Make the iframe position absolutlely
+  * Make the iframe fill the container
+*/
+.ttt-account-info__container {
+  position: relative;
+  height: 0;
+  padding-bottom: 275px;
+}
+
+.ttt-account-info__content {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border:0;
+}

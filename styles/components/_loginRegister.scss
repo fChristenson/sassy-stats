@@ -1,0 +1,123 @@
+$tabHeadingHeight: 34px;
+
+.loginregister * {
+  box-sizing: border-box;
+}
+
+.loginregister--myaccount {
+  @include large {
+    width: 66.67%;
+  }
+
+  // override default link colour for My Account
+  a {
+    color: colour(text-default-color);
+    text-decoration: underline;
+    font: font(link);
+
+    &:hover {
+      color: colour(link-primary-color);
+    }
+  }
+}
+
+.loginregister__tabs {
+  position: relative;
+  margin: 0;
+  padding-top: $tabHeadingHeight;
+}
+
+.loginregister__heading {
+  font-size: 18px;
+  line-height: $tabHeadingHeight;
+  text-align: center;
+
+  &.is-tabbed {
+    position: absolute;
+    top: 0;
+    width: 50%;
+  }
+
+  // &.is-active {}
+}
+
+.loginregister__heading--login {
+  @extend .loginregister__heading;
+
+  &.is-tabbed {
+    left: 0;
+    padding-left: 10px;
+  }
+}
+
+.loginregister__heading--register {
+  @extend .loginregister__heading;
+
+  &.is-tabbed {
+    right: 0;
+    padding-right: 10px;
+  }
+}
+
+.loginregister--myaccount__heading--login,
+.loginregister--myaccount__heading--register {
+  display: none;
+}
+
+.loginregister__heading__link {
+  display: block;
+  background-color: colour(legacyLightHeadingBg);
+  color: colour(legacyLightHeadingText);
+
+  // increased specificity to override old css
+  #mainContent & {
+    color: colour(legacyLightHeadingText);
+  }
+
+  // increased specificity to override old css
+  .loginregister &:hover {
+    text-decoration: none;
+  }
+
+  .is-active & {
+    background-color: colour(legacyHeadingBg);
+    color: colour(legacyHeadingText);
+
+    // increased specificity to override old css
+    #mainContent & {
+      color: colour(legacyHeadingText);
+    }
+  }
+}
+
+.loginregister__content {
+  margin-left: 0;
+  padding: 10px;
+  background-color: colour(content-bg);
+  border: 1px solid colour(legacyBorder);
+  font-size: 14px;
+
+  @include medium {
+    font-size: 17px;
+  }
+
+  @include large {
+    padding: 20px;
+    font-size: 15px;
+  }
+
+  &.is-tabbed {
+    display: none;
+  }
+
+  &.is-active {
+    display: block;
+  }
+}
+
+.loginregister--myaccount__content,
+.loginregister--myaccount__content {
+  @extend .loginregister__content;
+
+  border: 0;
+}

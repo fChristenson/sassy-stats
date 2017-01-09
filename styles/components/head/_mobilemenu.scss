@@ -1,0 +1,54 @@
+.mobilemenu {
+  display: flex;
+  align-items: stretch;
+
+  .no-flexbox & {
+    display: block;
+  }
+}
+
+.mobilemenu__toggle {
+  @include unstyledbutton();
+
+  padding: 0 10px;
+  line-height: 40px;
+  text-transform: uppercase;
+  background-color: colour(nav-ctrl-bg);
+  color: colour(link-primary-color);
+
+  &.is-open {
+    font-size: 13px;
+    color: colour(btn-default-text--hover);
+  }
+
+  > * {
+    vertical-align: middle;
+    font-size: 14px;
+  }
+
+  .no-flexbox & {
+    float: left;
+    margin-right: 50px;
+  }
+}
+
+.mobilemenu__close {
+  @include icon(menuClose) {
+    position: relative;
+    top: -2px;
+    font-size: 18px;
+    color: colour(text-default-color);
+  }
+
+  padding: 10px;
+}
+
+.mobilemenu__open {
+  @include icon(menu) {
+    position: relative;
+    top: -1px;
+  }
+
+  padding-right: 10px;
+  font-size: 10px;
+}

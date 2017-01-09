@@ -1,0 +1,11 @@
+// old order details page
+
+#frame {
+  @include container;
+
+  width: 980px;
+}
+
+.containerTitle p {
+  margin: 0;
+}

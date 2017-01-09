@@ -1,0 +1,559 @@
+/**
+ * Define colours and tones/shades
+ *
+ * The "legacy" sections are for new components that need to retain the
+ * colour scheme of the older parts of the site e.g. checkout
+ */
+
+// scss-lint:disable ColorKeyword, ColorVariable
+$legacy: (
+  white: (
+    base: #fff
+  ),
+
+  black: (
+    base: #000
+  ),
+
+  grey: (
+    xx-dark: #1a1a1a,
+    x-dark: #333,
+    dark: #666,
+    mid-dark: #808080,
+    base: #999,
+    base-light: #ccc,
+    mid-light: #dfdce2,
+    light: #e6e6e6,
+    x-light: #f2f2f2,
+    xx-light: #f7f7f7
+  ),
+
+  blue: (
+    dark: #0f2d54,
+    mid-dark: #1d549f,
+    base: #36c,
+    mid-light: #b3c9e2,
+    light: #aaccef,
+    x-light: #d8dfeb,
+    xx-light: #ebf0f5
+  ),
+
+  red: (
+    xx-dark: #4d0000,
+    x-dark: #680000,
+    mid-xx-dark: #ba5858,
+    mid-x-dark: #9d4b4b,
+    mid-dark: #811811,
+    dark: #b61b24,
+    base: #f00,
+    mid-light: #dc1921,
+    btn: #dc1921,
+    btnDark: #af1225,
+    light: #e06666,
+    x-light: #f1e6e6
+  ),
+
+  purple: (
+    dark: #491961,
+    base: #5e257b,
+    mid: #742b98,
+    light: #7f5195,
+    x-light: #f2edf5
+  ),
+
+  green: (
+    dark: #00673b,
+    mid-x-dark: #566e00,
+    mid-dark: #8ea933,
+    base: #9fc54d
+  ),
+
+  yellow: (
+    dark: #ffcf00,
+    base: #ffd000
+  ),
+
+  orange: (
+    base: #e98300
+  ),
+
+  pink: (
+    dark: #d0006f,
+    base: #ffa3a3,
+    light: #e6d5d5
+  ),
+
+  beige: (
+    base: #ece7d1
+  ),
+
+  legacy: (
+    base-grey: #444,
+    mid-grey: #666,
+    mid-light-grey: #bcbcbc,
+    light-grey: #c9cac8,
+    x-light-grey: #dedede,
+    light-yellow: #ffd632,
+    x-light-yellow: #fee085,
+    yellow: #99d7f2,
+    dark-yellow: #d2972a,
+    teal: #009ba6,
+    purple: #741d66
+  )
+
+);
+
+/**
+ * Access colours in the palette by name and optional tone/shade
+ * @param  {string} $palette Palette colour
+ * @param  {string} $tone    Shade or tone (optional, defaults to 'base')
+ */
+@function legacy($colour, $tone: 'base') {
+  @return map-get(map-get($legacy, $colour), $tone);
+}
+
+$palette: (
+  base: (
+    primary: (
+      dark: #1085b7,
+      base: #009cde,
+      light: #e0f6ff
+    ),
+    secondary: (
+      base: #768692,
+      light: #b7c9d3
+    ),
+    accent: (
+      dark: #9d0053,
+      base: #d0006f
+    ),
+    grey: (
+      xx-dark: #475058,
+      x-dark: #666,
+      dark: #999,
+      base: #ccc,
+      light: #e6e6e6,
+      x-light: #f7f7f7
+    ),
+    warning: (
+      base: #fecb34
+    ),
+    error: (
+      base: #d5151f
+    ),
+    success: (
+      base: #009245,
+      light: #19ab20,
+      x-light: #c7e7c8,
+      xx-light: #e3f5e4
+    ),
+    map: (
+      matching: #009cde,
+      available: #bfe6f6,
+      unavailable: #999,
+      dark: #1085b7,
+      selected: #e88200,
+      ticket-icon: #e68221
+    )
+  ),
+
+  ticketweb: (
+    primary: (
+      dark: #491961,
+      base: #5e257b,
+      light: #f2edf5
+    ),
+    secondary: (
+      base: #7f5195,
+      light: #f2edf5
+    ),
+    accent: (
+      dark: #8ea933,
+      base: #9fc54d
+    ),
+    grey: (
+      xx-dark: #333,
+      x-dark: #666,
+      dark: #999,
+      base: #ccc,
+      light: #e6e6e6,
+      x-light: #f7f7f7
+    ),
+    warning: (
+      base: #fecb34
+    ),
+    error: (
+      base: #d5151f
+    ),
+    success: (
+      base: #009245,
+      light: #19ab20,
+      x-light: #c7e7c8,
+      xx-light: #e3f5e4
+    ),
+    map: (
+      matching: #009cde,
+      available: #e0f6ff,
+      unavailable: #999,
+      dark: #1085b7,
+      selected: #e88200,
+      ticket-icon: #e68221
+    )
+  ),
+
+  billetech: (
+    primary: (
+      dark: #4d0000,
+      base: #680000,
+      light: #f1e6e6
+    ),
+    secondary: (
+      base: #680000,
+      light: #f1e6e6
+    ),
+    accent: (
+      dark: #333,
+      base: #9d4b4b
+    ),
+    grey: (
+      xx-dark: #414141,
+      x-dark: #666,
+      dark: #999,
+      base: #ccc,
+      light: #e6e6e6,
+      x-light: #f7f7f7
+    ),
+    warning: (
+      base: #fecb34
+    ),
+    error: (
+      base: #d5151f
+    ),
+    success: (
+      base: #009245,
+      light: #19ab20,
+      x-light: #c7e7c8,
+      xx-light: #e3f5e4
+    ),
+    map: (
+      matching: #009cde,
+      available: #e0f6ff,
+      unavailable: #999,
+      dark: #1085b7,
+      selected: #e88200,
+      ticket-icon: #e68221
+    )
+  )
+);
+
+@function palette($type, $tone: 'base') {
+  $selectedPalette: map-get($palette, $currentTheme);
+
+  @if not($selectedPalette) {
+    @error 'Theme #{$currentTheme} is not in the palette';
+  }
+
+  $selectedType: map-get($selectedPalette, $type);
+
+  @if not($selectedType) {
+    @error 'Type #{$type} is not in the palette for #{$currentTheme}';
+  }
+
+  $selectedTone: map-get($selectedType, $tone);
+
+  @if not($selectedTone) {
+    @error 'Type #{$type}, Tone #{$tone} is not in the palette for #{$currentTheme}';
+  }
+
+  @return $selectedTone;
+}
+
+/**
+ * Ticketmaster colours
+ */
+$baseLegacy: (
+
+  // Page defaults
+  body-bg: #fff,
+  content-bg: #fff,
+  content-light-bg: palette(grey, light),
+  text-default-color: palette(grey, xx-dark),
+  text-primary-color: palette(primary),
+  text-secondary-color: palette(secondary),
+  text-accent-color: palette(accent),
+  text-muted-color: palette(grey, dark),
+  text-inverted-color: palette(grey, light),
+  text-light-color: #fff,
+  text-placeholder-color: palette(grey),
+  link-primary-color: palette(primary),
+  link-primary-color--hover: palette(grey, x-dark),
+  link-primary-bg--hover: palette(primary, light),
+  link-secondary-color: palette(secondary, light),
+  link-secondary-color--hover: palette(secondary),
+  link-muted-color: palette(grey, x-dark),
+  link-muted-color--hover: palette(primary, dark),
+  link-accent-color: palette(accent),
+  link-accent-color--hover: palette(accent, dark),
+  link-dark-color: $pompeii,
+  link-dark-color--hover: palette(grey, x-dark),
+  link-alert-color: palette(error),
+  link-map-color: palette(map, matching),
+  link-map-color--hover: palette(map, dark),
+  link-map-color--disabled: palette(map, unavailable),
+
+  // Headings
+  heading-default: palette(grey, xx-dark),
+  heading-primary: palette(primary),
+  heading-primary--hover: palette(primary, dark),
+  heading-primary-bg: palette(primary),
+  heading-primary-text: #fff,
+  heading-secondary-bg: #475058,
+  heading-secondary-text: #fff,
+  heading-light-bg: palette(grey, x-light),
+  heading-light-text: palette(grey, dark),
+
+  // Buttons
+  btn-default-text: palette(grey, x-dark),
+  btn-default-text--hover: palette(primary, dark),
+  btn-default-bg: palette(grey, x-light),
+  btn-default-bg--hover: #fff,
+  btn-default-bg--active: palette(secondary, light),
+  btn-default-icon: palette(primary, dark),
+  btn-default-icon--hover: palette(primary, dark),
+  btn-primary-text: #fff,
+  btn-primary-bg: palette(primary),
+  btn-primary-bg--hover: palette(primary, dark),
+  btn-primary-icon: palette(primary, dark),
+  btn-primary-icon--hover: palette(primary, dark),
+  btn-secondary-bg: palette(secondary),
+  btn-secondary-bg--hover: palette(primary, dark),
+  btn-cta-text: #fff,
+  btn-cta-bg: palette(accent),
+  btn-cta-bg--hover: palette(accent, dark),
+  btn-inverse-text: palette(primary),
+  btn-inverse-bg: #fff,
+  btn-inverse-bg--hover: palette(primary, dark),
+  btn-dark-bg: palette(grey, light),
+  btn-disabled-bg: palette(grey, x-light),
+  btn-disabled-text: palette(grey, dark),
+  btn-continue-bg: palette(success, light),
+
+  // Header
+  header-discover-bg: palette(grey, light),
+  header-dropdown-bg: palette(primary, light),
+  header-select-bg: palette(grey, x-light),
+
+  // Panels (Header panels, content blocks)
+  panel-default-bg: palette(grey, light),
+  panel-default-bg--active: palette(primary, light),
+  panel-default-text: palette(grey, xx-dark),
+  panel-primary-bg: palette(primary, light),
+  panel-primary-text: palette(grey, xx-dark),
+  panel-accent-bg: palette(accent),
+  panel-accent-text: #fff,
+  panel-accent-bg--disabled: palette(grey, x-dark),
+  panel-lighter-bg: #fff,
+  panel-lighter-text: palette(grey, x-dark),
+  panel-light-bg: palette(grey, x-light),
+  panel-light-text: palette(grey, x-dark),
+  panel-mid-bg: palette(grey),
+  panel-mid-text: palette(grey, x-dark),
+  panel-dark-bg: #000,
+  panel-dark-text: #fff,
+  panel-green-bg: palette(success, xx-light),
+
+  // Borders
+  border-default: palette(grey, light),
+  border-grey: palette(grey),
+  border-light: #fff,
+  border-mid: palette(grey, dark),
+  border-dark: palette(grey, xx-dark),
+  border-primary: palette(primary),
+  border-green: palette(success, x-light),
+
+  // Categories (music, arts & theater, ...)
+  nav-text: palette(grey, xx-dark),
+  nav-text--active: palette(grey, xx-dark),
+  nav-text--hover: palette(grey, xx-dark),
+  nav-bg: palette(grey),
+  nav-bg--active: palette(grey),
+  nav-bg--hover: palette(grey),
+
+  // Control buttons (search, language, login)
+  nav-ctrl-text: palette(grey, xx-dark),
+  nav-ctrl-text--hover: palette(primary, dark),
+  nav-ctrl-text--active: #000,
+  nav-ctrl-bg: palette(grey, x-light),
+  nav-ctrl-bg--hover: #fff,
+  nav-ctrl-bg--active: palette(primary, light),
+  nav-primary-text: #fff,
+  nav-primary-text--hover: #fff,
+  nav-primary-bg: palette(primary),
+  nav-primary-bg--hover: palette(primary, dark),
+  nav-ctrl-icon: palette(primary),
+  nav-primary-icon: #fff,
+  nav-ctrl-icon--hover: palette(primary, dark),
+  nav-ctrl-icon--active: #000,
+  nav-tab-bg: palette(grey, light),
+  nav-tab-text: palette(grey, xx-dark),
+
+  // Labels
+  label-primary-color: palette(grey, xx-dark),
+  ticket-icon: palette(map, ticket-icon),
+
+  // Footer
+  footer-bg: #fff,
+
+  // Cards
+  card-bg-1: palette(primary),
+  card-bg-2: adjust_hue(desaturate(lighten(palette(primary), 1), 34), 2),
+  card-bg-3: desaturate(lighten(palette(primary), 6), 50),
+  card-bg-4: adjust_hue(desaturate(lighten(palette(primary), 11), 49), 4),
+  card-bg--active: palette(primary),
+
+  // Status colour (error msgs etc)
+  status-warning: palette(warning),
+  status-warning--legacy: legacy(orange),
+  status-error: palette(error),
+  status-success: palette(success),
+  status-info:  palette(primary),
+  status-matching: palette(map, matching),
+  status-available: palette(map, available),
+  status-unavailable: palette(map, unavailable),
+  status-selected: palette(map, selected),
+
+  // Legacy (NTF module in checkout)
+  legacyText: legacy(legacy, base-grey),
+  legacyDarkText: #000,
+  legacyLightText: legacy(legacy, mid-grey),
+  legacyLink: palette(primary),
+  legacyBorder: legacy(legacy, mid-light-grey),
+  legacyDarkBorder: legacy(grey, x-dark),
+  legacyHeadingBg: palette(grey, xx-dark),
+  legacyHeadingText: #fff,
+  legacyLightHeadingBg: legacy(legacy, light-grey),
+  legacyLightHeadingText: palette(grey, xx-dark),
+  legacyCheckoutHeadingBg: #768692,
+  legacyInputBorder: legacy(legacy, x-light-grey),
+  legacyInputText: palette(grey, xx-dark),
+  legacyBlockBg: #fff,
+  legacyHighlight: legacy(legacy, yellow),
+  legacyHighlightInner: #99d7f2,
+  legacyHighlightBorder: palette(grey, xx-dark),
+  legacyModalBg: palette(grey, light),
+  legacyModalBorder: legacy(grey, x-dark),
+  legacyLightBtn: legacy(grey, base-light),
+  legacyDarkBtn: legacy(grey, dark),
+  legacyTableHeader: legacy(legacy, purple),
+  legacyTableBody: legacy(legacy, x-light-yellow),
+  formBoxText: legacy(legacy, base-grey),
+  formBoxBg: palette(grey, light),
+  findTicketsBtn: legacy(red, btn),
+  findTicketsBtnDark: legacy(red, btnDark),
+  newsletterButtonBg: palette(grey, x-dark),
+  newsletterButtonText: legacy(yellow),
+  confirmation-receipt-background: #e0f6ff
+);
+
+/**
+ * Override any $baseLegacy colours with Ticketweb colours
+ */
+$ticketwebOverrideColours: (
+  // Page defaults
+  content-light-bg: palette(accent),
+  text-default-color: #000,
+
+  // Links
+  link-muted-color: palette(primary),
+  link-muted-color--hover: palette(accent),
+  link-accent-color: #000,
+  link-accent-color--hover: palette(grey, dark),
+
+  // Buttons
+  btn-cta-bg: palette(grey, xx-dark),
+  btn-cta-bg--hover: #000,
+
+  // Labels
+  label-primary-color: palette(primary),
+
+  // Cards
+  card-bg-1: palette(accent, dark),
+  card-bg-2: palette(accent, dark),
+  card-bg-3: palette(accent, dark),
+  card-bg-4: palette(accent, dark),
+  card-bg--active: legacy(green, mid-x-dark),
+
+  // Legacy
+  legacyHeadingBg: palette(primary),
+  legacyCheckoutHeadingBg: legacy(purple, base),
+  legacyHighlight: legacy(green),
+  legacyHighlightInner: legacy(grey, light),
+  legacyHighlightBorder: legacy(green, dark),
+  legacyLink: palette(primary),
+  legacyModalBorder: palette(primary),
+  confirmation-receipt-background: #9fc54d
+);
+
+/**
+ * Override any $baseLegacy colours with Billetech colours
+ */
+$billetechOverrideColours: (
+
+  // Page defaults
+  content-light-bg: legacy(beige),
+  text-default-color: #000,
+
+  // Links
+  link-accent-color: #000,
+  link-accent-color--hover: palette(grey, dark),
+
+  // Footer
+  footer-bg: legacy(beige),
+
+  // Legacy
+  legacyLink: palette(primary),
+  legacyHeadingBg: palette(primary),
+  legacyCheckoutHeadingBg: legacy(red, mid-dark),
+  legacyModalBorder: palette(primary)
+);
+
+
+/**
+ * Merge the override colours with $baseLegacy
+ */
+$ticketwebLegacy: map-merge($baseLegacy, $ticketwebOverrideColours);
+$billetechLegacy: map-merge($baseLegacy, $billetechOverrideColours);
+
+@function getTheme() {
+  @if ($currentTheme == 'base') {
+    @return $baseLegacy;
+
+  }
+  @else if ($currentTheme == 'ticketweb') {
+    @return $ticketwebLegacy;
+
+  }
+  @else if ($currentTheme == 'billetech') {
+    @return $billetechLegacy;
+  }
+}
+
+/**
+ * This function supplies the colour to the style sheets
+ * @param  {string} $colour Requested colour
+ *
+ * Example usage
+ *
+ * .header {
+ *     color: colour(text-default-color);
+ * }
+ */
+@function colour($colour) {
+  $hex: map-get(getTheme(), $colour);
+
+  @if not($hex) {
+    @error 'Colour "#{$colour}" does not exist';
+  }
+
+  @return $hex;
+}

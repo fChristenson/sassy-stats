@@ -1,0 +1,186 @@
+/**
+ * Spotlight content block
+ */
+
+$spotlight-gutter: 3px;
+
+.spotlight {
+  $_medium-width: $mpu-width + $block-spacing + (2 * $medium-screen-gutter);
+  $_large-width: $mpu-width + $block-spacing + (2 * $large-screen-gutter);
+  $_max-width: $max-page-width - $mpu-width - $block-spacing - (2 * $large-screen-gutter);
+
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin: 0 0 0 auto;
+
+  @include medium {
+    width: calc(100% - #{$_medium-width}); // allow for MPU and margins
+    margin-left: 12px;
+  }
+
+  @include large {
+    width: 660px; // fallback for browsers without calc()
+    width: calc(100% - #{$_large-width}); // allow for MPU and margins
+    max-width: $_max-width;
+    margin-left: 12px;
+  }
+
+  .no-flexbox & {
+    display: block; // override display:flex to avoid layout issues on Android < 4.4
+    float: left;
+  }
+}
+
+%spotlight__item,
+.spotlight__item {
+  @extend %block__item;
+
+  width: 50%;
+
+  @include large {
+    width: 159px; // fallback for browsers without calc()
+    width: calc(25% - (2 * #{$spotlight-gutter}));
+    margin: $spotlight-gutter;
+  }
+}
+
+.spotlight__item--alt {
+  @extend %spotlight__item;
+
+  @include large {
+
+    &:first-child,
+    &:nth-child(2) {
+      width: 318px; // fallback for browsers without calc()
+      width: calc(50% - #{2 * $spotlight-gutter});
+    }
+
+    @include qq-less(5) {
+      width: 318px; // fallback for browsers without calc()
+      width: calc(50% - #{2 * $spotlight-gutter});
+    }
+  }
+}
+
+.spotlight__item--main {
+  @extend %spotlight__item;
+
+  width: 100%;
+  margin-top: 0;
+
+  .oldie & {
+    width: 100%;
+  }
+}
+
+.spotlight__img {
+  @extend %block__img;
+
+  position: relative;
+
+  .spotlight__item:hover &:after,
+  .spotlight__item--alt:hover &:after,
+  .spotlight__item--main:hover &:after {
+    @include stretchToFit();
+
+    content: '';
+    background-color: rgba(0, 0, 0, 0.2); // darken img on hover
+  }
+
+  .oldie & {
+    width: 100%;
+  }
+}
+
+%spotlight__caption,
+.spotlight__caption {
+  @extend %block__caption;
+
+  @include large {
+    padding: 6px;
+  }
+}
+
+.spotlight__caption--main {
+  @extend %spotlight__caption;
+
+  @include large {
+    padding: 12px;
+  }
+}
+
+%spotlight__caption__heading,
+.spotlight__caption__heading {
+  @extend %block__caption__heading;
+
+  margin: 5px 0 60px;
+  padding-top: 5px;
+  color: colour(text-default-color);
+
+  .no-flexbox & {
+    // try to make the items stack up nicely
+    height: 56px;
+  }
+}
+
+.spotlight__caption--main__heading {
+  @extend %spotlight__caption__heading;
+
+  margin: 0;
+  padding-top: 5px;
+  padding-bottom: 7px;
+  font-size: 20px;
+
+  @include medium {
+    font-size: 23px;
+  }
+
+  @include large {
+    margin-top: 0;
+    font-size: 40px;
+  }
+}
+
+.spotlight__caption__description {
+  @extend %block__caption__description;
+
+  display: none;
+
+  @include large {
+    display: block;
+  }
+}
+
+.spotlight__button {
+  @extend %block__button;
+
+  .spotlight__item:hover &,
+  .spotlight__item--alt:hover &,
+  .spotlight__item:active &,
+  .spotlight__item--alt:active & {
+    background-color: darken(colour(btn-primary-bg), 10%);
+    color: colour(btn-primary-text);
+  }
+}
+
+.spotlight__button--main {
+  @extend %block__button;
+
+  width: 56px;
+  font-size: 15px;
+  background-color: colour(btn-primary-bg);
+  color: colour(btn-primary-text);
+
+  .spotlight__item--main:hover &,
+  .spotlight__item--main:active & {
+    background-color: darken(colour(btn-primary-bg), 10%);
+  }
+
+  @include large {
+    position: static;
+    float: right;
+    width: auto;
+    margin-top: 25px;
+  }
+}

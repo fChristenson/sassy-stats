@@ -1,0 +1,54 @@
+@mixin paymentheading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 1;
+  font-weight: bold;
+  background-color: colour(legacyCheckoutHeadingBg);
+  color: colour(legacyHeadingText);
+
+  @include mediumlarge {
+    font-size: 18px;
+  }
+
+  .no-flexbox & {
+    @include clearfix;
+
+    display: block;
+  }
+}
+
+@mixin tw-heading {
+  position: relative;
+  display: inline-block;
+  margin: 0;
+  padding: 8px 32px 8px 16px;
+  line-height: 1;
+  font-size: 26px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  background-color: colour(legacyCheckoutHeadingBg);
+  color: colour(legacyHeadingText);
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: -8px;
+    width: 17px;
+    height: 46px;
+    transform: rotate(18deg);
+    background: colour(content-bg);
+  }
+}
+
+.checkout-loader-modal {
+  background: rgba(colour(legacyModalBg), 0.65);
+}
+
+#paymentContainer {
+  min-height: 600px;
+}

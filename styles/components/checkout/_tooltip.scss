@@ -1,0 +1,65 @@
+.tooltip-link {
+  display: inline-block;
+  position: relative;
+  cursor: pointer;
+}
+
+.tooltipbox--legacy {
+  position: absolute;
+  top: 4px;
+  left: 37px;
+  width: 261px;
+  border: 5px solid $primary;
+  background: colour(content-bg);
+  z-index: 2;
+
+  @include mediumlarge {
+    width: 340px;
+  }
+}
+
+.tooltipbox--legacy__header {
+  background: $primary;
+}
+
+.tooltipbox--legacy__title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0;
+  padding: 0 0 4px 4px;
+  line-height: 1;
+  font-size: 17px;
+  font-weight: bold;
+  color: colour(content-bg);
+
+  .no-flexbox & {
+    display: block;
+  }
+}
+
+.tooltipbox--legacy__content {
+  display: block;
+  padding: 10px 9px 14px;
+  font-size: 15px;
+  font-weight: normal;
+  color: colour(text-default-color);
+}
+
+.tooltipbox--legacy__close {
+  // also uses .icon-close-hover from the old css to get the legacy icon
+
+  @include unstyledbutton;
+
+  font-size: 18px;
+  color: colour(content-bg);
+
+  &:hover {
+    border: 0; // override old css
+    color: colour(content-bg);
+  }
+
+  .no-flexbox & {
+    float: right;
+  }
+}

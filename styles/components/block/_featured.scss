@@ -1,0 +1,145 @@
+// Featured Event content block
+.featured {
+  @extend %block;
+
+  @include medium {
+    background-color: colour(content-bg);
+  }
+
+  @include large {
+    background-color: colour(panel-light-bg);
+
+    @if ($currentTheme == 'ticketweb') {
+      background: colour(panel-accent-bg);
+    }
+
+    @if ($currentTheme == 'billetech') {
+      background: #ece7d1;
+    }
+  }
+
+  @include mediumlarge {
+    padding: 40px 12px;
+  }
+
+  .no-flexbox & {
+    @extend %clearfix;
+
+    float: none;
+  }
+}
+
+.featured__header {
+  @include blockheading;
+
+  @include large {
+    // block header styled to look like featured item
+    width: 190px; // fallback for browsers without calc()
+    width: calc(20% - 8px);
+    margin: 4px;
+    overflow: hidden;
+    font-size: 19px;
+    background-color: colour(content-bg);
+    color: colour(text-muted-color);
+
+    &::first-line {
+      font-weight: bold;
+    }
+  }
+
+  .no-flexbox & {
+    @include large {
+      display: block;
+      float: left;
+      min-height: 180px;
+    }
+  }
+}
+
+.featured__item {
+  @extend %block__item--hover;
+
+  display: flex;
+  width: 100%;
+  border: 0;
+  border-bottom: 1px solid colour(border-default);
+  background-color: colour(content-bg);
+
+  @include medium {
+    display: block;
+    width: 234px; // fallback for browsers without calc()
+    width: calc(25% - 6px);
+    margin: 2px;
+    border-bottom: 0;
+    background-color: colour(panel-light-bg);
+  }
+
+  @include large {
+    display: block;
+    width: 187px; // fallback for browsers without calc()
+    width: calc(20% - 8px);
+    margin: 4px;
+    border-bottom: 0;
+  }
+
+  .no-flexbox & {
+    display: block;
+
+    @include mediumlarge {
+      min-height: 180px;
+    }
+  }
+}
+
+.featured__img {
+  @extend %block__img;
+
+  position: relative;
+
+  @include small {
+    width: 110px; // restrict it to the smallest img size
+    min-width: 110px;
+
+    .featured__item:hover & {
+      &::after {
+        @include stretchToFit(0);
+
+        content: '';
+      }
+    }
+  }
+
+  @include mediumlarge {
+    max-width: inherit;
+
+    .featured__item:hover & img {
+      // hide img on hover
+      opacity: 0.3;
+    }
+  }
+
+  .no-flexbox & {
+    @include small {
+      float: left;
+      margin-right: 10px;
+    }
+  }
+}
+
+.featured__caption {
+  @include mediumlarge {
+    padding-right: 30px;
+  }
+}
+
+.featured__caption__heading {
+  @extend %block__caption__heading;
+
+  display: block;
+}
+
+.featured__caption__description {
+  @extend %block__caption__description;
+
+  margin-bottom: 0;
+}

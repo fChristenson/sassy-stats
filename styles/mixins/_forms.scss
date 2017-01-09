@@ -1,0 +1,77 @@
+// TODO: use colours from _palette.scss
+$checkbox-tick: #fff;
+$checkbox-color: #ccc;
+$checkbox-color--selected: #78cd79;
+
+@mixin unstyledfieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+@mixin checkbox {
+  cursor: pointer;
+
+  input:checked ~ .checkbox__tick::after {
+    content: '';
+  }
+
+  input:checked ~ .checkbox__tick::before {
+    border: 1px solid $checkbox-color--selected;
+    background-color: $checkbox-color--selected;
+  }
+
+  input {
+    display: none;
+  }
+}
+
+@mixin unstyledbutton {
+  padding: 0;
+  border: 0;
+  font: inherit;
+  background: 0;
+}
+
+@mixin unstyledtextinput {
+  border: 1px solid colour(border-default);
+  border-radius: 0;
+  font-family: inherit;
+}
+
+@mixin textinput {
+  @include unstyledtextinput;
+
+  width: 100%;
+  padding: 8px 5px;
+
+  &.is-error {
+    border-color: colour(status-error);
+  }
+}
+
+@mixin unstyledselect {
+  border: 0;
+  border-radius: 0;
+  font-family: inherit;
+}
+
+@mixin customselect {
+  @include unstyledselect;
+
+  border: 1px solid $checkbox-color;
+  border-radius: 2px;
+
+  // Replace standard select box styling with our own arrow.
+  -webkit-appearance: listbox;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  background-color: colour(panel-lighter-bg);
+  background-image: url(data:image/png;base64,R0lGODlhDQAEAIAAAAAAAP8A/yH5BAEHAAEALAAAAAANAAQAAAILhA+hG5jMDpxvhgIAOw==);
+  background-repeat: no-repeat;
+  background-position: right center;
+
+  &::-ms-expand {
+    display: none;
+  }
+}

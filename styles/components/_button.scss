@@ -1,0 +1,126 @@
+// Legacy buttons
+// Current button styles are in mixins/_buttons.scss
+
+$button-palette: (
+  base: (
+    bg: colour(btn-default-bg),
+    text: colour(btn-default-text),
+    hover-bg: colour(btn-default-bg--hover),
+    hover-text: colour(btn-default-text--hover)
+  ),
+  primary: (
+    bg: colour(btn-primary-bg),
+    text: colour(btn-primary-text),
+    hover-bg: colour(btn-primary-bg--hover),
+    hover-text: colour(btn-primary-text)
+  ),
+  cta: (
+    bg: colour(btn-cta-bg),
+    text: colour(btn-cta-text),
+    hover-bg: colour(btn-cta-bg--hover),
+    hover-text: colour(btn-cta-text)
+  ),
+  outline: (
+    bg: colour(btn-inverse-bg),
+    text: colour(btn-inverse-text),
+    hover-bg: colour(btn-primary-bg),
+    hover-text: colour(btn-primary-text)
+  ),
+);
+
+@mixin button($type: base) {
+  @include unstyledbutton;
+
+  display: block;
+  padding: 10px 20px;
+  font-size: 13px;
+  font-weight: normal !important; // override old css
+  line-height: 2;
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: map-get(map-get($button-palette, $type), text) !important; // override old css
+  background-color: map-get(map-get($button-palette, $type), bg);
+  cursor: pointer;
+
+  @include mediumlarge {
+    display: inline-block;
+    padding: 8px 20px;
+    font-size: 14px;
+  }
+
+  &:hover {
+    text-decoration: none !important; // override old css
+    background-color: map-get(map-get($button-palette, $type), hover-bg);
+    color: map-get(map-get($button-palette, $type), hover-text) !important; // override old css
+  }
+
+  > i {
+    font-size: 10px;
+    margin-left: 5px;
+    position: relative;
+    top: -2px;
+  }
+}
+
+.button--standard {
+  @include button();
+}
+
+.button--primary {
+  @include button(primary);
+}
+
+.button--cta {
+  @include button(cta);
+}
+
+.button--primary--singleline {
+  @extend .button--primary;
+
+  white-space: nowrap;
+}
+
+@mixin button--outline {
+  @include button(outline);
+
+  // inner border
+  box-shadow: 0 0 0 1px colour(btn-primary-bg);
+
+  &.is-active {
+    @include button(primary);
+  }
+}
+
+%button--outline,
+.button--outline {
+  @include button--outline;
+}
+
+// Make a button look like a link
+
+@mixin button--link {
+  padding: 0;
+  border: none;
+  background: none;
+  color: colour(link-primary-color);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.button--link {
+  @include button--link;
+}
+
+// Transparent button to stretch over a whole section to make it clickable
+@mixin button--transparent {
+  border: 0;
+  background: none;
+  color: transparent;
+}
+
+.button--transparent {
+  @include button--transparent;
+}

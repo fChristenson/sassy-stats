@@ -1,0 +1,53 @@
+@mixin small {
+  @media only screen and (max-width: $medium-screen-width - 1) {
+    @content;
+  }
+}
+
+@mixin smallmedium {
+  @media only screen and (max-width: $large-screen-width - 1) {
+    @content;
+  }
+}
+
+@mixin medium {
+  @media only screen and (min-width: $medium-screen-width) and (max-width: $large-screen-width - 1) {
+    @content;
+  }
+}
+
+@mixin mediumlarge($duplicateForOldIE:true) {
+  @media only screen and (min-width: $medium-screen-width) {
+    @content;
+  }
+
+  @if ($duplicateForOldIE) {
+    .oldie & {
+      @content;
+    }
+  }
+}
+
+@mixin large($duplicateForOldIE:true) {
+  @media only screen and (min-width: $large-screen-width) {
+    @content;
+  }
+
+  @if ($duplicateForOldIE) {
+    .oldie & {
+      @content;
+    }
+  }
+}
+
+@mixin aboveSmall($duplicateForOldIE:true) {
+  @media only screen and (min-width: $medium-screen-width) {
+    @content;
+  }
+
+  @if ($duplicateForOldIE) {
+    .oldie & {
+      @content;
+    }
+  }
+}

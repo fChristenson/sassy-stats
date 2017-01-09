@@ -1,0 +1,108 @@
+// override old css here to keep other scss clean
+.payment {
+
+  li {
+    margin-bottom: 0;
+    line-height: normal;
+  }
+
+  label {
+    float: none;
+    width: auto;
+  }
+
+  input:not(.form__item__input--date):not(.form__item__input--year),
+  input[type="tel"]:not(.form__item__input--date):not(.form__item__input--year),
+  select {
+    width: auto !important;
+    margin-bottom: 0 !important;
+    font-size: 16px;
+
+    &.is-error {
+      border-color: colour(status-error) !important;
+    }
+  }
+
+  input[type="tel"].form__item__input--giftcard  {
+    width :100% !important;
+  }
+
+  select {
+    margin: 0;
+    padding: 0;
+  }
+
+  .form__item--compact__label {
+    line-height: 28px;
+
+    @include mediumlarge {
+      float: left;
+      width: 33%;
+    }
+  }
+
+  .form__item__input {
+    width: 100% !important;
+  }
+
+  .form__item__input--date {
+    display: inline-block !important;
+    width: 30px !important;
+    margin-right: 10px !important;
+  }
+
+  .form__item__input--year {
+    display: inline-block !important;
+    width: 70px !important;
+  }
+
+  .form__item__input--select--gender {
+    width: 75% !important;
+  }
+
+  .selectlist__option__container {
+    display: flex;
+    cursor: inherit;
+
+    .no-flexbox & {
+      display: table;
+    }
+  }
+
+  .paymentselect__select {
+    display: inline-block;
+    max-width: 270px;
+  }
+
+  .norisk__options__menu__select {
+    max-width: 250px;
+
+    @include mediumlarge {
+      max-width: 100%;
+    }
+  }
+
+  .norisk__form__input--date {
+    display: inline-block !important;
+    width: 30px !important;
+    margin-right: 10px !important;
+  }
+
+  .norisk__form__input--year {
+    display: inline-block !important;
+    width: 70px !important;
+  }
+
+  .paymentimg__img--small {
+    margin: 10px 0;
+  }
+}
+
+//billitech button styles
+.payment__submit .btn_submit, .payment .btn_add {
+  @if ($currentTheme == 'billetech') {
+    border: 1px solid #420000 !important;
+    background-color: colour(btn-primary-bg) !important;
+    background-image:none !important;
+  }
+}

@@ -1,0 +1,105 @@
+/**
+ * Depricated
+ *
+ * Alert boxes now use _messagebox.scss
+ */
+
+// %alert,
+// .alert {}
+
+.alert--warning {
+  //@extend %alert;
+
+  background: colour(status-warning);
+  color: colour(status-warning);
+}
+
+// eticket box
+.alert--new {
+  @include media-object('.alert__figure', '.alert__body');
+
+  background: #f2f2f2;
+  border: 1px solid #d8d8d8;
+}
+
+// Header Error and Alert boxes
+$errorAlertTextIndent: 33px;
+
+%errorAlert {
+  padding: 5px 10px 10px 5px;
+  border: 1px solid;
+  background-color: colour(content-bg);
+}
+
+%errorAlert__child {
+  margin: 0;
+  margin-left: $errorAlertTextIndent;
+  padding: 0;
+}
+
+%errorAlert__heading {
+  @extend %errorAlert__child;
+
+  font-size: 1.1em;
+  font-weight: bold;
+  line-height: 1.5;
+  margin-top: 5px;
+  margin-bottom: 8px;
+}
+
+%errorAlert__message {
+  @extend %errorAlert__child;
+}
+
+%errorAlert__icon {
+  color: colour(status-error);
+  float: left;
+  width: 25px;
+  height: 25px;
+  font-size: 25px;
+  text-align: center;
+  text-indent: 1px;
+
+  @include medium {
+    margin-top: 2px;
+  }
+
+  // override error icon from old TW css
+  .error & {
+    top: inherit;
+    left: inherit;
+    width: inherit;
+    height: inherit;
+    background: none;
+  }
+}
+
+// Error variation
+.error {
+  @extend %errorAlert;
+
+  margin: 10px 0;
+  border-color: colour(status-error);
+}
+
+.error__heading {
+  @extend %errorAlert__heading;
+}
+
+.error__heading--subheading {
+  @extend %errorAlert__heading;
+
+  font-weight: normal;
+}
+
+.error__message {
+  @extend %errorAlert__message;
+
+  list-style: disc;
+}
+
+.error__icon {
+  @extend %errorAlert__icon;
+
+  @include icon(error);
+}

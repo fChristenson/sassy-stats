@@ -1,0 +1,497 @@
+/**
+ * Form container
+ */
+%form,
+.form {
+  zoom: 1;
+}
+
+.form--registration {
+  @extend %form;
+}
+
+/**
+ * Fieldsets
+ */
+%form__group,
+.form__group {
+  @include unstyledfieldset;
+
+  margin-top: 40px;
+
+  .loginregister--myaccount & {
+    margin-top: 60px;
+  }
+}
+
+.form__group--compact {
+  @extend %form__group;
+
+  margin-top: 0;
+}
+
+.form__group--highlight {
+  @extend %form__group;
+
+  margin-top: 0;
+  margin-bottom: 15px;
+  border: 1px solid colour(border-default);
+
+  .loginregister--myaccount & {
+    margin-top: 0;
+  }
+}
+
+// extra specificity to override old css
+%form__group__title,
+.form__group__title,
+.form__group .form__group__title {
+  margin: 0 0 20px;
+  padding: 0; // override old css
+  line-height: 1; // override default h4 styling
+  font-weight: bold;
+
+  .loginregister--myaccount & {
+    font-size: 21px;
+  }
+}
+
+.form__group--highlight__title,
+.form__group .form__group--highlight__title {
+  @extend %form__group__title;
+
+  margin: 0;
+  padding: 10px;
+  background-color: colour(panel-default-bg);
+  color: colour(text-default-color);
+
+  .loginregister--myaccount & {
+    font-size: 15px;
+  }
+}
+
+.form__group--highlight__content {
+  padding: 10px;
+}
+
+%form__message,
+.form__message {
+  margin-top: 0;
+}
+
+.form__message--right {
+  @extend %form__message;
+
+  text-align: right;
+}
+
+.form__message--small {
+  @extend %form__message;
+
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.form__message--link {
+
+  .loginregister--myaccount & {
+    text-decoration: underline;
+    color: colour(text-default-color);
+  }
+}
+
+/**
+* Form elements
+*/
+%form__item,
+.form__item {
+  @extend %clearfix;
+
+  & + & {
+    margin-top: 15px;
+  }
+}
+
+.form__item--small {
+  @extend %form__item;
+
+  @include mediumlarge {
+    display: table;
+    width: 100%;
+    vertical-align: top;
+  }
+}
+
+.form__item--checkbox {
+  @extend %form__item;
+
+  display: table;
+
+  @include mediumlarge {
+    float: right;
+    width: 67%;
+  }
+}
+
+.form__item--compact {
+  @extend %form__item;
+
+  & + & {
+    margin-top: 10px;
+  }
+}
+
+// extra specificity to override old css
+%form__item__label,
+.form__item__label,
+.form__group .form__item .form__item__label {
+  display: block;
+  float: none; // override old css
+  width: auto; // override old css
+  line-height: 39px;
+
+  @include mediumlarge {
+    float: left;
+    width: 33%;
+  }
+}
+
+.form__group .form__item .form__item--small__label {
+  @extend %form__item__label;
+
+  @include mediumlarge {
+    display: table-cell;
+    width: auto;
+    padding-right: 10px;
+    vertical-align: top;
+  }
+}
+
+.form__item--checkbox__label,
+.form__group .form__item .form__item--checkbox__label {
+  @extend %form__item__label;
+
+  display: table-cell;
+  float: none; // override old css
+  width: 100%; // override old css
+  line-height: 1.75;
+  vertical-align: top;
+
+  p {
+    margin: 0 0 10px;
+  }
+}
+
+.form__item--compact__label {
+  @extend %form__item__label;
+
+  line-height: 28px;
+}
+
+.form__group .form__item .form__item__label--after {
+  @extend %form__item__label;
+
+  display: inline;
+  float: none; // override old css
+  width: auto; // override old css
+  margin-right: 20px;
+}
+
+.form__group .form__item .form__item__label--terms {
+  @extend %form__item__label;
+
+  display: inline;
+  float: none; // override old css
+  width: auto; // override old css
+  margin-right: 20px;
+  line-height: 0;
+}
+
+.form__item__label__extra {
+  font-size: 0.9em;
+}
+
+%form__item__inputwrapper,
+.form__item__inputwrapper {
+
+  @include mediumlarge {
+    float: right;
+    width: 67%;
+  }
+}
+
+.form__item--small__inputwrapper {
+  @extend %form__item__inputwrapper;
+
+  @include mediumlarge {
+    display: table-cell;
+    float: none;
+    width: auto;
+    vertical-align: top;
+  }
+}
+
+.form__item--checkbox__inputwrapper {
+  @extend %form__item__inputwrapper;
+
+  display: table-cell;
+  float: none;
+  width: auto;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+.form__item--cardnumber__inputwrapper {
+  @extend %form__item__inputwrapper;
+
+  display: inline-block;
+  float: none;
+  width: 100%;
+
+  @include mediumlarge {
+    width: 55%;
+  }
+}
+
+.form__item--securitynumber__inputwrapper {
+  @extend %form__item__inputwrapper;
+
+  display: inline-block;
+  float: none;
+  width: 40%;
+
+  @include mediumlarge {
+    width: 20%;
+  }
+}
+
+%form__input {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 6px 4px;
+  border: 1px solid colour(legacyInputBorder);
+  border-radius: 5px;
+  font-size: 16px;
+  color: colour(legacyInputText);
+
+  .loginregister--myaccount & {
+    @extend %textinput;
+
+    border-radius: 0;
+  }
+
+  &.is-error {
+    border-color: colour(status-error);
+  }
+}
+
+// extra specificity to override old css
+.form__item__input,
+.form__group .form__item .form__item__input,
+.form__group--compact .form__item--compact .form__item__input,
+.form__group .form__item--inline .form__item__input {
+  @extend %form__input;
+
+  .loginregister--myaccount & {
+    font-size: 15px;
+  }
+}
+
+.form__group .form__item .form__item--small__input {
+  @extend %form__input;
+
+  display: inline-block;
+
+  .loginregister--myaccount & {
+    font-size: 15px;
+  }
+}
+
+%form__item__input--select,
+.form__item__input--select,
+.form__group .form__item .form__item__input--select {
+  @extend %form__input;
+
+  .loginregister--myaccount & {
+    font-size: 15px;
+  }
+}
+
+.form__item__input--select--gender,
+.form__group .form__item .form__item__input--select--gender {
+  @extend %form__item__input--select;
+
+  width: 75%;
+}
+
+.form__item__input--select--month,
+.form__group--compact .form__item--compact .form__item__input--select--month,
+.form__group .form__item .form__item__input--select--month {
+  @extend %form__item__input--select;
+
+  display: inline-block;
+  width: auto;
+}
+
+.form__item__input--select--year,
+.form__group--compact .form__item--compact .form__item__input--select--year,
+.form__group .form__item .form__item__input--select--year {
+  @extend %form__item__input--select;
+
+  display: inline-block;
+  width: auto;
+  margin-left: 10px;
+}
+
+.form__item__input--radio,
+.form__item__input--checkbox,
+.form__group .form__item .form__item__input--radio,
+.form__group .form__item .form__item__input--checkbox {
+  @extend %form__input;
+
+  display: inline-block;
+  width: auto;
+  margin-right: 5px;
+  border: 0;
+}
+
+.form__item__input--date,
+.form__group .form__item .form__item__input--date {
+  @extend %form__input;
+
+  display: inline-block;
+  width: 30px;
+  margin-right: 10px;
+}
+
+.form__item__input--year,
+.form__group .form__item .form__item__input--year {
+  @extend %form__input;
+
+  display: inline-block;
+  width: 70px;
+}
+
+.form__item__error {
+  margin-top: 10px;
+  font-size: 0.9em;
+  font-style: italic;
+  color: colour(status-error);
+
+  .form__item--compact & {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+}
+
+.form__item__info {
+  margin-top: 10px;
+  font-size: 12px;
+}
+
+/**
+* Submit
+*/
+%form__submit,
+.form__submit {
+  margin-top: 20px;
+  text-align: center;
+
+  .loginregister--myaccount & {
+    text-align: right;
+  }
+}
+
+.form__submit--small {
+  @extend %form__submit;
+
+  @include mediumlarge {
+    display: table-cell;
+    margin-top: 0;
+    padding-left: 10px;
+    vertical-align: top;
+  }
+}
+
+.form__forgot__link,
+.form__cancel__link {
+  display: inline-block;
+  margin-top: 10px;
+}
+
+%form__submit__btn,
+.form__submit__btn {
+  // override default button styling for My Account
+  .container .loginregister--myaccount & {
+    @extend %submit;
+
+    border-radius: 0;
+    font-weight: normal;
+    background-color: colour(btn-primary-bg);
+    background-image: none;
+
+    &:hover,
+    &:active {
+      background: colour(btn-primary-bg--hover) !important;
+      transition: 0;
+    }
+  }
+}
+
+.form__submit__btn--small {
+  @extend %form__submit__btn;
+
+  .container .loginregister--myaccount & {
+    min-width: 100px;
+    padding: 8px;
+  }
+}
+
+
+
+.form__label--hidden {
+  @include visuallyhidden;
+}
+
+
+// Checkbox
+.checkbox {
+  @include checkbox;
+}
+
+.checkbox__label {
+  cursor: pointer;
+  margin-left: 30px;
+}
+
+.checkbox__tick {
+  position: relative;
+
+  // Background
+  &::before {
+    content: '';
+    position: absolute;
+    top: -4px;
+    left: 0;
+    width: 20px;
+    height: 20px;
+    border: 1px solid $checkbox-color;
+    border-radius: 4px;
+    background-color: $checkbox-tick;
+    transition: background-color 0.1s ease-in-out;
+  }
+
+  // Tick
+  &::after {
+    position: absolute;
+    top: -1px;
+    left: 8px;
+    width: 5px;
+    height: 11px;
+    border-right: 2px solid $checkbox-tick;
+    border-bottom: 2px solid $checkbox-tick;
+    transform: rotate(45deg);
+  }
+
+}

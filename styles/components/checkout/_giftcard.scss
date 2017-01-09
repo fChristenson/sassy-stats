@@ -1,0 +1,253 @@
+
+.giftcard {
+  border-top: 1px solid colour(border-grey);
+  padding: 10px;
+}
+
+.giftcard__header {
+  font-size: 18px;
+  font-weight: bold;
+  display: flex;
+  line-height: 24px;
+  cursor: pointer;
+}
+
+.giftcard__header__label {
+  margin-left: 10px;
+}
+
+.giftcard__contentwrapper {
+  padding: 10px 10px 0;
+}
+
+.giftcard__content {
+  display: flex;
+
+  .no-flexbox & {
+    @include clearfix;
+  }
+}
+
+.giftcard__form {
+  @include mediumlarge {
+    display: flex;
+  }
+}
+
+.giftcard__img {
+  display: none;
+
+  @include mediumlarge {
+    display: flex;
+    align-items: flex-end;
+    width: 137px;
+    height: 87px;
+    min-width: 137px;
+    min-height: 87px;
+    padding: 0 5px;
+    margin-right: 15px;
+    font-size: 12px;
+    background-image: url(../../images/responsive/icon-gift-card.png);
+    background-repeat: no-repeat;
+    color: colour(legacyDarkText);
+
+    .no-flexbox & {
+      display: block;
+      float: left;
+    }
+  }
+}
+
+.giftcard__item {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+
+  input {
+    margin-bottom: 0 !important;
+  }
+}
+
+.giftcard__item__label {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 5px;
+}
+
+.giftcard__info {
+  @include unstyledbutton;
+
+  color: colour(link-muted-color);
+
+  @include icon(infoInverse) {
+    font-size: 18px;
+    text-decoration: none;
+
+    @include mediumlarge {
+      font-size: 22px;
+    }
+  }
+
+  .no-flexbox & {
+    float: right;
+  }
+}
+
+.giftcard__info__tooltip {
+  top: 0%;
+  left: 50%;
+  margin-left: -250px;
+
+  @include mediumlarge {
+    margin-left: -170px;
+  }
+}
+
+.giftcard__item__submit {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+
+  @include mediumlarge {
+    margin-top: 0;
+    margin-left: 5px;
+
+    .no-flexbox & {
+      float: left;
+    }
+  }
+}
+
+.giftcard__info__img {
+  display: block;
+  margin: 15px auto;
+}
+
+.giftcard__table {
+  width: 100%;
+
+  .no-flexbox & {
+    float: left;
+    width: 75%;
+  }
+}
+
+%giftcard__row,
+.giftcard__row {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
+
+  @include mediumlarge {
+    max-width: 360px;
+  }
+
+  .no-flexbox & {
+    @include clearfix;
+
+    display: block;
+  }
+}
+
+.giftcard__row--header {
+  @extend %giftcard__row;
+}
+
+.giftcard__row__largeitem {
+  margin-right: 5px;
+  width: 50% !important;
+}
+
+%giftcard__row__smallitem,
+.giftcard__row__smallitem {
+  width: 50% !important;
+}
+
+.giftcard__row__smallitem--icon {
+  @extend %giftcard__row__smallitem;
+}
+
+.giftcard .form__item__input {
+  margin-bottom: 0 !important;
+}
+
+.bulletlist {
+  font-size: 22px;
+}
+
+.bulletlist--small {
+  font-size: 15px;
+}
+
+.giftcard .btn_add {
+  height: 31px;
+  outline: 0;
+}
+
+// gift card cart styles start
+.giftcardscart__subtotals {
+  margin-bottom: 16px;
+}
+
+.giftcardscart__ordervaluetxt {
+  margin-right: 20px;
+}
+
+.giftcardscart__pricetable {
+  margin: 8px 0;
+}
+
+.giftcardscart__pricetable__iconcell {
+  display: flex;
+}
+
+.giftcardscart__pricetable__removeall {
+  @include unstyledbutton;
+  @include icon(menuClose);
+
+  &::before {
+    vertical-align: baseline;
+  }
+
+  margin-left: 5px;
+  font-size: 12px;
+  cursor: pointer;
+  outline: 0;
+  color: colour(legacyLightText);
+}
+
+.giftcardscart__pricetable__content {
+  margin-top: 8px;
+}
+
+%giftcardscart__pricetable__toggle,
+.giftcardscart__pricetable__toggle {
+  @include icon(chevronDown);
+
+  flex-grow: 1;
+  font-weight: bold;
+  cursor: pointer;
+  color: colour(legacyLightText);
+
+  &::before {
+    font-size: 12px;
+    cursor: pointer;
+  }
+}
+
+.giftcardscart__pricetable__toggle--hide {
+  @include icon(chevronUp);
+
+  @extend %giftcardscart__pricetable__toggle;
+}
+
+.giftcardscart__pricetable__toggle--show {
+  @include icon(chevronDown);
+
+  @extend %giftcardscart__pricetable__toggle;
+}
+
+.giftcardscart__pricetable__row {
+  display: flex;
+  justify-content: space-between;
+}

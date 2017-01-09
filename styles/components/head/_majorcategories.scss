@@ -1,0 +1,119 @@
+.majorcategories {
+  text-align: left;
+
+  @include mediumlarge {
+    min-height: 39px;
+  }
+}
+
+.majorcategories__inner {
+  @include container;
+
+  padding: 0 5px;
+}
+
+.majorcategories__list {
+  @include unstyledlist;
+
+  // to help calculate the size of the container
+  flex: 1;
+  transition: opacity 1s;
+  width: 100%;
+  white-space: nowrap;
+  opacity: 1;
+
+  &.is-changing {
+    transition: none;
+    opacity: 0;
+  }
+}
+
+.majorcategories__list--hidden {
+  @include unstyledlist;
+  @include container;
+
+  height: 0;
+  overflow: hidden;
+}
+
+.majorcategories__item {
+  display: inline-block;
+
+  & + & {
+    padding-left: 15px;
+  }
+
+  &:last-child {
+    padding-right: 20px;
+  }
+
+  .majorcategories--inline & {
+    padding-left: 2px;
+  }
+}
+
+%majorcategories__link,
+.majorcategories__link {
+  @include button--link();
+
+  position: relative;
+  padding: 5px 10px 15px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: colour(link-primary-color);
+  outline: 0;
+
+  &:hover {
+    text-decoration: none;
+    color: colour(text-default-color);
+  }
+
+  &.is-active {
+    @include icon(menuClose) {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      margin-left: -8px; // TODO, fix with half icon size
+      color: colour(text-default-color);
+    }
+
+    margin-bottom: -1px;
+    background-color: colour(panel-primary-bg);
+  }
+}
+
+%morelink {
+  padding-right: 27px;
+
+  @include icon(chevronDown) {
+    position: absolute;
+    top: 6px;
+    right: 5px;
+    color: colour(link-primary-color);
+  }
+
+  &.is-active {
+    @include icon(chevronUp) {
+      display: inline-block !important;
+      top: 10px;
+      right: auto;
+    }
+  }
+
+  &:hover::before {
+    color: colour(text-default-color);
+  }
+}
+
+.majorcategories__link--more {
+  @extend %majorcategories__link;
+  @extend %morelink;
+}
+
+.majorcategories__link__txt {
+  .is-active & {
+    color: colour(panel-primary-bg);
+  }
+}

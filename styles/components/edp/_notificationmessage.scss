@@ -1,0 +1,43 @@
+.modal__win--notificationmessage {
+  @extend %modal__win;
+
+  width: 355px;
+
+  @include mediumlarge {
+    width: 460px;
+  }
+}
+
+.modal__win--notificationmessage__header {
+  @extend %modal__win__header;
+}
+
+.modal__win--notificationmessage__title {
+  @extend %modal__win__title;
+
+  line-height: 1.2;
+  font-family: font(strong);
+  font-size: 16px;
+  color: $kuzbas;
+}
+
+.modal__win--notificationmessage__content {
+  @extend %modal__win__content;
+
+  padding: #{3 * $v-spacing} #{2 * $h-spacing};
+  line-height: 1.4;
+  font-size: 14px;
+  color: $pompeii;
+}
+
+.button--notificationmessage {
+  @include btn;
+
+  float: right;
+  margin: #{3 * $v-spacing} 0 0 0;
+  padding: #{1.5 * $v-spacing} #{2 * $h-spacing};
+  line-height: 1.1;
+  font-family: font(strong);
+  font-size: 18px;
+  cursor: pointer;
+}

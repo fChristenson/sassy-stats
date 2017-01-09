@@ -1,0 +1,115 @@
+%downloadAppGradient {
+  $linearTransparency: 0.1;
+
+  background-color: transparentize(colour(card-bg-1), $linearTransparency);
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%),
+    linear-gradient(
+      60deg,
+      transparentize(colour(card-bg-1), $linearTransparency) 0%,
+      transparentize(colour(card-bg-2), $linearTransparency) 31%,
+      transparentize(colour(card-bg-3), $linearTransparency) 71%,
+      transparentize(colour(card-bg-4), $linearTransparency) 100%
+    );
+}
+
+.downloadapp {
+  width: 90%;
+  background: white;
+  z-index: 1;
+  border-radius: 3px;
+}
+
+.downloadapp__main {
+  @extend %downloadAppGradient;
+
+  border-radius: 3px 3px 0 0;
+  padding: 10px 10px 0; // TODO
+
+  // TODO, improve this
+  @if ($currentTheme == 'ticketweb') {
+    background-color: colour(card-bg-1);
+    background: colour(card-bg-1);
+  }
+}
+
+.downloadapp__main__header {
+  position: relative;
+  padding-right: 40px;
+}
+
+.downloadapp__title {
+  margin: 0;
+  color: colour(text-light-color);
+  font-family: font(subHeader);
+  font-size: 12px;
+  text-transform: uppercase;
+  text-align: center;
+
+  @if ($currentTheme == 'ticketweb') {
+    font-size: 14px;
+  }
+}
+
+.downloadapp__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  padding: 10px 0;
+  color: colour(text-light-color);
+  font-size: 9px;
+  font-weight: bold;
+  text-align: center;
+}
+
+.downloadapp__close__icon {
+  @include icon(download);
+}
+
+.downloadapp__iphone {
+  display: block;
+  margin: 10px auto;
+  height: 200px;
+}
+
+.downloadapp__msg {
+  color: colour(text-light-color);
+  text-align: center;
+  margin: 0;
+  font-size: 12px;
+  padding: 0 10px;
+}
+
+.downloadapp__appstore {
+  cursor: pointer;
+  display: block;
+  margin: 10px auto;
+  height: 45px;
+}
+
+.downloadapp__alternative {
+  margin: 0;
+  padding: 5px;
+  color: colour(text-light-color);
+  font-size: 12px;
+  text-align: center;
+}
+
+.downloadapp__secondary {
+  padding: 12px 10px; // TODO
+  cursor: pointer;
+  color: colour(link-primary-color);
+  text-align: center;
+  font-size: 13px;
+}
+
+.downloadapp__secondary__icon {
+  @include icon(download) {
+    margin-right: 10px;
+  }
+}

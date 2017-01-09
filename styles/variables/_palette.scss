@@ -1,0 +1,100 @@
+// Main palette file
+//
+// All colours in the scss should use the variable names from here
+//
+// Example use
+//
+// .link {
+//   color: $primary;
+//
+//   &:hover {
+//     color: hover($primary);
+//   }
+//
+//   &.is-disabled {
+//     color: disabled($primary);
+//   }
+// }
+
+// Lighten
+@function tint($color, $percent) {
+  @return mix(#fff, $color, $percent);
+}
+
+// Darken
+@function shade($color, $percent) {
+  @return mix(#000, $color, $percent);
+}
+
+// Functions for colour variations
+@function hover($color) {
+  @return shade($color, 25%);
+}
+
+@function disabled($color) {
+  @return tint($color, 75%);
+}
+
+@function support($color) {
+  @return tint($color, 50%);
+}
+
+// Primary monochromes
+$kuzbas: #475058;
+$reykjavik: #fff;
+$white: #fff;
+
+// Primary Ticketmaster colour
+$baltic: #009cde;
+$baltic-tint-10: tint($baltic, 60%);
+$baltic-tint-20: tint($baltic, 30%);
+$baltic-tint-30: shade($baltic, 20%);
+$baltic-tint-40: shade($baltic, 40%);
+
+$toulouse: #d0006f;
+$toulouse-tint-10: tint($toulouse, 60%);
+$toulouse-tint-20: tint($toulouse, 30%);
+$toulouse-tint-30: shade($toulouse, 20%);
+$toulouse-tint-40: shade($toulouse, 40%);
+
+$pompeii: #768692;
+$olympus: #dfe4e7;
+$verbier: #f6f7f9;
+
+// Feedback palette
+$etna: #df0000;
+$etna-tint-10: tint($etna, 75%);
+$etna-tint-20: shade($etna, 25%);
+
+$ibiza: #ffd000;
+$ibiza-tint-10: tint($ibiza, 75%);
+$ibiza-tint-20: shade($ibiza, 25%);
+
+$tiergarten: #14871a;
+$tiergarten-tint-10: tint($tiergarten, 75%);
+$tiergarten-tint-20: shade($tiergarten, 25%);
+
+// Theses gradients are handpicked by design
+$grad-purple-rain: linear-gradient(184deg, $baltic, #575dc6);
+$grad-droid-blue: linear-gradient(213deg, #00ccf1, $baltic);
+$grad-info: linear-gradient(to bottom, $pompeii, #667580);
+$grad-error: linear-gradient(to bottom, $etna, #c60101);
+$grad-warning: linear-gradient(to bottom, $ibiza, #e0b600);
+$grad-success: linear-gradient(to bottom, $tiergarten, #106c15);
+
+// Primary Ticketweb colours
+$twpurple: #5e257b;
+$twgreen: #9fc54d;
+
+// Primary Billetech colour
+$firebrick: #811811;
+
+// Set primary colour depending on theme
+$primary: $baltic; // Default to Ticketmaster
+
+@if ( $currentTheme == 'ticketweb') {
+  $primary: $twpurple;
+}
+@else if ($currentTheme == 'billetech') {
+  $primary: $firebrick;
+}

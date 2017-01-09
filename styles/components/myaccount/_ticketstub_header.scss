@@ -1,0 +1,56 @@
+
+%ticketstub__header {
+  position: relative;
+
+  padding: 7px;
+
+  // transition: all 0.1s ease-in-out;
+
+  border-bottom: 1px solid $ticketStubHeaderBorder;
+  // border-radius: 10px 10px 0 0;
+  background-color: $ticketStubHeaderColor;
+
+  // Angled corners
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+
+    width: 0;
+    height: 0;
+
+    border-top: 3px solid $ticketListBg;
+    border-bottom: 3px solid $ticketStubHeaderColor;
+    background: $ticketListBg;
+  }
+
+  // Angled corners positioning
+  &:before {
+    left: 0;
+
+    border-right: 3px solid $ticketStubHeaderColor;
+    border-left: 3px solid $ticketListBg;
+  }
+  &:after {
+    right: 0;
+
+    border-right: 3px solid $ticketListBg;
+    border-left: 3px solid $ticketStubHeaderColor;
+  }
+
+  .ticketstub__header__cutout {
+    position: absolute;
+    top: -13px;
+    left: 50%;
+
+    width: 50px;
+    height: 20px;
+
+    content: '';
+    transform: translateX(-25px);
+
+    border-radius: 0 0 100px 100px / 25px 25px 50px 50px;
+    background: $ticketListBg;
+  }
+}

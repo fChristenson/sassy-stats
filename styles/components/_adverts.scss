@@ -1,0 +1,30 @@
+%adslot {
+  position: relative;
+  text-align: center;
+}
+
+.adslot {
+  @extend %adslot;
+
+  // leaderboard
+  &#ad-slot-501 {
+    margin: 10px auto;
+    max-width: $max-page-width;
+  }
+
+  // wallpaper
+  &#ad-slot-555 {
+    position: fixed;
+    top: 0;
+    left: 50%;
+    width: 1680px;
+    height: 800px;
+    margin-top: 0;
+    margin-left: -840px;
+    z-index: 0;
+
+    @include small {
+      display: none;
+    }
+  }
+}

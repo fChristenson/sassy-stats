@@ -1,0 +1,80 @@
+.credittable {
+  width: 100%;
+}
+
+%credittable__cell {
+  border-bottom: 1px solid colour(legacyBorder);
+  vertical-align: middle;
+
+  @include mediumlarge {
+    border-bottom: none;
+    border-left: 1px solid colour(legacyBorder);
+  }
+}
+
+.credittable__heading {
+  @extend %credittable__cell;
+
+  display: none;
+
+  @include mediumlarge {
+    display: table-cell;
+    padding: 8px 5px;
+    line-height: 1.2;
+    font-size: 10px;
+    font-weight: bold;
+    text-transform: uppercase;
+    background: colour(legacyTableHeader);
+    color: colour(legacyHeadingText);
+  }
+}
+
+.credittable__data {
+  @extend %credittable__cell;
+
+  display: block;
+  padding: 5px;
+  font-size: 12px;
+  font-weight: bold;
+  background-color: colour(legacyTableBody);
+
+  &:first-child {
+    background: colour(legacyTableHeader);
+    color: colour(legacyHeadingText);
+  }
+
+  & + & {
+
+    &::before {
+      content: attr(data-th);
+      display: inline-block;
+      width: 50%;
+      margin: -5px 5px -5px 0;
+      padding: 5px 0;
+      border-right: 1px solid colour(legacyBorder);
+      vertical-align: middle;
+      font-weight: normal;
+      text-transform: uppercase;
+    }
+  }
+
+  @include mediumlarge {
+    display: table-cell;
+
+    &:first-child {
+      background-color: colour(legacyTableBody);
+      color: inherit;
+    }
+
+    & + & {
+
+      &::before {
+        content: none;
+      }
+    }
+  }
+}
+
+.credittable__info {
+  font-size: 12px;
+}

@@ -1,0 +1,38 @@
+@mixin link($color: 'link-primary-color') {
+  text-decoration: none;
+  color: colour($color);
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.link--primary {
+  @include link;
+}
+
+.link--secondary {
+  @include link(link-muted-color);
+}
+
+.link--menu {
+  display: block;
+  padding: 10px;
+  font-size: 14px;
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: colour(panel-light-bg);
+  color: colour(link-muted-color);
+
+  &:hover,
+  &.is-active {
+    background-color: colour(link-primary-bg--hover);
+    color: colour(text-default-color);
+  }
+
+  &.is-active {
+    @include icon(tick) {
+      margin-right: 10px;
+    }
+  }
+}

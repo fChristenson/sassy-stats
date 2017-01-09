@@ -1,0 +1,109 @@
+/**
+ * Partners module
+ */
+.partners {
+  @extend %block;
+
+  display: none;
+
+  @include medium {
+    display: flex;
+    width: 100%;
+  }
+
+  @include large {
+    display: flex;
+    width: 38%;
+    margin: 12px;
+  }
+
+  .no-flexbox & {
+
+    @include mediumlarge {
+      display: block;
+    }
+  }
+}
+
+.partners--sidebar {
+  @extend .partners;
+
+  width: auto;
+  max-width: 310px; // IE10 fix
+  margin: 7px -5px;
+}
+
+.partners__header {
+  @include blockheading;
+
+  margin: 0 5px 5px;
+  border: 1px solid colour(border-default);
+  background-color: colour(panel-lighter-bg);
+  color: colour(panel-lighter-text);
+}
+
+.partners__item {
+  @extend %block__item;
+
+  display: flex;
+  flex-wrap: nowrap;
+  width: 190px; // fallback
+  width: calc(50% - 10px);
+  margin: 5px;
+  padding: 5px;
+  border: 1px solid colour(panel-default-bg);
+  background-color: colour(panel-default-bg);
+
+  .no-flexbox & {
+    @extend %clearfix;
+
+    display: block;
+    float: left;
+  }
+
+  .oldie & {
+    width: 180px;
+  }
+
+  &:hover {
+    background: #fff;
+  }
+}
+
+.partners__img {
+  min-width: 35px;
+
+  .no-flexbox & {
+    float: left;
+  }
+
+  img {
+    display: block;
+  }
+}
+
+.partners__caption {
+  @extend %block__caption;
+
+  display: block;
+  width: auto;
+  min-height: inherit;
+  padding-left: 10px;
+}
+
+.partners__caption__heading {
+  @extend %block__caption__heading;
+
+  display: block;
+  padding: 0;
+  font-size: 12px;
+}
+
+.partners__caption__description {
+  @extend %block__caption__description;
+
+  display: block;
+  margin: 3px 0 0;
+  padding: 0;
+  font-size: 11px;
+}

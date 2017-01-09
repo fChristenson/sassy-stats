@@ -1,0 +1,35 @@
+@mixin fadeAnimation($visibleClass: 'is-open') {
+  opacity: 0;
+  transition: opacity 0.3s;
+
+  &.#{$visibleClass} {
+    opacity: 1;
+  }
+}
+
+@mixin scaleAnimation($visibleClass: 'is-open') {
+  transform: scale(0.7);
+  transition: transform 0.3s;
+
+  &.#{$visibleClass} {
+    transform: scale(1);
+  }
+}
+
+@mixin slideVerticalAnimation($visibleClass: 'is-open', $maxHeight: none) {
+  max-height: 0;
+  transition: max-height 0.3s;
+
+  &.#{$visibleClass} {
+    max-height: $maxHeight;
+  }
+}
+
+@mixin slideHorizontalAnimation($visibleClass: 'is-open', $maxWidth: none) {
+  max-width: 0;
+  transition: max-width 0.3s;
+
+  &.#{$visibleClass} {
+    max-width: $maxWidth;
+  }
+}

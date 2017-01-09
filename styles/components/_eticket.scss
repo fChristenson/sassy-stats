@@ -1,0 +1,23 @@
+.eticket-icons {
+  float: left;
+  padding: 0 10px 10px 0;
+
+  @include small {
+    float: none;
+  }
+
+  > i {
+    padding-right: 5px;
+    vertical-align: bottom;
+  }
+}
+
+.eticket__icon--mobile {
+  @include icon(mobile);
+
+  font-size: 24px;
+}
+
+.eticket__icon--print {
+  @include icon(print);
+}

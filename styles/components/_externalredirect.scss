@@ -1,0 +1,23 @@
+.externalredirect * {
+  box-sizing: border-box;
+}
+
+.externalredirect {
+  min-height: 550px;
+}
+
+.externalredirect__content {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 150px 20px 20px;
+  text-align: center;
+}
+
+.externalredirect__title {
+  font-family: font(header);
+  font-size: 18px;
+}
+
+.externalredirect__spinner {
+  margin: 30px;
+}

@@ -1,0 +1,50 @@
+.datebox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-width: 70px;
+  padding: 10px 0;
+  line-height: 1;
+
+  @include mediumlarge {
+    justify-content: space-between;
+  }
+
+  .no-flexbox & {
+    float: left;
+    min-height: 95px;
+    text-align: center;
+  }
+}
+
+.datebox__month {
+  font-size: 17px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+
+  @include mediumlarge {
+    font-size: 19px;
+  }
+}
+
+.datebox__day {
+  margin: -2px 0 -2px -0.05em;
+  font-size: 38px;
+  letter-spacing: -0.05em;
+
+  @include mediumlarge {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    font-size: 45px;
+  }
+}
+
+.datebox__year {
+  font-size: 15px;
+  letter-spacing: 0.02em;
+
+  @include mediumlarge {
+    font-size: 19px;
+  }
+}

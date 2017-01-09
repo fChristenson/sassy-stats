@@ -1,0 +1,106 @@
+@import '../partials/icons';
+
+// Default Icons
+$baseIcons: (
+  calendar: 'calendar3',
+  chevronDown: 'chevron-down',
+  chevronRight: 'chevron-right',
+  chevronUp: 'chevron-up',
+  download: 'download',
+  error: 'error2',
+  externalLink: 'external-link',
+  externalLinkCustomNavigation: 'external-link-custom-navigation',
+  eye: 'eye',
+  facebook: 'facebook',
+  fullscreen: 'fullscreen',
+  gplus: 'gplus',
+  home: 'home',
+  info: 'info',
+  infoInverse: 'info-inverse',
+  language: 'language',
+  link: 'link',
+  menuClose: 'menu-close',
+  menu: 'menu',
+  minus: 'minus',
+  mobile: 'mobile',
+  pin: 'pin2',
+  pinterest: 'pinterest',
+  plus: 'plus',
+  print: 'print',
+  profile: 'profile2',
+  refresh: 'refresh',
+  search: 'search2',
+  seat: 'seat',
+  success: 'success',
+  tick: 'tick',
+  ticket: 'ticket',
+  twitter: 'twitter',
+  warning: 'warning'
+);
+
+
+// Override and $baseIcons icons with Ticketweb-specific icons
+$ticketwebOverrideIcons: (
+  calendar: 'calendar',
+  error: 'error',
+  pin: 'pin',
+  profile: 'profile'
+);
+
+// Override and $baseIcons icons with Billetech-specific icons
+$billetechOverrideIcons: ();
+
+// Merge the override icons with $baseIcons
+$ticketwebIcons: map-merge($baseIcons, $ticketwebOverrideIcons);
+$billetechIcons: map-merge($baseIcons, $billetechOverrideIcons);
+
+@function getThemeIcon($theme) {
+  @if ($theme == 'base') {
+    @return $baseIcons;
+  }
+
+  @else if ($theme == 'ticketweb') {
+    @return $ticketwebIcons;
+  }
+
+  @else if ($theme == 'billetech') {
+    @return $billetechIcons;
+  }
+}
+
+// Supply the correct icon for the current theme
+// @param  {string} $icon   Requested icon
+@function getIcon($icon) {
+  $placeholder: map-get(getThemeIcon($currentTheme), $icon);
+
+  @if ($placeholder) {
+    @return '%icon__' + $placeholder;
+  }
+
+  @else {
+    @error 'Icon "#{$icon}" does not exist';
+  }
+}
+
+// Icon mixin for use in the style sheets
+// @param  {string} $icon     Name of the icon
+// @param  {string} $position Specify before or after. Defaults to before
+//
+// Example usage:
+//
+// @include icon(calendar) {
+//   font-size: 18px;
+// }
+//
+// @include icon(menuClose, after) {
+//   margin-left: 20px;
+// }
+@mixin icon($icon, $position:'before') {
+  &:#{$position} {
+    @include iconbase;
+
+    @extend #{getIcon($icon)};
+
+    @content;
+  }
+}

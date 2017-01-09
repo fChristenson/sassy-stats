@@ -1,0 +1,34 @@
+.billingaddress__heading {
+  @include paymentheading;
+}
+
+.billingaddress__content {
+  padding: 20px;
+}
+
+.billingaddress__collapsed {
+
+}
+
+.billingaddress__collapsed__item {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.billingaddress__edit {
+  @include unstyledbutton;
+
+  margin-top: 10px;
+  font-weight: bold;
+  color: colour(legacyLink);
+}
+
+.billingaddress__form {
+  margin-top: 0;
+}
+
+.billingaddress__info__tooltip {
+  top:-45%;
+  left: 35%;
+  margin-left:-234px;
+}

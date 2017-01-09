@@ -1,0 +1,239 @@
+@import '../variables/palette';
+@import '../variables/fonts';
+
+.mainfooter {
+  position: relative;
+  width: 100%;
+  margin-top: 40px;
+
+  @include large {
+    background-color: colour(footer-bg);
+    margin-top: 80px;
+  }
+
+  &.is-mobilemenuopen {
+    @extend %visuallyhidden;
+  }
+}
+
+.mainfooter__content {
+  width: 100%;
+  max-width: $max-page-width;
+  margin: 0 auto;
+  padding-top: 15px;
+  background-color: colour(content-bg);
+
+  @include mediumlarge {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px 0;
+
+    .no-flexbox & {
+      display: table;
+    }
+  }
+}
+
+.mainfooter__column {
+  width: 100%;
+
+  & + & {
+    margin-top: 1px;
+  }
+
+  @include mediumlarge {
+    width: auto;
+
+    & + & {
+      margin-top: 0;
+    }
+
+    .no-flexbox & {
+      display: table-cell;
+      padding: 0 12px;
+      vertical-align: top;
+    }
+  }
+}
+
+.mainfooter__column--img {
+  @extend .mainfooter__column;
+
+  display: none;
+
+  @include large {
+    display: block;
+    margin: 0;
+
+    .mainfooter__column--externallinks + & {
+      margin-left: 15px;
+    }
+
+    .no-flexbox & {
+      display: table-cell;
+    }
+  }
+}
+
+.mainfooter__column--internallinks {
+  @extend .mainfooter__column;
+
+  @include mediumlarge {
+    flex-grow: 2;
+
+    .mainfooter__column--img + & {
+      margin-left: 15px;
+    }
+  }
+}
+
+.mainfooter__column--externallinks {
+  @extend .mainfooter__column;
+
+  @include mediumlarge {
+    flex-grow: 1;
+    margin-left: 15px;
+  }
+}
+
+.mainfooter__column__header {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+  background-color: colour(btn-default-bg--active);
+  color: colour(text-default-color);
+  font-family: font('footerHeader');
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+  // override old styles
+  line-height: inherit;
+
+  @include icon(minus) {
+    position: absolute;
+    right: 10px;
+    top: 12px;
+    color: colour(text-default-color);
+  }
+
+  &.is-collapsed {
+    @include icon(plus);
+
+    background-color: colour(btn-default-bg);
+  }
+
+  @include mediumlarge {
+    margin: 0 0 10px;
+    padding: 0 0 10px;
+    background-color: inherit;
+    border-bottom: 2px solid colour(border-dark);
+    cursor: inherit;
+    color: colour(text-default-color);
+
+    @if ($currentTheme == 'ticketweb') {
+      color: colour(text-primary-color);
+    }
+
+    &.is-collapsed {
+      background-color: inherit;
+    }
+
+    &::before,
+    &.is-collapsed::before {
+      content: none;
+    }
+  }
+}
+
+.mainfooter__column__content {
+  @include mediumlarge {
+    display: flex;
+    width: auto;
+
+    .no-flexbox & {
+      display: table;
+    }
+  }
+}
+
+.mainfooter__links {
+  @extend %unstyledlist;
+
+  flex-grow: 1;
+  margin: 0 10px;
+
+  @include mediumlarge {
+    margin: 0;
+
+    & + & {
+      margin-left: 20px;
+    }
+
+    .no-flexbox & {
+      display: table-cell;
+      padding-right: 10px;
+    }
+  }
+}
+
+.mainfooter__links__item {
+  padding: 5px 0;
+  line-height: 18px;
+  margin-top: 12px;
+
+  @include mediumlarge {
+    margin: 5px 0;
+    padding: 0;
+  }
+}
+
+.mainfooter__links__link {
+  text-decoration: none;
+  font-size: 14px;
+  color: colour(text-default-color);
+
+  @if ($currentTheme == 'ticketweb') {
+    color: colour(text-primary-color);
+  }
+
+  &:hover {
+    @if ($currentTheme == 'ticketweb' or $currentTheme == 'billetech') {
+      text-decoration: underline;
+    }
+    @else {
+      color: colour(link-primary-color);
+    }
+  }
+}
+
+// .mainfooter__imglink {}
+
+.mainfooter__img {
+  @extend %responsiveimg;
+}
+
+.mainfooter__smallprint {
+  width: 100%;
+  max-width: $max-page-width;
+  margin: -1px auto;
+  padding: 40px 0;
+  color: colour(text-muted-color);
+  background-color: colour(content-bg);
+  font-size: 12px;
+  text-align: center;
+
+  > p {
+    color: colour(text-muted-color);
+    font-size: 12px;
+    width: 100%;
+  }
+
+  .no-flexbox & {
+    clear: both;
+  }
+
+  a {
+    color: colour(text-muted-color);
+  }
+}

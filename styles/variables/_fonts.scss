@@ -1,0 +1,177 @@
+$desktop-h1: 48px;
+$desktop-h2: 36px;
+$desktop-h3: 28px;
+$desktop-h4: 18px;
+$desktop-body: 16px;
+$desktop-small: 14px;
+
+$tablet-h1: 40px;
+$tablet-h2: 32px;
+$tablet-h3: 24px;
+$tablet-h4: 18px;
+$tablet-small: 14px;
+
+$mobile-h1: 32px;
+$mobile-h2: 26px;
+$mobile-h3: 22px;
+$mobile-h4: 18px;
+$mobile-body: 16px;
+$mobile-small: 14px;
+
+// TM Sans ------------------------------------------------------------
+@font-face {
+  font-family: 'TMSans-Regular';
+  src:
+    url('../../fonts/tmsans/TMSans-Regular.woff') format('woff'),
+    url('../../fonts/tmsans/TMSans-Regular.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'TMSans-Light';
+  src:
+    url('../../fonts/tmsans/TMSans-Light.woff') format('woff'),
+    url('../../fonts/tmsans/TMSans-Light.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'TMSans-Italic';
+  src:
+    url('../../fonts/tmsans/TMSans-Italic.woff') format('woff'),
+    url('../../fonts/tmsans/TMSans-Italic.ttf')  format('truetype');
+}
+
+@font-face {
+  font-family: 'TMSans-Bold';
+  src:
+    url('../../fonts/tmsans/TMSans-Bold.woff') format('woff'),
+    url('../../fonts/tmsans/TMSans-Bold.ttf')  format('truetype');
+}
+
+// Futura ------------------------------------------------------------
+@font-face {
+  font-family: 'Futura W02 Book';
+  src:
+    url('../../fonts/futura/bc017822-de5a-4b1a-8eed-ed8e06fec708.woff') format('woff'),
+    url('../../fonts/futura/0ab2192d-e680-4f79-a06b-017307993274.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Futura W02 Medium';
+  src:
+    url('../../fonts/futura/ee0094f9-615c-4fc9-8880-4188633debc4.woff') format('woff'),
+    url('../../fonts/futura/f0081d54-47f3-4cfa-9bc7-8d0318d3eb14.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Futura W02 Bold';
+  src:
+    url('../../fonts/futura/4bb88e11-0ff4-43a3-b13b-d56a9c47f1cd.woff') format('woff'),
+    url('../../fonts/futura/94ef22ad-ae9a-4fd0-8142-df1ba51c1b1c.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'Futura BT W01 Medium';
+  src:
+    url('../../fonts/futura/ddc0f223-a296-451a-8681-ad80508eb419.woff') format('woff'),
+    url('../../fonts/futura/c18fc865-7a4e-45d9-bbb0-4e4553cc4136.ttf') format('truetype');
+}
+
+// Trade Gothic ------------------------------------------------------------
+@font-face {
+  font-family: 'TradeGothicNextSRW02-Bd 744592';
+  src:
+    url('../../fonts/tradegothic/e3ca190c-ab1c-4288-bf00-c9b04d4624d0.woff') format('woff'),
+    url('../../fonts/tradegothic/340c7880-47f3-41d8-a9fb-353c46b8ee9f.ttf') format('truetype');
+}
+
+// Fonts for use in style sheets
+$baseFonts: (
+  default: 'TMSans-Regular',
+  //body: 'TMSans-Regular',
+  light: 'TMSans-Light',
+  strong: 'TMSans-Bold',
+  header: 'TMSans-Bold',
+  subHeader: 'TMSans-Bold',
+  //boldHeader: 'TMSans-Regular',
+  //link: 'TMSans-Regular',
+  //button: 'TMSans-Regular',
+  //blockTitle: 'TMSans-Regular',
+  //blockText: 'TMSans-Regular',
+  iconText: 'TMSans-Bold',
+  //headerDefault: 'TMSans-Regular',
+  //headerStrong: 'TMSans-Regular',
+  //mobileMenuItem: 'TMSans-Regular',
+  //mobileMenuItemHover: 'TMSans-Regular',
+  searchPanelTextField: 'TMSans-Bold',
+  //searchPanelMobile: 'TMSans-Regular',
+  //searchPanelMobileTab: 'TMSans-Regular',
+  panelHeader: 'TMSans-Bold',
+  languagePanelIconText: 'TMSans-Bold',
+  marketContentHeader: 'TMSans-Italic',
+  //marketContentText: 'TMSans-Regular',
+  footerHeader: 'TMSans-Bold',
+  legacy: 'TMSans-Regular'
+);
+
+// Override any $base fonts with Ticketweb fonts
+$ticketwebOverrideFonts: (
+  default: 'Trebuchet MS',
+  body: 'Trebuchet MS',
+  light: 'Trebuchet MS',
+  header: 'Trebuchet MS',
+  subHeader: 'TradeGothicNextSRW02-Bd 744592',
+  boldHeader: 'TradeGothicNextSRW02-Bd 744592',
+  link: 'Trebuchet MS',
+  button: 'TradeGothicNextSRW02-Bd 744592',
+  blockTitle: 'TradeGothicNextSRW02-Bd 744592',
+  blockText: 'Trebuchet MS',
+  headerDefault: 'Trebuchet MS',
+  headerStrong: 'TradeGothicNextSRW02-Bd 744592',
+  mobileMenuItem: 'TradeGothicNextSRW02-Bd 744592',
+  mobileMenuItemHover: 'TradeGothicNextSRW02-Bd 744592',
+  panelHeader: 'TradeGothicNextSRW02-Bd 744592',
+  searchPanelMobile: 'Trebuchet MS',
+  searchPanelMobileTab: 'TradeGothicNextSRW02-Bd 744592',
+  searchPanelTextField: 'Trebuchet MS',
+  languagePanelIconText: 'Trebuchet MS',
+  accountsPanelText: 'Trebuchet MS',
+  marketContentHeader: 'TradeGothicNextSRW02-Bd 744592',
+  marketContentText: 'Trebuchet MS',
+  footerText: 'Trebuchet MS',
+  footerHeader: 'TradeGothicNextSRW02-Bd 744592',
+  resultsListHeader: 'Trebuchet MS',
+  formHeading: 'TradeGothicNextSRW02-Bd 744592',
+  legacy: 'Trebuchet MS',
+  legacyHeading: 'TradeGothicNextSRW02-Bd 744592'
+);
+
+// Override any $base fonts with Billetech fonts
+$billetechOverrideFonts: ();
+
+// Merge the override fonts with $base
+$ticketwebFonts: map-merge($baseFonts, $ticketwebOverrideFonts);
+$billetechFonts: map-merge($baseFonts, $billetechOverrideFonts);
+
+@function getThemeFont($theme) {
+  @if ($theme == 'base') {
+    @return $baseFonts;
+  }
+
+  @else if ($theme == 'ticketweb') {
+    @return $ticketwebFonts;
+  }
+
+  @else if ($theme == 'billetech') {
+    @return $billetechFonts;
+  }
+}
+
+// Supply the correct font family for the current theme
+// @param  {[type]} $font   Requested font
+// Example usage
+//    .header {
+//        font-family: font(header);
+//    }
+@function font($font) {
+  @return map-get(getThemeFont($currentTheme), $font), map-get(getThemeFont($currentTheme), 'default'), Arial, sans-serif;
+}

@@ -1,0 +1,71 @@
+#detailsDeliveryFee {
+  .icon-close {
+    top: 10px;
+    font-size: 21px;
+    cursor: pointer;
+  }
+
+  @include mediumlarge {
+    padding-top: 40px;
+  }
+}
+
+@mixin deliveryfee__row() {
+  padding: 5px 0;
+}
+
+@mixin deliveryfee__cell() {
+  display: inline-block;
+  width: auto;
+}
+
+.deliveryfee__row {
+  @include deliveryfee__row();
+}
+
+.deliveryfee__row--header {
+  @include deliveryfee__row();
+
+  border-bottom: 1px solid #ccc;
+  font-size: 14px;
+}
+
+.deliveryfee__cell {
+  @include deliveryfee__cell();
+
+  @include mediumlarge {
+    width: 40%;
+  }
+}
+
+.deliveryfee__cell--delivery {
+  @include deliveryfee__cell();
+
+  font-weight: bold;
+  display: block;
+
+  @include mediumlarge {
+    display: inline-block;
+    width: 40%;
+  }
+}
+
+.deliveryfee__cell--fee {
+  @include deliveryfee__cell();
+
+  float: right;
+}
+
+.deliveryfee__cell--deliveryheader {
+  @include deliveryfee__cell();
+
+  @include small {
+    &::after {
+      content: '/';
+    }
+  }
+
+  @include mediumlarge {
+    width: 40%;
+  }
+}

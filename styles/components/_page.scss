@@ -1,0 +1,187 @@
+// Main page styling
+
+* {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: font('default'), helvetica, arial, sans-serif;
+  background-color: colour(body-bg);
+
+  // extra specificity to override styles in <head>
+  &.body-background {
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-attachment: fixed;
+
+    @include smallmedium {
+      background-image: none;
+    }
+  }
+
+  &.is-fixed {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+%page {
+  @include container;
+
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: colour(content-bg);
+  color: colour(text-default-color);
+
+  @include mediumlarge {
+    display: flex;
+    padding-top: 35px;
+  }
+
+  .no-flexbox & {
+    display: block;
+  }
+}
+
+.page__title__eventcount {
+  @include mediumlarge {
+    display: none;
+  }
+}
+
+.page--majorcategory {
+  @extend %page;
+
+  display: block;
+}
+
+.page--myaccount {
+  @extend %page;
+
+  @include mediumlarge {
+    flex-direction: row;
+  }
+
+  .no-flexbox & {
+    @include mediumlarge {
+      display: table;
+    }
+  }
+}
+
+.page--checkout {
+  @extend %page;
+
+  @include mediumlarge {
+    display: block;
+    padding-top: 15px;
+  }
+}
+
+.page--legacy {
+  @extend %page;
+
+  font-family: font('default');
+
+  @include aboveSmall {
+    display: block;
+    padding-top: 15px;
+  }
+}
+
+.page--myaccount__header {
+  @include mediumlarge {
+    min-height: 100px;
+  }
+}
+
+// TODO: refactor page titles to use headings mixins
+%page__title,
+.page__title {
+  margin: 6px 10px 15px;
+  font-family: font(body);
+  font-size: 26px;
+  color: colour(text-default-color);
+
+  @include mediumlarge {
+    margin: 10px 0 0;
+    padding: 0;
+    font-size: 32px;
+    letter-spacing: 0.01em;
+  }
+
+  @include large {
+    font-size: 36px;
+  }
+}
+
+.page__title--fullwidth {
+  @include pageheading;
+
+  margin-top: 20px;
+
+  @include mediumlarge {
+    margin: 30px 16px 10px;
+  }
+}
+
+.page__title__light {
+  @extend %page__title;
+
+  margin: 0;
+}
+
+%contenttitle,
+.contenttitle {
+  margin: 0;
+  font-family: font(subHeader);
+}
+
+.maincontent--discovery {
+  @include container;
+
+  @extend %clearfix;
+
+  position: relative;
+}
+
+.pagecontainer,
+.container {
+  position: relative;
+  margin: 0 auto;
+
+  .has-wallpaper-ad &,
+  .body-background & {
+    @include container;
+  }
+}
+
+#wrap,
+.topBanners {
+  .has-wallpaper-ad &,
+  .body-background & {
+    @include container;
+  }
+}
+
+.container {
+  background-color: colour(content-bg);
+  padding-bottom: 1px; // this is to conpensate for a wierd -1px margin top in checkout footer
+}
+
+// full width container which extends to the side of the page eg featured events
+.fullwidth {
+  width: 100%;
+
+  @include large {
+    background-color: colour(content-light-bg);
+
+    .has-wallpaper-ad &,
+    .body-background & {
+      background: none;
+    }
+  }
+}

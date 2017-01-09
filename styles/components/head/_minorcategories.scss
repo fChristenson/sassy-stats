@@ -1,0 +1,67 @@
+.minorcategories--nested {
+  padding: 0;
+}
+
+.minorcategories__columns {
+  display: flex;
+
+  .is-more & {
+    display: block;
+    overflow: hidden;
+    columns: 3;
+    column-gap: 20px;
+  }
+}
+
+.minorcategories__columns__column {
+  flex: 1;
+
+  & + & {
+    padding-left: 20px;
+  }
+
+  .is-more & {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 20px;
+    padding-left: 0;
+
+    .no-flexbox & {
+      width: 100%;
+    }
+  }
+
+  .no-flexbox & {
+    float: left;
+    width: 33%;
+  }
+}
+
+.minorcategories__list {
+  @include unstyledlist;
+
+  columns: 3;
+  column-gap: 20px;
+}
+
+.minorcategories__list--multiple {
+  @extend .minorcategories__list;
+
+  columns: 2;
+
+  .is-more & {
+    columns: 1;
+  }
+}
+
+.minorcategories__link {
+  display: inline-block;
+  margin-bottom: 15px;
+  text-decoration: none;
+  color: colour(link-dark-color);
+
+  &:hover {
+    text-decoration: underline;
+    color: colour(link-dark-color--hover);
+  }
+}

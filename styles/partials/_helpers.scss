@@ -1,0 +1,41 @@
+body {
+  color: colour(text-default-color);
+}
+
+// Hide from both screenreaders and browsers: h5bp.com/u
+.hidden {
+  @extend %hidden;
+}
+
+// Hide only visually, but have it available for screenreaders: h5bp.com/v
+.is-hidden,
+.visuallyhidden {
+  @extend %visuallyhidden;
+}
+
+// Hide visually and from screenreaders, but maintain layout
+.invisible {
+  visibility: hidden;
+}
+
+// Responsive images
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+.visible-sm {
+  display: none !important;
+
+  @media screen and (max-device-width: 767px) {
+    display: block !important;
+  }
+}
+
+.hidden-sm {
+  display: block !important;
+
+  @media screen and (max-device-width: 767px) {
+    display: none !important;
+  }
+}

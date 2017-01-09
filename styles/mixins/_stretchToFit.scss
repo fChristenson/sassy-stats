@@ -1,0 +1,7 @@
+@mixin stretchToFit($marginTop: 0, $marginRight: $marginTop, $marginBottom: $marginTop, $marginLeft: $marginTop) {
+  position: absolute;
+  top: $marginTop;
+  right: $marginRight;
+  bottom: $marginBottom;
+  left: $marginLeft;
+}

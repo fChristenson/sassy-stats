@@ -1,0 +1,48 @@
+// Remove default styling from buttons
+@mixin unstyledbutton {
+  border: none;
+  outline: none;
+  text-decoration: none;
+  text-shadow: none;
+  cursor: pointer;
+}
+
+// Standard button styles
+@mixin btn($type: primary) {
+  $types: (
+    primary: (
+      bg: $primary,
+      text: $reykjavik,
+      hover-bg: hover($primary),
+      hover-text: $reykjavik
+    ),
+    disabled: (
+      bg: disabled($primary),
+      text: $reykjavik,
+      hover-bg: disabled($primary),
+      hover-text: $reykjavik
+    ),
+    icon: (
+      bg: $reykjavik,
+      text: $primary,
+      hover-bg: $reykjavik,
+      hover-text: hover($primary)
+    )
+  );
+
+  padding: #{2 * $v-spacing} #{2 * $h-spacing};
+  line-height: 1;
+  border: 0;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background-color: map-get(map-get($types, $type), bg);
+  color: map-get(map-get($types, $type), text);
+
+  &:hover {
+    background-color: map-get(map-get($types, $type), hover-bg);
+    color: map-get(map-get($types, $type), hover-text);
+  }
+}

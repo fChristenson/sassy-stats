@@ -1,0 +1,102 @@
+.map__numtickets {
+  display: flex;
+  flex-direction: column;
+}
+
+.ismmodal {
+  @include bodyText;
+}
+
+.ismmodal__header {
+  padding: $v-spacing $h-spacing;
+  border-bottom: 1px solid $olympus;
+  background-color: $verbier;
+  flex-shrink: 0;
+  min-height: 52px;
+
+  @include mediumlarge {
+    padding: $v-spacing 20%;
+  }
+
+  .block.is-available {
+    fill: colour(status-unavailable) !important;
+  }
+
+  .block.is-available.is-highlighted {
+    fill: colour(status-selected) !important;
+  }
+}
+
+.ismmodal__header__content {
+  display: block;
+  width: 50%;
+  margin: 0 auto;
+}
+
+.ismmodal__title {
+  @include modalheading;
+}
+
+.ismmodal__submit {
+  @include btn;
+
+  width: 100%;
+
+  &:disabled {
+    @include btn(disabled);
+  }
+}
+
+.pricecategory {
+  display: flex;
+  flex-direction: column;
+}
+
+.ismmodal__options {
+  @include unstyledlist;
+
+  padding: $h-spacing 0 0 0;
+}
+
+.ismmodal__option {
+  display: flex;
+  align-items: center;
+  padding: 0 #{2 * $h-spacing} #{2 * $v-spacing};
+
+  .no-flexbox & {
+    @include clearfix;
+  }
+}
+
+.ismmodal__option__label {
+  @include modalcolumnleft;
+}
+
+.ismmodal__option__label__title {
+  @include modaltextprimary;
+}
+
+.ismmodal__option__label__price {
+  @include modaltextprimary;
+
+  font-weight: bold;
+}
+
+.ismmodal__option__label__info {
+  @include modaltextsecondary;
+}
+
+.ismmodal__option__control {
+  @include modalcolumnright;
+}
+
+.ismmodal__option__btn {
+  @include btn;
+
+  @include small {
+    padding: 8px 10px;
+  }
+
+  width: 100%;
+  white-space: nowrap;
+}

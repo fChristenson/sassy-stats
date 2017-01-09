@@ -1,0 +1,53 @@
+@mixin pageheading {
+  margin: 6px 10px 15px;
+  font-family: font(header);
+  font-size: 22px;
+  color: colour(text-default-color);
+
+  @include mediumlarge {
+    margin: 10px 0 0;
+    padding: 0;
+    font-size: 32px;
+    letter-spacing: 0.01em;
+  }
+}
+
+@mixin blockheading {
+  width: 100%;
+  margin: 0;
+  padding: 7px 10px;
+  font-size: 21px;
+  font-weight: normal;
+  text-transform: uppercase;
+  background-color: colour(heading-secondary-bg);
+  color: colour(heading-secondary-text);
+
+  @include medium {
+    width: calc(100% - 10px);
+  }
+}
+
+@mixin blockheading__link {
+  display: block;
+  text-decoration: none;
+  color: colour(heading-secondary-text);
+}
+
+@mixin subheading {
+  @include blockheading;
+
+  font-size: 16px;
+  background-color: colour(panel-light-bg);
+  color: colour(panel-light-text);
+
+  @include medium {
+    width: 100%;
+  }
+
+  @include large {
+    margin: 3px;
+    padding: 7px 0;
+    font-size: 26px;
+    background-color: colour(content-bg);
+  }
+}

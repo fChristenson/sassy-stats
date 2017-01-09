@@ -1,0 +1,84 @@
+%pagetitle,
+.pagetitle {
+  margin: 6px 0 15px;
+  font-family: font(header);
+  font-size: 22px;
+  color: colour(text-default-color);
+
+  @include aboveSmall {
+    margin: 10px 0 0;
+    padding: 0;
+    font-size: 32px;
+    letter-spacing: 0.01em;
+  }
+}
+
+%pagetitle__light,
+.pagetitle__light {
+  @extend %pagetitle;
+
+  margin: 0;
+}
+
+%pagetitle--legacy,
+.pagetitle--legacy {
+  margin: 0;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+%sectiontitle,
+.sectiontitle {
+  width: 100%;
+  margin: 20px 0 0;
+  padding: 10px 20px;
+  font-size: 20px;
+  text-transform: uppercase;
+  background-color: colour(heading-secondary-bg);
+  color: colour(heading-secondary-text);
+}
+
+%sectiontitle--legacy,
+.sectiontitle--legacy {
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: #333;
+  color: #fff;
+}
+
+%sectiontitle--legacy--indented,
+.sectiontitle--legacy--indented {
+  $indentWidth: 10px;
+
+  @extend %sectiontitle--legacy;
+
+  width: calc(100% - (2 * #{$indentWidth}));
+  margin: 0 #{$indentWidth};
+}
+
+%subsectiontitle--legacy,
+.subsectiontitle--legacy {
+  width: 100%;
+  margin: 0;
+  padding: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #ccc;
+  color: #333;
+}
+
+%contenttitle,
+.contenttitle {
+  margin: 0;
+  font-family: font(subHeader);
+}
+
+%contenttitle--legacy,
+.contenttitle--legacy {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}

@@ -1,0 +1,101 @@
+/*
+
+  Ticketstub details table
+
+  TYPE     LEVEL
+  SECTION    ROW    SEAT
+
+ */
+
+
+%ticketstub__details {
+  display: table-cell;
+  vertical-align: middle;
+
+  width: 100%;
+
+  flex: 1;
+  display: flex;
+  flex-wrap: wrap;
+
+}
+
+// Number indicates number of cells
+.ticketstub__details--5,
+.ticketstub__details--4,
+.ticketstub__details--3,
+.ticketstub__details--2 { @extend %ticketstub__details; }
+
+// Stack when only 2 cells
+.ticketstub__details--2 .ticketstub__row { flex-direction: column; }
+
+
+.ticketstub__row {
+  flex: 1 0 100%;
+  display: flex;
+
+  width: 100%;
+
+  // Horizontal border
+  &:not(:first-child) {
+    border-top: 1px solid $ticketStubBorder;
+  }
+
+  // Horizontal border for stacked cells
+  &:first-child .ticketstub__cell:not(:first-child) {
+    border-top: 1px solid $ticketStubBorder;
+  }
+
+  @include medium {
+    // Stack cells on tablet
+    &:first-child { flex-direction: column; }
+    // Balance Row / Seat cells
+    &:last-child .ticketstub__cell { flex: 1; }
+  }
+}
+
+.ticketstub__cell {
+  min-width: 30%;
+  width: 100%;
+  padding: 8px 10px;
+
+  border-left: 1px solid $ticketStubBorder;
+
+  font-size: 14px;
+}
+
+.ticketstub__cell__label {
+  text-transform: uppercase;
+  padding-bottom: 2px;
+
+  color: $ticketStubLabel;
+}
+
+
+// Adjust cell sizes
+.ticketstub__row {
+  &:nth-child(1) {
+    .ticketstub__cell:nth-child(1) { width: 45%; }
+  }
+
+  &:nth-child(2) {
+    .ticketstub__cell:nth-child(1) { width: 40%; }
+  }
+}
+
+.ticketstub__details--upsell {
+  @extend %ticketstub__details;
+  .ticketstub__cell {
+    width: auto !important;
+  }
+}
+
+.ticketstub__details__upsellitems {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  font-size: 13px;
+  letter-spacing: 0.3px;
+  color: $ticketStubUpsellItems;
+  padding-top: 8px;
+}

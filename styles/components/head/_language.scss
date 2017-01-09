@@ -1,0 +1,31 @@
+.header__language__list {
+  @include unstyledlist;
+
+  display: flex;
+  justify-content: center;
+
+  .no-flexbox & {
+    display: block;
+    text-align: center;
+  }
+}
+
+.header__language--mobile__list {
+  @include unstyledlist;
+}
+
+.header__language__item {
+  & + & {
+    margin-left: 20px;
+  }
+
+  .no-flexbox & {
+    display: inline-block;
+  }
+}
+
+.header__language__button {
+  @extend %button--outline;
+
+  text-decoration: none;
+}

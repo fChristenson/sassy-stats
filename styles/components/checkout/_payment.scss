@@ -1,0 +1,146 @@
+.payment * {
+  box-sizing: border-box;
+}
+
+.payment__header {
+  @if ($currentTheme == 'ticketweb') {
+    @include tw-heading;
+  }
+
+  @else {
+    @include paymentheading;
+  }
+
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
+  background-color: colour(legacyHeadingBg);
+}
+
+.ticket_insurance_modal__content {
+  margin: 0 auto;
+  padding: 20px;
+  color: $pompeii;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.ticket_insurance_modal__button_container {
+  padding: 24px 20px;
+  overflow: hidden;
+}
+
+.modal__win--checkout {
+  border: none;
+}
+
+.modal__win--checkout__header {
+  font-size: 16px;
+  font-weight: bold;
+  color: $kuzbas;
+  background: $reykjavik;
+  border-bottom: 1px solid $olympus;
+}
+
+.checkout__modal__close_button {
+  display: none;
+}
+
+.modal__win--checkout__title {
+  line-height: 51px;
+  padding-left: 20px;
+}
+
+.modal--checkout {
+  position: fixed;
+}
+
+.ticket_insurance_modal__button {
+  @include button;
+
+  background: colour(btn-primary-bg);
+  color: $reykjavik !important;
+  float: right;
+  font-size: 18px !important;
+  font-weight: bolder !important;
+  text-shadow: none;
+
+  &:hover {
+    background: colour(btn-primary-bg--hover);
+    color: $reykjavik !important;
+  }
+}
+
+.payment__content {
+  $border-color: colour(border-grey);
+
+  position: relative;
+  border-right: 1px solid $border-color;
+  border-bottom: 1px solid $border-color;
+  border-left: 1px solid $border-color;
+  background-color: colour(content-bg);
+}
+
+.payment__subheading {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.paymentselect {
+  margin: 20px 0 0;
+}
+
+.paymentselect__select {
+  display: inline-block;
+  max-width: 270px;
+  overflow: hidden;
+  vertical-align: top;
+}
+
+.paymentimg {
+  @include unstyledlist;
+
+  display: inline-block;
+}
+
+%paymentimg__img,
+.paymentimg__img {
+  display: inline-block;
+  margin: 8px 0 0;
+
+  img {
+    max-height: 37px;
+  }
+
+  @include mediumlarge {
+    margin: 0 0 0 10px;
+  }
+}
+
+.paymentimg__img--small {
+  @extend %paymentimg__img;
+
+  margin: 10px 0;
+
+  img {
+    max-height: 20px;
+  }
+}
+
+.paymentimg--all {
+  @include unstyledlist;
+
+  margin-top: 20px;
+}
+
+.paymentimg--all__img {
+  display: inline-block;
+
+  & + & {
+    margin-left: 10px;
+  }
+
+  img {
+    max-height: 20px;
+  }
+}

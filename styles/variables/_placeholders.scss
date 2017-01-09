@@ -1,0 +1,143 @@
+%hidden {
+  display: none !important;
+  visibility: hidden;
+}
+
+// Hide only visually, but have it available for screenreaders: h5bp.com
+%visuallyhidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+
+  // allow the element to be focusable when navigated to via the keyboard: h5bp.com/p
+  &.focusable {
+    &:active,
+    &:focus {
+      clip: auto;
+      height: auto;
+      margin: 0;
+      overflow: visible;
+      position: static;
+      width: auto;
+    }
+  }
+}
+
+// Just hide something that isn't yet done. Using a placeholder means it's easy to trace.
+%unfinished {
+  cursor: not-allowed;
+}
+
+%clearfix::before,
+%clearfix::after {
+  content: ' '; // 1
+  display: table; // 2
+}
+
+%clearfix::after {
+  clear: both;
+}
+
+// Remove bullet points / numbers and indentation from lists
+%unstyledlist {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+%unstyledlist--horiz {
+  @extend %unstyledlist;
+  @extend %clearfix;
+
+  > li {
+    float: left;
+    margin-bottom: inherit; // override old styles
+  }
+}
+
+// Make images scale with their container
+%responsiveimg {
+  max-width: 100%;
+
+  .oldie & {
+    width: 100%;
+  }
+}
+
+// Button
+%button {
+  display: inline-block;
+  width: auto;
+  padding: 10px 15px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: colour(btn-primary-text);
+  background-color: colour(btn-primary-bg);
+  letter-spacing: 0.04em;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+%submit {
+  display: inline-block;
+  min-width: 150px;
+  padding: 15px;
+  border: 0;
+  background-color: colour(btn-primary-bg);
+  color: colour(btn-primary-text);
+  text-align: center;
+  font-size: 16px;
+  text-decoration: none;
+  text-shadow: none;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &[disabled],
+  &[disabled]:hover {
+    border: 0;
+    background: colour(btn-primary-bg);
+    opacity: 0.25;
+  }
+}
+
+%textinput {
+  padding: 10px 5px;
+  font-size: 12px;
+}
+
+%legacybutton {
+  display: inline-block;
+  padding: .2em 1em;
+  color: #ffffff;
+  text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid colour(findTicketsBtnDark);
+  background-color: colour(findTicketsBtn);
+  background-image: linear-gradient(to bottom, colour(findTicketsBtn), colour(findTicketsBtnDark));
+
+  @if ($currentTheme == 'base') {
+    border-radius: .4em;
+  } @else {
+    border-radius: 1em;
+  }
+
+  @if ($currentTheme == 'ticketweb') {
+    text-transform: uppercase;
+  }
+
+  &:hover {
+    text-decoration: none !important; // checkout_tm.css overrides otherwise
+    color: #ffffff !important;
+    background-image: none;
+  }
+}

@@ -1,0 +1,71 @@
+/**
+ * Table content stacks up for smaller screens
+ */
+
+.table {
+  display: block;
+  width: 100%;
+  line-height: 1.5;
+  overflow: hidden;
+
+  @include mediumlarge {
+    display: table;
+  }
+}
+
+.table__row {
+  @include unstyledlist;
+
+  display: block;
+  overflow: hidden;
+
+  & + & {
+    margin-top: 10px;
+  }
+
+  @include mediumlarge {
+    display: table-row;
+  }
+}
+
+.table__cell {
+  display: block;
+  vertical-align: top;
+
+  @include mediumlarge {
+    display: table-cell;
+  }
+}
+
+.table__cell--label {
+  @extend .table__cell;
+
+  float: left;
+  width: 66%;
+
+  @include mediumlarge {
+    float: none;
+    width: auto;
+  }
+}
+
+.table__cell--value {
+  @extend .table__cell;
+
+  float: right;
+  width: 33%;
+  text-align: right;
+
+  @include mediumlarge {
+    float: none;
+    width: auto;
+  }
+}
+
+.tableheading {
+  margin: 0;
+}
+
+.tabletext {
+  margin: 0;
+}

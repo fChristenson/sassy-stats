@@ -1,0 +1,50 @@
+.tabs {
+  @include unstyledlist;
+
+  @include mediumlarge {
+    display: flex;
+  }
+}
+
+.tabs__item {
+  cursor: pointer;
+  background-color: colour(border-default);
+
+  @include mediumlarge {
+    display: inline-block;
+
+    & + & {
+      margin-left: 3px;
+    }
+  }
+}
+
+.tabs__button {
+  @extend .button--standard;
+
+  @include small {
+    display: block;
+    width: 100%;
+    text-align: left;
+  }
+}
+
+%tabscontent__item {
+  border: 1px solid colour(border-default);
+  background-color: colour(content-bg);
+}
+
+.tabscontent__section {
+  @extend %tabscontent__item;
+
+  display: none;
+  padding: 20px;
+
+  &.is-active {
+    display: block;
+  }
+}
+
+.tabbercontent__section {
+  @extend %tabscontent__item;
+}

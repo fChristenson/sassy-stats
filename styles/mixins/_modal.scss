@@ -1,0 +1,58 @@
+@mixin modalBg($isFullScreen: false) {
+  @include stretchToFit;
+
+  @if ($isFullScreen) {
+    position: fixed;
+  }
+  @else {
+    position: absolute;
+  }
+
+  transition: background 0.3s;
+  background: rgba(0, 0, 0, 0.65);
+  z-index: -1;
+}
+
+@mixin modalheading {
+  margin: 0;
+  padding: #{3 * $v-spacing} #{2 * $h-spacing} #{2 * $v-spacing};
+  font-size: 14px;
+  text-transform: uppercase;
+  color: $pompeii;
+}
+
+@mixin modalcolumnleft {
+  flex: 1 0;
+  max-width: 50%;
+  padding-right: $v-spacing;
+
+  @include mediumlarge {
+    flex-grow: 2;
+    max-width: 67%;
+  }
+
+  .no-flexbox & {
+    float: left;
+  }
+}
+
+@mixin modalcolumnright {
+  flex: 1 0;
+  max-width: 50%;
+  text-align: right;
+
+  .no-flexbox & {
+    float: right;
+  }
+}
+
+@mixin modaltextprimary {
+  margin: 0;
+  font-size: 16px;
+}
+
+@mixin modaltextsecondary {
+  margin: 0;
+  font-size: 12px;
+  color: $pompeii;
+}

@@ -1,0 +1,14 @@
+// Remove bullet points / numbers and indentation from lists
+@mixin unstyledlist {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+@mixin unstyleddl {
+  margin: 0;
+
+  dd {
+    margin: 0;
+  }
+}

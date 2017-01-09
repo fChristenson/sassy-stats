@@ -1,0 +1,142 @@
+.blockgroup--ads {
+  @extend %blockgroup;
+
+  padding: 0;
+
+  @include medium {
+    float: right;
+    width: 50%;
+  }
+}
+
+%promo,
+.promo {
+  @extend %block;
+
+  align-content: flex-start;
+  width: 300px;
+
+  @include medium {
+    margin-left: 12px;
+    margin-right: 12px;
+  }
+
+  @include large {
+    margin-left: 16px;
+    margin-right: 12px;
+  }
+
+  .sponsor,
+  .mpu,
+  .sponsorlogo,
+  .marketcontent {
+    > .adslot {
+      margin-bottom: 10px;
+    }
+  }
+}
+
+// Major category colRight
+.promo--category {
+  @extend %promo;
+
+  margin-left: 0;
+}
+
+.mpu {
+  display: none;
+
+  @include mediumlarge {
+    display: block;
+  }
+}
+
+.sponsor {
+  display: none;
+
+  @include mediumlarge {
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: colour(content-bg);
+  }
+}
+
+.sponsorlogo {
+  display: none;
+
+  @include mediumlarge {
+    display: block;
+    margin-bottom: 12px;
+
+    .no-flexbox & {
+      float: left;
+    }
+
+    & + & {
+      .no-flexbox & {
+        margin-left: 115px;
+      }
+    }
+  }
+}
+
+.ad {
+  line-height: 0;
+}
+
+/**
+ * Pushdown ad
+ */
+.billboard {
+  @extend %block;
+
+  display: none;
+
+  > .adslot {
+    padding-top: 10px;
+  }
+
+  @include large {
+    display: block;
+    width: 100%;
+    max-width: $max-page-width;
+    background-color: colour(content-bg);
+
+    .no-flexbox & {
+      float: none;
+    }
+
+    .ad {
+      padding: 30px 0 0;
+    }
+  }
+}
+
+.billboard--checkout {
+  @extend .billboard;
+
+  > .adslot {
+    padding-bottom: 10px;
+  }
+}
+
+.emergingartistAd {
+  padding-bottom: 12px;
+}
+
+.wallpaperAd,
+.overlayAd {
+  @extend %block;
+
+  display: none;
+
+  @include large {
+    display: block;
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    background-color: colour(content-bg);
+  }
+}

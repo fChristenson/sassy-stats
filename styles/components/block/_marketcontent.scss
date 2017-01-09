@@ -1,0 +1,51 @@
+.marketcontent {
+  @extend %block__item;
+
+  display: none;
+
+  &:hover,
+  &:active {
+    background-color: inherit;
+  }
+
+  @include large {
+    display: block;
+    width: 300px;
+    margin: 0 0 10px;
+    overflow: hidden;
+    border: 1px solid colour(border-default);
+    background-color: colour(content-bg);
+  }
+}
+
+.marketcontent__heading {
+  margin: 0;
+  padding: 7px 10px;
+  line-height: 1;
+  font-family: font('marketContentHeader');
+  font-size: 22px;
+  font-weight: normal;
+  background-color: colour(panel-dark-bg);
+  color: colour(panel-dark-text);
+}
+
+.newsletter {
+  padding: 12px;
+  background-color: colour(panel-default-bg);
+}
+
+.newsletter__heading {
+  margin: 0 0 12px;
+}
+
+.newsletter__text {
+  margin: 0 0 12px;
+}
+
+.newsletter__link {
+  @extend %button;
+
+  margin-top: 12px;
+  background-color: colour('newsletterButtonBg');
+  color: colour('newsletterButtonText');
+}

@@ -1,0 +1,68 @@
+.page--checkout,
+.page--majorcategory { // Temporarily scope styles to new EDP and Major Category page
+  .breadcrumbs--discovery {
+    @include unstyledlist;
+
+    margin: 0 10px 10px;
+    font-size: 14px;
+
+    @include mediumlarge {
+      margin: 0 16px 16px;
+    }
+  }
+
+  %breadcrumbs__item,
+  .breadcrumbs__item {
+    display: inline-block;
+  }
+
+  %IE-BEFORE-AFTER-UNDERLINE-HACK {
+    &::after {
+      text-decoration: underline;
+    }
+
+    &::after,
+    &:hover::after {
+      text-decoration: none;
+    }
+
+    &::before {
+      text-decoration: underline;
+    }
+
+    &::before,
+    &:hover::before {
+      text-decoration: none;
+    }
+  }
+
+  %breadcrumbs__item__link,
+  .breadcrumbs__item__link {
+    font-weight: bold;
+    text-decoration: none;
+    color: colour(link-dark-color);
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    &::after {
+      content: '❯';
+      display: inline-block;
+      margin-left: 5px;
+      color: $olympus;
+    }
+
+    // BM CSS hack to ensure before and after elements are not underlined on hover in IE.
+    // Added because I did not want to change breadcrumb markup for whole site
+    @extend %IE-BEFORE-AFTER-UNDERLINE-HACK;
+  }
+
+  .breadcrumbs__home {
+    @extend %breadcrumbs__item;
+  }
+
+  .breadcrumbs__home__link {
+    @extend %breadcrumbs__item__link;
+  }
+}

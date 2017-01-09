@@ -1,0 +1,32 @@
+.ticketlist {
+  display: flex;
+  flex-direction: column;
+
+  margin: 0 -10px;
+  padding: 0;
+
+  flex-flow: wrap;
+
+  background: colour(panel-light-bg);
+}
+
+.ticketlist__item {
+  flex: 1 100%;
+
+  padding: 10px;
+
+  list-style: none;
+
+  @include aboveSmall {
+    flex: 1 50%;
+    max-width: 50%;
+  }
+}
+
+.ticket__printicon {
+  @include icon(print);
+}
+
+.ticket__mobileicon {
+  @include icon(mobile);
+}

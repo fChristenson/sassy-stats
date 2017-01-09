@@ -1,0 +1,19 @@
+.event-stats__tabs {
+  @extend .tabs;
+
+  display: table;
+  margin: 0 auto;
+}
+
+.event-stats__tabitem {
+  @extend .tabs__button;
+}
+
+.eventStatsTable {
+  margin: 0 auto;
+}
+
+.eventStatsTable td {
+  padding-right: 30px;
+  text-align: right;
+}

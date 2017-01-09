@@ -1,0 +1,86 @@
+.orderinfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  font-size: 13px;
+  background-color: colour(panel-default-bg);
+
+  @include large {
+    flex-direction: row;
+    border-bottom: 1px solid colour(border-grey);
+
+    .no-flexbox & {
+      display: table;
+    }
+  }
+
+  .no-flexbox & {
+    display: block;
+  }
+}
+
+.orderinfo__item {
+  display: inline-block;
+  margin: 0;
+  padding: 10px 12px 9px;
+  border-bottom: 1px solid colour(border-grey);
+
+  @include large {
+    padding: 6px 20px;
+    border-bottom: none;
+
+    .no-flexbox & {
+      display: table-cell;
+      vertical-align: top;
+      text-align: right;
+
+      &:first-child {
+        text-align: left;
+      }
+    }
+  }
+}
+
+.orderinfo__item__label {
+  display: inline-block;
+  text-transform: uppercase;
+  margin-right: 10px;
+  color: colour(text-muted-color);
+
+  @include large {
+    padding: 7px 0 6px;
+    border-bottom: none;
+  }
+}
+
+.orderinfo__item__value {
+  display: inline-block;
+  margin: 0;
+}
+
+%orderinfo__item__link,
+.orderinfo__item__link {
+  color: colour(link-accent-color);
+
+  &:not(:hover) {
+    text-decoration: none;
+  }
+}
+
+.orderinfo__item__link--alt {
+  @extend %orderinfo__item__link;
+
+  color: colour(link-accent-color);
+}
+
+.orderinfo__instructions {
+  margin: 0;
+  padding: 9px 12px 11px;
+  font-size: 13px;
+
+  @include large {
+    width: 55%;
+    margin: 0;
+    padding: 10px 20px 12px;
+  }
+}

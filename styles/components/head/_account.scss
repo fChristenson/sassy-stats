@@ -1,0 +1,114 @@
+.header__account__inner {
+  @include mediumlarge {
+    display: flex;
+
+    .no-flexbox & {
+      display: table;
+      width: 100%;
+    }
+  }
+}
+
+.header__account--mobile {
+  padding: 10px;
+  background-color: colour(panel-primary-bg);
+}
+
+.header__account__section {
+  flex: 0 1 50%;
+  position: relative;
+  padding-bottom: 60px;
+
+  @include mediumlarge {
+    & + & {
+      margin-left: 30px;
+
+      @include mediumlarge {
+        .no-flexbox & {
+          padding-left: 20px;
+        }
+      }
+    }
+
+    .no-flexbox & {
+      display: table-cell;
+      width: 50%;
+    }
+  }
+}
+
+.header__account__section--register {
+  @extend .header__account__section;
+
+  @include small {
+    &::before {
+      content: ' ';
+      display: block;
+      width: 50%;
+      margin: 0 auto 20px;
+      padding-top: 20px;
+      border-bottom: 1px solid colour(border-grey);
+    }
+  }
+}
+
+.header__account__formitem {
+  margin-top: 5px;
+
+  @include mediumlarge {
+    margin-top: 15px;
+  }
+}
+
+.header__account__textinput {
+  @include textinput;
+
+  border-color: transparent;
+}
+
+.header__account__button {
+  @include button(primary);
+
+  @include icon(chevronRight, after) {
+    position: relative;
+    top: -2px;
+    margin-left: 10px;
+  }
+
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  font-size: 16px;
+}
+
+.header__account__button--login {
+  @extend .header__account__button;
+
+  @include button(cta);
+}
+
+.header__account__forgotlink {
+  @include button--link;
+
+  margin-top: 20px;
+  font-size: 14px;
+  color: colour(link-accent-color);
+}
+
+.header__panel__logout {
+  @include button--link;
+
+  height: 22px;
+  padding: 0 0 0 20px;
+  font-size: 15px;
+  white-space: nowrap;
+  color: colour(link-muted-color);
+
+  &:hover {
+    color: colour(link-primary-color);
+  }
+
+  @include mediumlarge {
+    @include visuallyhidden;
+  }
+}

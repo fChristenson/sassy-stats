@@ -1,0 +1,309 @@
+.discover {
+  max-width: none;
+  background-color: colour(panel-default-bg);
+
+  @include mediumlarge {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+  }
+}
+
+.discover--mobile {
+  min-width: 0;
+  overflow: hidden;
+}
+
+.discover--alt {
+  @extend .discover;
+
+  box-shadow: none;
+  background-color: colour(panel-primary-bg);
+}
+
+.discover__inner {
+  @include container;
+
+  min-width: 0;
+
+  @include mediumlarge {
+    display: flex;
+    margin: 0 auto;
+
+    .no-flexbox & {
+      overflow: hidden;
+    }
+  }
+
+  .oldie {
+    overflow: hidden;
+  }
+}
+
+.discover--small__inner {
+  @extend .discover__inner;
+}
+
+.discover__menus {
+  @include mediumlarge {
+    flex: 1;
+    display: flex;
+
+    .no-flexbox & {
+      display: table;
+      float: left;
+      width: 90%;
+    }
+  }
+
+  .oldie {
+    display: table;
+    float: left;
+    width: 90%;
+  }
+}
+
+%discoveritem {
+  position: relative;
+
+  @include mediumlarge {
+    flex: 1;
+  }
+
+  .no-flexbox & {
+    display: table-cell;
+    width: 33%;
+  }
+
+  .icon__caretdown {
+    position: absolute;
+    bottom: 17px;
+    right: 5px;
+
+    @include small {
+      bottom: 10px;
+    }
+  }
+}
+
+.discover__item {
+  @extend %discoveritem;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 10px;
+
+  @include mediumlarge {
+    justify-content: flex-start;
+    margin-bottom: 0;
+  }
+
+  .no-flexbox & {
+    white-space: nowrap;
+  }
+}
+
+.discover--small__item {
+  @extend %discoveritem;
+
+  padding-left: 10px;
+  overflow: hidden;
+
+  &:first-child {
+    padding-left: 15px;
+  }
+}
+
+.discover__item--submit {
+  align-self: flex-end;
+
+  .no-flexbox & {
+    float: right;
+  }
+}
+
+.discover__item__label {
+  width: 55px;
+  padding-right: 10px;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+  text-align: center;
+  text-transform: uppercase;
+  color: colour(label-primary-color);
+
+  @include mediumlarge {
+    height: 55px;
+    padding: 7px 22px;
+  }
+
+  @include medium {
+    height: 52px;
+  }
+
+  .no-flexbox & {
+    display: inline-block;
+  }
+}
+
+.discover__item--category__label {
+  @extend .discover__item__label;
+}
+
+.discover__item--date__label {
+  @extend .discover__item__label;
+}
+
+.discover__item--location__label {
+  @extend .discover__item__label;
+}
+
+.discover--small__item__label {
+  display: block;
+  padding: 12px 0 6px;
+  white-space: nowrap;
+  text-align: left;
+
+  @include mediumlarge {
+    height: auto;
+  }
+
+  &::before {
+    display: inline-block;
+    height: 15px;
+    margin-right: 10px;
+    font-size: 15px;
+  }
+}
+
+.discover--small__item--category__label {
+  @extend .discover__item--category__label;
+  @extend .discover--small__item__label;
+}
+
+.discover--small__item--date__label {
+  @extend .discover__item--date__label;
+  @extend .discover--small__item__label;
+}
+
+.discover--small__item--location__label {
+  @extend .discover__item--location__label;
+  @extend .discover--small__item__label;
+}
+
+.discover--small__item--category__label,
+.discover--small__item--date__label,
+.discover--small__item--location__label {
+  display: flex;
+  align-items: center;
+
+  &::before {
+    display: none;
+  }
+}
+
+.discover__item__label__text {
+  display: inline-block;
+  width: 100%;
+  vertical-align: middle;
+  padding-left: 5px;
+
+  @include small {
+    @include visuallyhidden;
+  }
+}
+
+%discovermenu {
+  @include customselect;
+
+  flex: 3;
+  padding-left: 10px;
+  font-size: 16px;
+  outline: 0;
+  background-image: none;
+
+  @include small {
+    max-width: calc(100% - 55px);
+  }
+
+  @include mediumlarge {
+    background-color: colour(panel-light-bg);
+  }
+
+  @include large {
+    font-size: 18px;
+  }
+}
+
+.discover__item__menu {
+  @extend %discovermenu;
+
+  height: 40px;
+
+  @include medium {
+    height: 46px;
+  }
+
+  @include large {
+    height: 55px;
+  }
+
+  @include mediumlarge {
+    max-width: 230px;
+  }
+}
+
+.discover--small__item__menu {
+  @extend %discovermenu;
+
+  width: 100%;
+  height: 32px;
+  margin-bottom: 12px;
+  padding: 5px 10px;
+  background-color: colour(panel-lighter-bg);
+  color: colour(btn-default-text);
+
+  @include large {
+    font-size: 14px;
+  }
+
+  @include mediumlarge {
+    max-width: 300px;
+  }
+}
+
+.discover__submit {
+  @include button(primary);
+
+  float: right;
+  padding: 0 30px;
+  line-height: 40px;
+  font-size: 16px;
+
+  @include mediumlarge {
+    float: none;
+    min-width: 58px;
+    margin: 3px 2px;
+    padding: 0;
+  }
+
+  @include medium {
+    line-height: 46px;
+  }
+
+  @include large {
+    line-height: 55px;
+  }
+}
+
+.discover--small__submit {
+  @include button--outline;
+
+  border-radius: 2px;
+
+  @include mediumlarge {
+    margin: 12px 15px 12px 10px;
+    padding: 0 20px;
+    line-height: 30px;
+    font-size: 17px;
+    background-color: transparent;
+  }
+}

@@ -1,0 +1,8 @@
+.spinner-wrapper {
+  position: relative;
+  left: 50%;
+
+  @include mediumlarge {
+    left: 70%;
+  }
+}

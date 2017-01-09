@@ -1,0 +1,135 @@
+.menuaccordion {
+  @extend %unstyledlist;
+
+  display: block;
+  min-width: $min-page-width;
+  margin: 0 0 10px;
+
+  li {
+    margin: 0;
+    // Fix for TicketWeb margin issue MNXWEB-16718
+  }
+}
+
+%mobilemenu__listitem {
+  // Extra right padding provides space for the +/- icon
+  display: block;
+  position: relative;
+  padding: 9px 30px 9px 10px;
+  border-bottom: 2px solid colour(border-light);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.025em;
+  color: colour(btn-primary-text);
+  margin: 0;
+
+  i {
+    position: absolute;
+    top: 50%;
+    right: 5px;
+    font-size: 17px;
+  }
+}
+
+.menuitem__header__icon--plus {
+  @include icon(plus);
+
+  margin-top: -13px;
+}
+
+.menuitem__header__icon--minus {
+  @include icon(minus);
+
+  margin-top: -13px;
+}
+
+.menuitem__header__icon--link {
+  @include icon(link) {
+    color: colour(link-primary-color);
+  }
+
+  margin-top: -13px;
+}
+
+.menuitem__link {
+  @extend %mobilemenu__listitem;
+
+  background-color: colour(panel-light-bg);
+  color: colour(nav-text);
+}
+
+.menuitem__header--account,
+.menuitem__header--categories,
+.menuitem__header--language {
+  @extend %mobilemenu__listitem;
+
+  cursor: pointer;
+  background-color: colour(btn-primary-bg);
+  color: colour(btn-primary-text);
+
+  &:hover {
+    background-color: colour(btn-primary-bg--hover);
+  }
+
+  &::before {
+    width: 25px;
+    text-align: center;
+  }
+
+  &.is-active {
+    background-color: colour(btn-secondary-bg);
+  }
+}
+
+.menuitem__header--language {
+  @include icon(language);
+
+  position: relative;
+
+  &::before {
+    position: relative;
+    top: 2px;
+    margin-right: 10px;
+    font-size: 23px;
+  }
+}
+
+.menuitem__header--language__icontext {
+  position: absolute;
+  top: 13px;
+  left: 12px;
+  width: 20px;
+  font-family: font(iconText);
+  font-size: 9px;
+  text-align: center;
+  color: colour(link-primary-color);
+}
+
+.menuitem__header--account {
+  @include icon(profile);
+
+  &::before {
+    margin: -5px 10px 0 0;
+  }
+}
+
+.mobilemenu__section {
+  @extend %unstyledlist;
+}
+
+.mobilemenu__link {
+  @extend %mobilemenu__listitem;
+
+  background-color: colour(panel-default-bg);
+  color: colour(nav-text);
+}
+
+.mobilemenu__link__icon--go {
+  @include icon(chevronRight) {
+    color: colour(link-primary-color);
+  }
+
+  font-weight: bold;
+  margin-top: -13px;
+}

@@ -1,0 +1,211 @@
+// terms and conditions modal styles start
+$border-colour: colour(legacyModalBorder);
+
+.modal__win--checkout {
+  @extend %modal__win;
+
+  width: 300px;
+  border: 5px solid $border-colour;
+
+  @include mediumlarge {
+    width: 545px;
+  }
+}
+
+.modal__win--checkout__header {
+  @extend %modal__win__header;
+
+  border: none;
+  background-color: $border-colour;
+  color: colour(legacyHeadingText);
+}
+
+.modal__win--checkout__title {
+  @extend %modal__win__title;
+
+  padding: 0 0 0 10px;
+  font-size: 16px;
+  text-transform: none;
+
+  @include mediumlarge {
+    font-size: 18px;
+  }
+}
+
+%modal__win--checkout__closebtn,
+.modal__win--checkout__closebtn {
+  @include unstyledbutton;
+
+  width: 25px;
+  height: 25px;
+  margin: 2px 3px 0 0;
+  font-size: 18px;
+  color: $kuzbas;
+  outline: 0;
+
+  &:hover {
+    border: 0; // override old css
+    color: $kuzbas;
+  }
+}
+
+.modal__win--checkout__content {
+  @extend %modal__win__content;
+
+  font-size: 13px;
+
+  @include mediumlarge {
+    font-size: 15px;
+  }
+}
+
+.modal__win--checkout__content__text {
+  padding: 10px 14px 14px;
+}
+
+%modal__win--checkout__item,
+.modal__win--checkout__item {
+  margin: 0;
+  padding: 15px 0;
+  border-top: 1px solid colour(border-default);
+}
+
+.modal__win--checkout__item--first {
+  @extend %modal__win--checkout__item;
+
+  border-top: none;
+}
+
+//terms and conditions modal styles end
+
+//modal dialogue styles start
+.confirmmodal,
+%confirmmodal {
+  @include modalBg;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  z-index: 2;
+}
+
+.confirmmodal__win,
+%confirmmodal__win {
+  width: 40%;
+  max-width: 525px;
+  min-width: 300px;
+  border: 5px solid $border-colour;
+  background-color: colour(content-bg);
+}
+
+.confirmmodal__content,
+%confirmmodal__content {
+  padding: 8px 10px;
+}
+
+.confirmmodal__header,
+%confirmmodal__header {
+  background-color: $border-colour;
+  color: colour(legacyHeadingText);
+}
+
+.confirmmodal__header__title,
+%confirmmodal__header__title {
+  margin: 0;
+  padding: 0 0 5px 10px;
+  font-size: 17px;
+  font-weight: bold;
+}
+
+.confirmmodal__content__buttons {
+  display: flex;
+  margin-top: 16px;
+  justify-content: center;
+  text-transform: uppercase;
+}
+
+.confirmmodal__content__button {
+  @include unstyledbutton;
+
+  margin: 0 5px;
+  padding: 8px 20px;
+  border-radius: 5px;
+  outline: 0;
+  font-weight: bold;
+  background-color: colour(legacyLightBtn);
+  color: colour(legacyDarkText);
+}
+//modal dialogue styles end
+
+//modal pickup styles start
+
+.modal--pickup {
+  @extend %confirmmodal;
+}
+
+.modal--pickup__win {
+  @extend %confirmmodal__win;
+
+  width: 50%;
+
+  @include mediumlarge {
+    font-size: 17px;
+  }
+}
+
+.modal--pickup__content {
+  @extend %confirmmodal__content;
+}
+
+.modal--pickup__header {
+  @extend %confirmmodal__header;
+
+  display: flex;
+}
+
+.modal--pickup__header__title {
+  flex: 1;
+  margin: 0;
+  padding: 0 0 5px 10px;
+  font-size: 15px;
+  font-weight: bold;
+
+  @include mediumlarge {
+    font-size: 18px;
+  }
+}
+
+.modal--pickup__table {
+  margin: 8px 0;
+}
+
+%modal--pickup__table__row,
+.modal--pickup__table__row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.modal--pickup__table__row--header {
+  @extend %modal--pickup__table__row;
+
+  margin-bottom: 8px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid colour(legacyBorder);
+  font-weight: bold;
+}
+
+.modal--pickup__table__cell {
+  flex: 33.33%;
+}
+
+.modal--pickup__closebtn {
+  @extend %modal__win--checkout__closebtn;
+
+  margin: 4px 3px 0 0;
+}

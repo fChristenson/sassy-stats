@@ -1,0 +1,121 @@
+.headerwrapper {
+  min-height: 79px;
+
+  @include mediumlarge {
+    display: block;
+    min-height: 215px;
+  }
+
+  .has-wallpaper-ad &,
+  .body-background & {
+    max-width: $max-page-width;
+    margin: 0 auto;
+  }
+}
+
+.header {
+  position: relative;
+  background-color: colour(content-bg);
+  z-index: 2;
+
+  .has-wallpaper-ad &,
+  .body-background & {
+    max-width: $max-page-width;
+  }
+}
+
+.header--light {
+  padding: 12px 0;
+}
+
+%header__main,
+.header__main {
+  @include container;
+
+  text-align: center;
+
+  .no-flexbox & {
+    width: 100%;
+  }
+}
+
+.header--light__main {
+  @extend %header__main;
+
+  text-align: left;
+
+  @include small {
+    width: $min-page-width;
+    padding-left: 10px;
+    min-height: 45px;
+  }
+
+  @include medium {
+    width: $medium-screen-width;
+  }
+
+  @include mediumlarge {
+    min-height: 58px;
+  }
+}
+
+.header__main__inner {
+  @include mediumlarge {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
+    .no-flexbox & {
+      display: block;
+      overflow: hidden;
+    }
+  }
+}
+
+.header__mobile {
+  @include mediumlarge {
+    display: none;
+  }
+}
+
+.header__desktop {
+  display: none;
+
+  @include mediumlarge {
+    display: block;
+  }
+}
+
+.logo {
+  flex: 1;
+  display: inline-block;
+  min-width: 160px;
+  max-width: 200px;
+  max-height: 40px;
+  margin: 7px auto;
+  text-align: center;
+
+  @include mediumlarge {
+    flex: 1;
+    max-width: 220px;
+    max-height: none;
+    margin: 12px 15px;
+    text-align: left;
+
+    .no-flexbox & {
+      float: left;
+    }
+  }
+}
+
+.logo__media {
+  display: block;
+  width: 100%;
+  max-height: 36px;
+
+  @include mediumlarge {
+    max-width: none;
+    max-height: 46px;
+  }
+}

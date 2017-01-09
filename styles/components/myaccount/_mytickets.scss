@@ -1,0 +1,22 @@
+.mytickets {
+  flex: 1;
+
+  @include aboveSmall {
+    padding: 0 15px;
+  }
+
+  @include mediumlarge {
+
+    .no-flexbox & {
+      display: table-cell;
+    }
+  }
+}
+
+.mytickets__notickets {
+  margin: 10px;
+
+  @include mediumlarge {
+    margin: 0;
+  }
+}

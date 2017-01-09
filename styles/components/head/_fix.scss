@@ -1,0 +1,164 @@
+// Styling fixes for the header on older pages
+
+.header {
+  max-width: none;
+  font-size: 16px;
+
+  * {
+    box-sizing: border-box;
+  }
+
+  h3 {
+    line-height: inherit;
+  }
+
+  button {
+    font-size: 13px;
+    font-weight: normal;
+    text-shadow: none;
+  }
+
+  li {
+    line-height: inherit;
+    margin-bottom: 0;
+  }
+
+  label {
+    float: none;
+    width: auto;
+    line-height: inherit;
+  }
+
+  .oldie & .logo {
+    float: left;
+  }
+
+  .header__panel__group__title {
+    font-family: font(header);
+  }
+
+  .header__panel__title {
+    font-family: font(panelHeader);
+  }
+
+  .header__panel__logout {
+    font-size: 15px;
+  }
+
+  // toplinks
+  .toplinks__secondary,
+  .toplinks__secondary--right {
+    line-height: 1;
+  }
+
+  .toplinks__button {
+    padding: 3px 0;
+    line-height: 1.5;
+  }
+
+  // my account
+  .header__account__forgotlink {
+    font-size: 14px;
+  }
+
+  .header__account__button {
+    font-size: 16px;
+  }
+
+  // search
+  .search {
+    line-height: normal;
+  }
+
+  .search--outline__button {
+    padding: 4px 15px;
+    line-height: 2;
+    font-size: 14px;
+  }
+
+  .search__button {
+    font-size: 16px;
+  }
+
+  .oldie & .search--outline__wrapper,
+  .oldie & .search--outline__button {
+    display: table-cell;
+  }
+
+  .search--outline__input__clear {
+    padding: 0;
+    font-size: 12px;
+  }
+
+  .searchdiscover__tab--search,
+  .searchdiscover__tab--discover {
+    font-size: 16px;
+  }
+
+  .search__input,
+  .header__account__textinput {
+    height: auto;
+    box-shadow: none;
+    outline: 0;
+    border-radius: 0;
+  }
+
+  // major categories
+  .majorcategories__link,
+  .majorcategories__link--more {
+    padding: 5px 10px 15px;
+    font-size: 16px;
+    font-family: inherit;
+  }
+
+  .oldie & .majorcategories--inline {
+    overflow: hidden;
+  }
+
+  .majorcategories__link--more,
+  .majorcategories--inline__link--more {
+    padding-right: 27px;
+  }
+
+  // discover
+  .oldie & .discover__inner {
+    overflow: hidden;
+  }
+
+  .oldie & .discover__menus {
+    display: table;
+    float: left;
+    width: 90%;
+  }
+
+  .discover__item__label {
+    width: 55px;
+
+    @include mediumlarge {
+      width: auto;
+    }
+  }
+
+  .discover__submit {
+    font-size: 16px;
+  }
+
+  .discover--small__submit {
+    padding: 0 20px;
+    line-height: 30px;
+    font-size: 16px;
+    top: -1px;
+    position: relative;
+  }
+
+  .header__panel__close {
+    font-size: 15px;
+  }
+
+  // mobile menu
+  .menuitem__header--account,
+  .menuitem__header--categories,
+  .menuitem__header--language {
+    line-height: normal;
+  }
+}

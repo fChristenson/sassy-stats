@@ -1,0 +1,46 @@
+.pagination {
+  @include unstyledlist;
+
+  margin: 10px 20px 0;
+  padding: 10px;
+  text-align: center;
+  background-color: colour(panel-light-bg);
+}
+
+%pagination__item {
+  display: inline-block;
+
+  & + & {
+    margin-left: 10px;
+  }
+}
+
+.pagination__number {
+  @extend %pagination__item;
+}
+
+.pagination__next {
+  @extend %pagination__item;
+}
+
+.pagination__prev {
+  @extend %pagination__item;
+}
+
+%pagination__link {
+  @include unstyledbutton;
+
+  color: colour(link-primary-color);
+}
+
+.pagination__number__link {
+  @extend %pagination__link;
+}
+
+.pagination__next__link {
+  @extend %pagination__link;
+}
+
+.pagination__prev__link {
+  @extend %pagination__link;
+}

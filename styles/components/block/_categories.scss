@@ -1,0 +1,174 @@
+.blockcontent {
+  @extend %blockgroup;
+
+  @include mediumlarge {
+    padding-bottom: 40px;
+  }
+}
+
+.blockcontent--categories {
+  @extend %blockgroup;
+  @extend %clearfix;
+
+  @include medium {
+    display: block;
+    padding: 12px;
+  }
+
+  @include large {
+    padding: 0;
+  }
+}
+
+.blockgroup--categories {
+  @extend %blockgroup;
+
+  padding: 0;
+
+  @include medium {
+    float: left;
+    width: calc(50% - 12px);
+  }
+
+  @include large {
+    justify-content: flex-start;
+  }
+}
+
+.blockgroup--categories__header {
+  @extend %blockgroup__header;
+}
+
+%categories,
+.categories {
+  @extend %block;
+
+  width: 100%;
+  margin: 2px 0;
+
+  @include medium {
+    float: left;
+    width: 100%;
+  }
+
+  @include large {
+    margin: 12px;
+  }
+}
+
+.categories--large {
+  @extend %categories;
+
+  @include large {
+    width: 57%;
+  }
+}
+
+.categories--small {
+  @extend %categories;
+
+  @include large {
+    width: 38%;
+  }
+}
+
+.categories--hidden,
+.categories--large--hidden,
+.categories--small--hidden {
+  @extend %categories;
+
+  @include large {
+    display: none;
+
+    .no-flexbox & {
+      display: none;
+    }
+  }
+}
+
+.block__header--categories {
+  @include subheading;
+}
+
+.block__header--categories__link {
+  @include blockheading__link;
+
+  position: relative;
+  color: colour(panel-light-text);
+
+  @include icon(chevronRight) {
+    position: absolute;
+    top: 1px;
+    right: 0;
+    color: colour(link-primary-color);
+  }
+
+  @include large {
+    display: inline;
+
+    &:hover {
+      color: colour(link-primary-color);
+    }
+
+    &::before {
+      content: '';
+    }
+  }
+}
+
+%categories__item,
+.categories__item {
+  @extend %block__item--hover;
+
+  display: none;
+
+  @include medium {
+    width: 100%;
+  }
+
+  @include large {
+    display: block;
+    margin: 3px;
+  }
+}
+
+.categories--large__item {
+  @extend %categories__item;
+
+  @include large {
+    width: calc(33% - 6px);
+  }
+
+  .oldie & {
+    width: 180px;
+  }
+}
+
+.categories--small__item {
+  @extend %categories__item;
+
+  @include large {
+    width: calc(50% - 6px);
+  }
+
+  .oldie & {
+    width: 180px;
+  }
+}
+
+.block__img--background {
+  @include mediumlarge {
+    .categories--small__item:hover & > div,
+    .categories--large__item:hover & > div {
+      // hide img on hover
+      opacity: 0.3;
+    }
+  }
+}
+
+.categories__caption__heading {
+  @extend %block__caption__heading;
+
+  padding-bottom: 24px;
+  min-height: 75px;
+}

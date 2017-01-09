@@ -1,0 +1,91 @@
+$labelColor: #808080;
+$errorColor: #f00;
+
+.downloadarea {
+  padding: 20px 10px;
+
+  @include aboveSmall {
+    padding: 20px;
+  }
+
+  &.is-sticky .downloadarea__button {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
+    padding: 10px;
+    background: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  }
+}
+
+.downloadarea--non-downloadable {
+
+  padding: 0 10px;
+
+  @include aboveSmall {
+    padding: 0 20px;
+  }
+}
+
+.downloadarea__selectall {
+  text-transform: uppercase;
+  font-size: 13px;
+  color: colour(link-muted-color);
+  margin-left: 11px;
+  margin-bottom: 10px;
+}
+
+.downloadarea__download {
+  margin-top: 10px;
+  display: flex;
+  justify-content: flex-end;
+  flex-direction: column;
+
+  @include aboveSmall {
+    flex-direction: row;
+  }
+}
+
+.downloadarea__message {
+  flex: 1;
+  padding-bottom: 20px;
+  display: flex;
+  color: colour(status-error);
+
+  @include aboveSmall {
+    padding-bottom: 0;
+  }
+}
+
+.downloadarea__message__icon {
+
+  @include icon(error) {
+    padding-right: 10px;
+  }
+}
+
+.downloadarea__message__body {
+  flex: 1;
+}
+
+.downloadarea__button {
+  flex: 1;
+
+  a {
+    display: block;
+    width: 100%;
+  }
+
+  @include aboveSmall {
+    padding-left: 20px;
+  }
+}
+
+.downloadarea__button__icon {
+  @include icon(download) {
+    margin: 0 5px 0 0;
+    font-size: 12px;
+  }
+}

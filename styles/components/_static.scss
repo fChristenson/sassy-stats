@@ -1,0 +1,28 @@
+/**
+ * Default styles for static pages
+ */
+
+// fixed width static pages
+#wrap {
+  .staticpage * {
+    box-sizing: content-box;
+  }
+
+  .staticpage {
+    width: 1000px;
+  }
+}
+
+.frame {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+// responsive static pages
+.staticpage {
+  @extend %clearfix;
+
+  min-width: 320px;
+  max-width: 1000px;
+  margin: 0 auto;
+}

@@ -1,0 +1,47 @@
+/**
+ * Count how many elements are in a parent
+ * @param  {[type]} $number      [description]
+ * @param  {[type]} $comparison: 'equal'       [description]
+ * @return {[type]}              [description]
+ */
+@mixin quantity-query($number, $comparison: 'equal') {
+  $nth: '';
+
+  @if index(('greater' 'more' '>'), $comparison) {
+    $nth: 'n + #{$number}';
+  }
+  @else if index(('less' 'fewer' '<'), $comparison) {
+    $nth: '-n + #{$number}';
+  }
+  @else if index(('equal' 'same' '='), $comparison) {
+    $nth: $number;
+  }
+  @else {
+    @warn 'Sorry, that is an invalid $comparison value.'
+  }
+
+  &:nth-last-child(#{$nth}):first-child {
+    &,
+    & ~ * {
+      @content;
+    }
+  }
+}
+
+@mixin qq-equal($number) {
+  @include quantity-query($number, equal) {
+    @content;
+  }
+}
+
+@mixin qq-greater($number) {
+  @include quantity-query($number, greater) {
+    @content;
+  }
+}
+
+@mixin qq-less($number) {
+  @include quantity-query($number, less) {
+    @content;
+  }
+}

@@ -1,0 +1,172 @@
+.pastevent {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0 20px;
+  background-color: colour(panel-light-bg);
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  .no-flexbox & {
+    display: table;
+    width: 100%;
+  }
+}
+
+.pastevent__details {
+  min-height: 87px;
+
+  @include mediumlarge {
+    flex: 0 1 auto; // IE10 flexbox fix
+    display: flex;
+  }
+
+  @include large {
+    flex: 3;
+  }
+
+  .no-flexbox & {
+    display: table-cell;
+  }
+}
+
+.pastevent__ordernumber {
+  @include unstyleddl;
+
+  flex: 0 1 auto; // IE10 flexbox fix
+  margin: 8px 10px 5px;
+  font-size: 11px;
+  text-transform: uppercase;
+
+  @include mediumlarge {
+    flex: 1 1 130px;
+    min-width: 100px;
+    margin: 15px;
+    font-size: 12px;
+  }
+
+  .no-flexbox & {
+    @include mediumlarge {
+      display: table-cell;
+      padding: 20px;
+    }
+  }
+}
+
+.pastevent__ordernumber__label,
+.pastevent__ordernumber__number {
+  display: inline-block;
+
+  @include mediumlarge {
+    display: block;
+  }
+}
+
+.pastevent__ordernumber__label {
+  color: colour(text-muted-color);
+
+  @include mediumlarge {
+    margin-bottom: 3px;
+    line-height: 15px;
+  }
+}
+
+.pastevent__ordernumber__number {
+  color: colour(text-default-color);
+}
+
+.pastevent__orderinfo {
+  @include unstyleddl;
+
+  flex: 0 1 auto; // IE10 flexbox fix
+  margin: 0 10px 8px;
+
+  @include mediumlarge {
+    flex: 3 3 330px;
+    margin: 15px;
+  }
+
+  .no-flexbox & {
+    @include mediumlarge {
+      display: table-cell;
+      padding: 20px;
+    }
+  }
+}
+
+.pastevent__orderinfo__date {
+  margin: 0 0 3px;
+  font-size: 12px;
+  text-transform: uppercase;
+
+  @include mediumlarge {
+    margin-bottom: 3px;
+    font-size: 13px;
+  }
+}
+
+.pastevent__orderinfo__name {
+  font-size: 15px;
+
+  @include mediumlarge {
+    font-size: 16px;
+  }
+}
+
+.pastevent__link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 30px;
+  border-left: 1px solid colour(border-light);
+  text-transform: uppercase;
+  text-decoration: none;
+  background-color: colour(panel-default-bg);
+
+  @include medium {
+    min-width: 40px;
+  }
+
+  @include large {
+    flex-shrink: 1;
+    min-width: 170px;
+    padding: 15px;
+  }
+
+  &:hover {
+    background-color: colour(panel-primary-bg);
+  }
+
+  .no-flexbox & {
+    display: table-cell;
+    width: 30px;
+    vertical-align: middle;
+    text-align: center;
+
+    @include medium {
+      width: 40px;
+    }
+
+    @include large {
+      width: 170px;
+    }
+  }
+}
+
+.pastevent__link__text {
+  color: colour(link-primary-color);
+  margin: 2px 15px 0 1px;
+
+  @include smallmedium {
+    @include visuallyhidden;
+  }
+}
+
+.pastevent__link__icon {
+  @include icon(chevronRight) {
+    margin-top: 2px;
+    margin-left: 3px;
+    color: colour(link-primary-color);
+  }
+}

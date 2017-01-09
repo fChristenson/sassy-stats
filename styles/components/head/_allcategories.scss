@@ -1,0 +1,57 @@
+.categorybtn {
+  @include unstyledbutton;
+
+  @include icon(chevronDown, after) {
+    position: relative;
+    top: -6px;
+    font-size: 18px;
+    color: colour(link-primary-color);
+  }
+
+  padding: 10px;
+  font-size: 13px;
+  text-transform: uppercase;
+  background-color: colour(content-bg);
+
+  &.is-active {
+    @include icon(menuClose, after) {
+      color: colour(text-default-color);
+    }
+  }
+}
+
+.categorybtn__text {
+  display: inline-block;
+  max-width: 100px;
+  text-align: left;
+
+  .is-active > & {
+    @include visuallyhidden;
+  }
+}
+
+.categorybtn__menu {
+  .is-active > & {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 35px;
+      left: -5px;
+      border-right: 15px inset transparent;
+      border-bottom: 10px solid colour(border-default);
+      border-left: 15px inset transparent;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 36px;
+      left: -5px;
+      border-right: 15px inset transparent;
+      border-bottom: 10px solid colour(content-bg);
+      border-left: 15px inset transparent;
+    }
+  }
+}

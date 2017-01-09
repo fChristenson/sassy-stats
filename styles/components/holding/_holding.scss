@@ -1,0 +1,141 @@
+$font-bold: font('panelHeader');
+$font-regular: font('default');
+$color-primary: colour(text-primary-color); //blue
+$color-primary-light: colour(text-inverted-color);
+$color-secondary: colour(text-muted-color); // grey
+$font-s-smaller: 12px;
+$font-s-small: 16px;
+$font-s-normal: 18px;
+$font-s-large: 20px;
+
+.holding {
+  background: $color-primary;
+  color: white;
+  font-family: $font-regular;
+  padding: 10px 20px 20px;
+  font-size: $font-s-small;
+
+  @include mediumlarge {
+    padding: 30px 40px 40px;
+    font-size: $font-s-normal;
+  }
+
+  h2 {
+    font-family: $font-bold;
+    font-size: $font-s-small;
+    text-align: center;
+    margin: 20px 0;
+
+    @include mediumlarge {
+      margin: 30px 0;
+      font-size: $font-s-large;
+    }
+  }
+
+  p {
+    font-size: $font-s-small;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+
+    @include mediumlarge {
+      font-size: $font-s-small;
+    }
+  }
+}
+
+.holding__container {
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.holding__logo {
+  padding: 10px;
+  display: block;
+}
+
+.holding__text {
+  padding-bottom: 30px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+
+  a {
+    color: $color-primary-light;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  @include mediumlarge {
+    padding-bottom: 30px;
+  }
+}
+
+.holding__social {
+  list-style: none;
+  text-align: center;
+  margin: 50px auto 10px;
+  padding: 0;
+
+  > li {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    margin: 0 3px;
+    background-size: contain;
+    opacity: 0.8;
+    transition: opacity 200ms ease-in-out;
+
+    &:hover {
+      opacity: 0.5;
+    }
+
+    &[data-icon='facebook'] {
+      background-image: url(../../images/social/facebook-128.png);
+    }
+
+    &[data-icon='twitter'] {
+      background-image: url(../../images/social/twitter-128.png);
+    }
+
+    &[data-icon='google'] {
+      background-image: url(../../images/social/googleplus-128.png);
+    }
+
+    &[data-icon='instagram'] {
+      background-image: url(../../images/social/instagram-128.png);
+    }
+
+    > a {
+      display: block;
+      height: 100%;
+    }
+  }
+}
+
+.holding__heading {
+  font-family: $font-bold;
+  font-size: $font-s-normal;
+  text-align: center;
+
+  @include small {
+    font-size: $font-s-small;
+  }
+}
+
+.holding__heading--greeting {
+  @extend .holding__heading;
+
+  font-family: $font-regular;
+  color: $color-primary-light;
+}
+
+.holding__footer {
+  font-family: $font-regular;
+  background: #fff;
+  color: $color-secondary;
+  text-align: center;
+  font-size: $font-s-smaller;
+  padding: 20px;
+}

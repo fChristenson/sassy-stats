@@ -1,0 +1,243 @@
+$font-bold: font('panelHeader');
+$font-light: font('light');
+$font-regular: font('blockText');
+$color-primary: colour(text-primary-color); //blue
+$color-primary-darker: colour(btn-primary-icon--hover); //darker blue
+$color-primary-light: colour(text-inverted-color);
+$color-secondary: colour(text-muted-color); // grey
+$color-info: colour(border-default); // grey-light
+$color-warning: colour(status-warning); //yellow
+$triangleSize: 8px;
+$font-s-smaller: 12px;
+$font-s-small: 16px;
+$font-s-normal: 18px;
+$font-s-medium: 32px;
+$font-s-large: 48px;
+
+.embedded {
+  .queue__footer,
+  .queue__header {
+    display: none;
+  }
+}
+
+.queue {
+  background: $color-primary;
+  color: white;
+  font-family: $font-regular;
+  padding: 10px 20px 20px;
+  font-size: $font-s-small;
+
+  @include mediumlarge {
+    padding: 20px 40px 40px;
+    font-size: $font-s-normal;
+  }
+}
+
+.queue__messageicon {
+  @include icon(error) {
+    padding-right: 5px;
+    margin-top: -2px;
+  }
+}
+
+.queue__container {
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.queue__heading {
+  font-family: $font-bold;
+  font-size: $font-s-normal;
+  text-align: center;
+
+  @include small {
+    font-size: $font-s-small;
+  }
+}
+
+.queue__heading--intro {
+  @extend .queue__heading;
+
+  font-family: $font-light;
+  font-size: $font-s-large;
+  margin: 0;
+  padding-bottom: 12px;
+
+  @include small {
+    font-size: $font-s-medium;
+  }
+}
+
+.queue__heading--greeting {
+  @extend .queue__heading;
+
+  font-family: $font-regular;
+  color: $color-primary-light;
+}
+
+.queue__heading--notice {
+  @extend .queue__heading;
+
+  color: $color-warning;
+}
+
+.queue__heading--message {
+  @extend .queue__heading;
+
+  font-size: $font-s-small;
+
+  a {
+    color: white;
+  }
+}
+
+.queue__timer {
+  text-align: center;
+}
+
+.queue__progress {
+  padding: 10px;
+
+  @include small {
+    zoom: 0.6;
+  }
+
+  @include medium {
+    zoom: 0.8;
+  }
+}
+
+.queue__explanation {
+  color: $color-primary-light;
+  font-size: $font-s-smaller;
+
+  @include mediumlarge {
+    font-size: $font-s-small;
+  }
+}
+
+.queue__footer {
+  font-family: $font-regular;
+  background: #fff;
+  color: $color-secondary;
+  text-align: center;
+  font-size: $font-s-small;
+  padding: 20px;
+}
+
+.queue__header {
+  display: table;
+  content: ' ';
+  width: 100%;
+}
+
+.queue__header__main {
+  @include container;
+}
+
+.queue__header .logo {
+  float: left;
+
+  @include smallmedium {
+    padding-left: 10px;
+  }
+}
+
+.queue__header__list {
+  float: right;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.queue__header__list--languages {
+  @extend .queue__header__list;
+
+  > li {
+    float: left;
+    background: transparent;
+    color: #fff;
+    margin-top: 2px;
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    transition: 0.3s;
+    padding: 12px;
+    font-size: $font-s-smaller;
+    font-family: $font-bold;
+
+    // Tablet
+    @include medium {
+      padding: 19px;
+      font-size: $font-s-small;
+    }
+
+    // Desktop
+    @include large {
+      padding: 27px;
+      font-size: $font-s-small;
+    }
+
+    &:hover,
+    &.is-active {
+      background: $color-primary-light;
+      transition: 0.3s;
+    }
+
+    &.is-active::after {
+      content: ' ';
+      position: absolute;
+      width: 0;
+      height: 0;
+      left: 50%;
+      bottom: -$triangleSize;
+      margin-left: -$triangleSize;
+      border-style: solid;
+      border-width: $triangleSize $triangleSize 0 $triangleSize;
+      border-color: $color-primary-light transparent transparent transparent;
+    }
+  }
+}
+
+// Icon
+.queue__languageicon {
+  @include icon(language) {
+    transition: 0.3s;
+    margin-left: 1px;
+    margin-top: -2px;
+    font-size: 32px;
+    position: absolute;
+    color: $color-primary;
+
+    @include mediumlarge {
+      & {
+        margin-left: -4px;
+        font-size: 42px;
+      }
+    }
+  }
+
+  .queue__header__list--languages:hover &,
+  .is-active & {
+    color: $color-primary-darker;
+  }
+}
+
+.queue__header .mainheader__toplinks__link {
+  display: block;
+  width: 180px;
+  text-align: center;
+
+  @include medium {
+    width: 130px;
+  }
+}
+
+// Language text
+.queue__header__list--languages span {
+  position: relative;
+  z-index: 1;
+  display: inline-block;
+  width: 35px;
+}

@@ -1,0 +1,196 @@
+$border-color: colour(border-grey);
+
+.selectlist__message {
+  padding: 20px 20px 0;
+}
+
+.selectlist__list {
+  @include unstyledlist;
+}
+
+.selectlist__heading {
+  @include paymentheading;
+}
+
+.selectlist__heading__info {
+  @include icon(infoInverse) {
+    font-size: 22px;
+    text-decoration: none;
+    color: colour(content-bg);
+
+    .no-flexbox & {
+      float: right !important;
+    }
+  }
+}
+
+.selectlist__description {
+  margin: 0;
+  padding: 20px 10px 10px;
+  font-weight: bold;
+}
+
+.selectlist__option {
+  position: relative;
+  border-top: 1px solid $border-color;
+  cursor: pointer;
+
+  &.is-active {
+    background-color: colour(legacyHighlight);
+  }
+
+  &.is-eticket {
+    background-color: colour(panel-default-bg);
+    background-image: url('../../images/eticket.png');
+    background-repeat: no-repeat;
+    background-position: 100% 50%;
+
+    &.is-active {
+      background-color: colour(legacyHighlight);
+    }
+  }
+}
+
+.selectlist__option__container {
+  display: flex;
+  align-items: flex-start;
+  min-height: 60px;
+  padding: 15px 20px;
+  cursor: inherit;
+
+  .no-flexbox & {
+    display: table;
+    width: 100%;
+  }
+}
+
+.selectlist__option__content {
+  flex: 1;
+
+  .no-flexbox & {
+    display: table-cell;
+    width: 100%;
+    vertical-align: top;
+  }
+}
+
+.selectlist__option__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  font-size: 16px;
+  font-weight: bold;
+
+  @include mediumlarge {
+    font-size: 18px;
+  }
+
+  .no-flexbox & {
+    @include clearfix;
+
+    display: block;
+  }
+}
+
+.selectlist__option__input {
+  margin-right: 10px;
+  cursor: pointer;
+
+  .no-flexbox & {
+    display: table-cell;
+    vertical-align: top;
+  }
+}
+
+.selectlist__option__label {
+  padding-right: 20px;
+
+  .is-active & {
+    @include icon(tick) {
+      margin-right: 10px;
+    }
+  }
+
+  .no-flexbox & {
+    float: left;
+  }
+}
+
+.selectlist__option__fee {
+  flex-shrink: 0;
+  white-space: nowrap;
+
+  .no-flexbox & {
+    float: right;
+  }
+}
+
+.selectlist__option__info {
+  @include mediumlarge {
+    display: flex;
+  }
+}
+
+.selectlist__option__description {
+  margin: 20px 0 10px;
+  font-size: 14px;
+  color: colour(legacyLightText);
+
+  .is-active & {
+    color: colour(text-default-color);
+  }
+}
+
+.selectlist__option__icons {
+  @include unstyledlist;
+
+  margin: 20px 10px 0 0;
+  color: colour(btn-default-text);
+}
+
+%selectlist__option__icon {
+  display: inline-block;
+  margin-right: 10px;
+
+  .is-active & {
+    color: colour(text-default-color);
+  }
+}
+
+.selectlist__option__icon--mobile {
+  @extend %selectlist__option__icon;
+
+  @include icon(mobile) {
+    font-size: 24px;
+  }
+}
+
+.selectlist__option__icon--print {
+  @extend %selectlist__option__icon;
+
+  @include icon(print);
+}
+
+.selectlist__option__stagetwo {
+  position: relative;
+  margin-top: 10px;
+}
+
+.selectlist__options__info {
+  position: inherit;
+  margin-right: 12px;
+  color: colour(legacyDarkBtn);
+
+  @include mediumlarge {
+    margin-right: auto;
+  }
+
+  @include icon(infoInverse) {
+    font-size: 18px;
+    text-decoration: none;
+
+    @include mediumlarge {
+      font-size: 22px;
+    }
+  }
+}

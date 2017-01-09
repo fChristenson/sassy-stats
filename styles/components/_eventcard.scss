@@ -1,0 +1,205 @@
+$cardGradient: colour(card-bg-1), colour(card-bg-2), colour(card-bg-3), colour(card-bg-4);
+$cardGradientActive: colour(card-bg--active);
+
+@mixin eventcardGradient($state: false) {
+  $linearTransparency: if($state, 0.1, 0.15);
+  $radialTransparency: if($state, if($state == 'hover', 0.2, 0.4), 0);
+  $angle: if($state, 60deg, 120deg);
+
+  background-color: transparentize(nth($cardGradient, 1), $linearTransparency);
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, $radialTransparency) 100%),
+    linear-gradient(
+      $angle,
+      transparentize(nth($cardGradient, 1), $linearTransparency) 0%,
+      transparentize(nth($cardGradient, 2), $linearTransparency) 31%,
+      transparentize(nth($cardGradient, 3), $linearTransparency) if($state, 71%, 85%),
+      transparentize(nth($cardGradient, 4), $linearTransparency) 100%
+    );
+}
+
+%eventcard,
+.eventcard {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  position: relative;
+  cursor: pointer;
+  background-color: colour(panel-light-bg);
+  color: colour(text-default-color);
+
+  .has-gradient & {
+    @include eventcardGradient();
+
+    color: colour(text-light-color);
+
+    &:hover {
+      @include eventcardGradient('hover');
+    }
+
+    .eventitem.is-open & {
+      @include eventcardGradient(true);
+
+      @if ($currentTheme == 'ticketweb' or $currentTheme == 'billetech') {
+        background: $cardGradientActive;
+      }
+    }
+  }
+
+  .no-flexbox & {
+    @extend %clearfix;
+  }
+}
+
+.eventcard__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px 0;
+
+  @include mediumlarge {
+    padding-left: 10px;
+  }
+}
+
+.eventcard__body__when {
+  width: 100%;
+  min-height: 15px; // preserve space when no date/time shown
+  font-size: 12px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: colour(text-muted-color);
+
+  .has-gradient & {
+    color: colour(text-inverted-color);
+  }
+}
+
+.eventcard__body__name {
+  width: 100%;
+  min-height: 31px;
+  margin: 0;
+  padding-bottom: 4px;
+  line-height: 1.1;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+
+  @include large {
+    font-size: 17px;
+  }
+
+  .is-fullwidth & {
+    @include medium {
+      font-size: 17px;
+    }
+  }
+}
+
+%eventcard__body__venue,
+.eventcard__body__venue {
+  width: 100%;
+  min-height: 15px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: colour(text-muted-color);
+
+  .has-gradient & {
+    color: colour(text-inverted-color);
+  }
+}
+
+.eventcard__body__venue--largeonly {
+  @extend %eventcard__body__venue;
+
+  visibility: hidden;
+  height: 0;
+
+  @include large {
+    visibility: visible;
+    height: auto;
+  }
+}
+
+.eventcard__body__venue--smallonly {
+  flex: 1 100%;
+  padding: 9px 15px;
+  border-top: 1px solid colour(text-light-color);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: colour(text-muted-color);
+
+  @include large {
+    display: none;
+  }
+
+  .is-fullwidth & {
+    @include mediumlarge {
+      display: none;
+    }
+  }
+
+  .has-gradient & {
+    color: colour(text-inverted-color);
+  }
+
+  .no-flexbox & {
+    clear: both;
+  }
+}
+
+%eventcard__body__agerestriction {
+  min-height: 14px;
+  font-family: font(strong);
+  font-size: 12px;
+  color: colour(panel-mid-text);
+}
+
+.eventcard__body__agerestriction--largeonly {
+  @extend %eventcard__body__agerestriction;
+
+  display: none;
+
+  @include mediumlarge {
+    display: block;
+  }
+}
+
+.eventcard__body__agerestriction--smallonly {
+  @extend %eventcard__body__agerestriction;
+
+  display: block;
+  width: 100%;
+  padding: 0 20px;
+  line-height: 30px;
+  background-color: colour(panel-default-bg);
+
+  @include mediumlarge {
+    display: none;
+  }
+}
+
+.eventcard__icon {
+  @include icon(info);
+
+  font-size: 24px;
+  align-self: center;
+  padding: 20px;
+
+  .has-img & {
+    color: colour(link-primary-color);
+  }
+
+  .no-flexbox & {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin-top: -20px;
+  }
+}
+
+.eventcard__toggle {
+  @include button--transparent;
+  @include stretchToFit;
+}

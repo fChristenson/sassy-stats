@@ -1,7 +1,7 @@
 var fs = require('fs');
 var path = require('path');
 var flattenDeep = require('lodash').flattenDeep;
-var thematic = require('sass-thematic');
+var gonzales = require('gonzales-pe');
 
 
 // Path->[{}]
@@ -16,7 +16,13 @@ function walk (dir) {
       result.push(walk(filePath));
     }
     else if (/\.scss$/.test(filePath)) {
-      result.push(thematic.parseASTSync({file: filePath}));
+      var str = fs.readFileSync(filePath, 'utf8');
+      try {
+        result.push(gonzales.parse(str, {syntax: 'scss'}));
+      } catch(e) {
+        console.log('Error found in: ' + filePath);
+        console.log(e.message);
+      }
     }
 
   });

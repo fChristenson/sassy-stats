@@ -52,7 +52,12 @@ function rgbNodeToColor(node) {
     return colorFuncNodeToColor(node);
   }
 
-  return node; // if the node is not pointing to a rgb call we just move on
+  return makeColorNode(nodeToColor(node));
+}
+
+// a->{}
+function makeColorNode(content) {
+  return {type: 'color', content: content};
 }
 
 // astData->{}
@@ -65,10 +70,7 @@ function colorFuncNodeToColor(node) {
     .map(astDataToContent)
     .join('');
 
-  return {
-    type: 'color',
-    content: funcName + '(' + args + ')'
-  };
+  return makeColorNode(funcName + '(' + args + ')');
 }
 
 // astData->Boolean

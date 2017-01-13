@@ -4,6 +4,7 @@ var isFontDeclaration = require('../nodes').isFontDeclaration;
 var isNumberNode = require('../nodes').isNumberNode;
 var collectAstDataValueNodes = require('../nodes').collectAstDataValueNodes;
 var astDataToContent = require('../common').astDataToContent;
+var inspect = require('../common').inspect;
 var concat = require('../common').concat;
 var countProps = require('../common').countProps;
 var head = require('lodash').head;
@@ -22,10 +23,28 @@ function nodesToColorUsages(nodes) {
     .reduce(concat, [])
     .filter(isColorNode)
     .map(rgbNodeToColor)
+    .filter(hasColorType)
+    .map(nodeToColor)
+    .filter(isStringWithLength)
     .reduce(countProps, {});
 }
 
-// astData->{}
+// astData->bool
+function hasColorType(node) {
+  return get(node, 'type') === 'color';
+}
+
+// astData->String
+function nodeToColor(node) {
+  return get(node, 'content', '');
+}
+
+// a->bool
+function isStringWithLength(val) {
+  return typeof val === 'string' && val.length > 0;
+}
+
+// astData->String
 function rgbNodeToColor(node) {
   var firstChild = head(astDataToContent(node));
 
@@ -50,7 +69,18 @@ function colorFuncNodeToColor(node) {
       return parseInt(val);
     });
 
-  return '#' + rgbHex(args[0], args[1], args[2]);
+  try {
+    return {
+      type: 'color',
+      content: rgbHex(args[0], args[1], args[2])
+    };
+
+  } catch (error) {
+    console.log('Error for values "' + args[0] + ' ' + args[1] + ' ' + args[2] + '"');
+    console.log(error.msg);
+
+    return {content: 'fail'};
+  }
 }
 
 // astData->Boolean

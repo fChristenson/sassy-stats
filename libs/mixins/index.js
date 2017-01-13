@@ -6,7 +6,7 @@ var countProps = require('../common').countProps;
 var concat = require('../common').concat;
 
 // [astData]->{}
-function nodesToMixinUsages (nodes) {
+function nodesToMixinUsages(nodes) {
   return findIncludeNodes(nodes)
   .map(astDataToContent)
   .reduce(concat, [])

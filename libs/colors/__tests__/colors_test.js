@@ -26,7 +26,6 @@ describe('colors', function() {
     it('should not have any other keys apart from the names of the colors found', function() {
       var data = walk(path.join(__dirname, 'testing_dir'));
       var stats = F.nodesToColorUsages(data);
-      console.log(util.inspect(stats, false, Infinity));
       expect(stats['fff']).to.equal(1);
       expect(stats['ffffff']).to.equal(1);
       expect(stats['white']).to.equal(1);

@@ -77,7 +77,7 @@ function colorFuncNodeToColor(node) {
 
   } catch (error) {
     console.log('Error for values "' + args[0] + ' ' + args[1] + ' ' + args[2] + '"');
-    console.log(error.msg);
+    console.log(error.message);
 
     return {content: 'fail'};
   }

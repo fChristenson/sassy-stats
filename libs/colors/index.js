@@ -1,7 +1,6 @@
 var isIdentNode = require('../nodes').isIdentNode;
 var isFunctionNode = require('../nodes').isFunctionNode;
 var isFontDeclaration = require('../nodes').isFontDeclaration;
-var isNumberNode = require('../nodes').isNumberNode;
 var collectAstDataValueNodes = require('../nodes').collectAstDataValueNodes;
 var astDataToContent = require('../common').astDataToContent;
 var inspect = require('../common').inspect;
@@ -9,7 +8,6 @@ var concat = require('../common').concat;
 var countProps = require('../common').countProps;
 var head = require('lodash').head;
 var get = require('lodash').get;
-var rgbHex = require('rgb-hex');
 var findDeclarationNodes = require('../nodes').findDeclarationNodes;
 
 // [astData]->{}
@@ -61,26 +59,16 @@ function rgbNodeToColor(node) {
 function colorFuncNodeToColor(node) {
   // functions nodes has a the id of the function as first child
   // the second child are the args to the function
+  var funcName = get(node, 'content[0].content', ''); 
   var argNode = get(node, 'content[1]', {});
   var args = astDataToContent(argNode)
-    .filter(isNumberNode)
     .map(astDataToContent)
-    .map(function(val) {
-      return parseInt(val);
-    });
+    .join('');
 
-  try {
-    return {
-      type: 'color',
-      content: rgbHex(args[0], args[1], args[2])
-    };
-
-  } catch (error) {
-    console.log('Error for values "' + args[0] + ' ' + args[1] + ' ' + args[2] + '"');
-    console.log(error.message);
-
-    return {content: 'fail'};
-  }
+  return {
+    type: 'color',
+    content: funcName + '(' + args + ')'
+  };
 }
 
 // astData->Boolean

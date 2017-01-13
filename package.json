@@ -16,8 +16,7 @@
   "dependencies": {
     "colors": "^1.1.2",
     "gonzales-pe": "^4.0.3",
-    "lodash": "^4.17.2",
-    "rgb-hex": "^2.1.0"
+    "lodash": "^4.17.2"
   },
   "devDependencies": {
     "chai": "^3.5.0",

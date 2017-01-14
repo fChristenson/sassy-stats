@@ -1,4 +1,3 @@
-var isSimpleSelectorNode = require('../nodes').isSimpleSelectorNode;
 var isIdentNode = require('../nodes').isIdentNode;
 var findIncludeNodes = require('../nodes').findIncludeNodes;
 var astDataToContent = require('../common').astDataToContent;
@@ -10,11 +9,9 @@ function nodesToMixinUsages(nodes) {
   return findIncludeNodes(nodes)
   .map(astDataToContent)
   .reduce(concat, [])
-  .filter(isSimpleSelectorNode)
+  .filter(isIdentNode)
   .map(astDataToContent)
   .reduce(concat, [])
-  .filter(isIdentNode) // this collects the mixin name nodes
-  .map(astDataToContent)
   .reduce(countProps, {});
 }
 

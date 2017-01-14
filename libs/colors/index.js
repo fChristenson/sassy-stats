@@ -3,7 +3,6 @@ var isFunctionNode = require('../nodes').isFunctionNode;
 var isFontDeclaration = require('../nodes').isFontDeclaration;
 var collectAstDataValueNodes = require('../nodes').collectAstDataValueNodes;
 var astDataToContent = require('../common').astDataToContent;
-var inspect = require('../common').inspect;
 var concat = require('../common').concat;
 var countProps = require('../common').countProps;
 var head = require('lodash').head;

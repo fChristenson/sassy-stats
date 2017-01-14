@@ -59,9 +59,6 @@ var isNumberNode = isNodeType('number');
 var isVariableNode = isNodeType('variable');
 
 // AstData->Boolean
-var isSimpleSelectorNode = isNodeType('simpleSelector');
-
-// AstData->Boolean
 function isFontNode (node) {
   return astDataToContent(node) === 'font';
 }
@@ -85,7 +82,7 @@ var isFunctionNode = isNodeType('function');
 var isStringNode = isNodeType('string');
 
 // []->AstData->[AstData]
-function collectAstDataValueNodes (acc, node) {
+function collectAstDataValueNodes(acc, node) {
   return acc.concat(findValueNodes(astDataToContent(node)));
 }
 
@@ -98,7 +95,6 @@ module.exports = {
   isFontDeclaration: isFontDeclaration,
   findIncludeNodes: findIncludeNodes,
   isIdentNode: isIdentNode,
-  isSimpleSelectorNode: isSimpleSelectorNode,
   collectAstDataValueNodes: collectAstDataValueNodes,
   isFunctionNode: isFunctionNode,
   isVariableNode: isVariableNode,

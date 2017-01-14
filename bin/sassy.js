@@ -35,7 +35,11 @@ if (dirExists(rootDir)) {
 function printCounts(counts) {
   counts.forEach(function(count) {
     // we split so slugs get a space
-    console.log(count.key.split('_').join(' ').yellow + ': ' + count.val.toString().red);
+    console.log(count.key
+      .split('_')
+      .join(' ')
+      .trim()
+      .yellow + ': ' + count.val.toString().red);
   });
 }
 
@@ -45,6 +49,7 @@ function countsToArray(obj) {
     .reduce(function(acc, key) {
       acc.push({ key: key, val: obj[key] });
       return acc;
+
     }, [])
     .sort(function(a, b) {
       return b.val - a.val;

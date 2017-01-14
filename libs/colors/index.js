@@ -5,6 +5,8 @@ var collectAstDataValueNodes = require('../nodes').collectAstDataValueNodes;
 var astDataToContent = require('../common').astDataToContent;
 var concat = require('../common').concat;
 var countProps = require('../common').countProps;
+var inspect = require('../common').inspect;
+var colorWords = require('./color_words');
 var head = require('lodash').head;
 var get = require('lodash').get;
 var findDeclarationNodes = require('../nodes').findDeclarationNodes;
@@ -23,7 +25,13 @@ function nodesToColorUsages(nodes) {
     .filter(hasColorType)
     .map(nodeToColor)
     .filter(isStringWithLength)
+    .filter(isColor)
     .reduce(countProps, {});
+}
+
+// astData->bool
+function isColor(str) {
+  return /^(rgba?.+|[a-fA-F0-9]{3,6})$/.test(str) || colorWords.indexOf(str.toLowerCase()) !== -1;
 }
 
 // astData->bool

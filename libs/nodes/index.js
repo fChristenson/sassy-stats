@@ -4,17 +4,17 @@ var curry = require('lodash').curry;
 var astDataToContent = require('../common').astDataToContent;
 
 // String->AstData->Boolean
-function nodeHasArrayContent (node) {
+function nodeHasArrayContent(node) {
   return Array.isArray(astDataToContent(node));
 }
 
 // []->Number
-function len (array) {
+function len(array) {
   return get(array, 'length', 0);
 }
 
 // String->String->[AstData]->[]
-var findNodes = curry(function (prop, id, nodes) {
+var findNodes = curry(function(prop, id, nodes) {
   if (len(nodes) <= 0) return [];
 
   if (len(nodes) === 1 && !nodeHasArrayContent(head(nodes))) {
@@ -37,7 +37,7 @@ var findDeclarationNodes = findNodes('type', 'declaration');
 var findNodesWithContent = findNodes('content');
 
 // String->[]->AstData
-var addNodes = curry(function (prop, id, acc, node) {
+var addNodes = curry(function(prop, id, acc, node) {
   if (get(node, prop) === id) acc.push(node);
 
   if (nodeHasArrayContent(node)) {
@@ -48,7 +48,7 @@ var addNodes = curry(function (prop, id, acc, node) {
 });
 
 // AstData->Boolean
-var isNodeType = curry(function (id, node) {
+var isNodeType = curry(function(id, node) {
   return get(node, 'type') === id;
 });
 
@@ -59,12 +59,12 @@ var isNumberNode = isNodeType('number');
 var isVariableNode = isNodeType('variable');
 
 // AstData->Boolean
-function isFontNode (node) {
+function isFontNode(node) {
   return astDataToContent(node) === 'font';
 }
 
 // AstData->Boolean
-function isFontDeclaration (node) {
+function isFontDeclaration(node) {
   var firstContentNode = head(astDataToContent(node));
   var firstOfContentNode = head(astDataToContent(firstContentNode));
 

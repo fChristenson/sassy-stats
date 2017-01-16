@@ -36,8 +36,6 @@ function printCounts(counts) {
   counts.forEach(function(count) {
     // we split so slugs get a space
     console.log(count.key
-      .split('_')
-      .join(' ')
       .trim()
       .yellow + ': ' + count.val.toString().red);
   });

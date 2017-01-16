@@ -16,8 +16,14 @@ function nodesToFontUsages(nodes) {
   .reduce(concat, [])
   .filter(isFontNode)
   .map(astDataToContent)
-  .map(stringToSlug)
+  .map(toLowerCase)
+  .map(stripQuotes)
   .reduce(countProps, {});
+}
+
+// String->String
+function toLowerCase(str) {
+  return str.toLowerCase();
 }
 
 // astData->bool
@@ -26,10 +32,8 @@ function isFontNode(node) {
 }
 
 // String->String
-function stringToSlug(str) {
-  return str
-    .replace(/[\s-]/g, '_') // slug font names
-    .replace(/["]/g, ''); // strip "" from names
+function stripQuotes(str) {
+  return str.replace(/["']/g, ''); // strip "" and '' from names
 }
 
 module.exports = {

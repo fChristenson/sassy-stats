@@ -29,18 +29,21 @@ describe('fonts', function() {
       var stats = F.nodesToFontUsages(data);
       expect(stats.helvetica).to.equal(2);
     });
-    
 
-    it('returns spaced font names as slugs', function() {
+    it('counts multi word fonts', function() {
       var data = walk(path.join(__dirname, 'testing_dir3'));
       var stats = F.nodesToFontUsages(data);
-      expect(stats.Times_New_Roman).to.equal(1);
-      expect(stats.sans_serif).to.equal(1);
-      expect(Object.keys(stats).length).to.equal(2);
+      expect(stats['times new roman']).to.equal(1);
     });
 
     it('counts both font-family and font refs', function() {
       var data = walk(path.join(__dirname, 'testing_dir4'));
+      var stats = F.nodesToFontUsages(data);
+      expect(stats.helvetica).to.equal(2);
+    });
+
+    it('ignores font name casing', function() {
+      var data = walk(path.join(__dirname, 'testing_dir5'));
       var stats = F.nodesToFontUsages(data);
       expect(stats.helvetica).to.equal(2);
     });

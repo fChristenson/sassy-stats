@@ -5,9 +5,10 @@ var findDeclarationNodes = require('../nodes').findDeclarationNodes;
 var astDataToContent = require('../common').astDataToContent;
 var countProps = require('../common').countProps;
 var concat = require('../common').concat;
+var nativeFuncNames = require('./native_function_names');
 
 // [astData]->{}
-function nodesToFunctionUsages (nodes) {
+function nodesToFunctionUsages(nodes) {
   return findDeclarationNodes(nodes)
   .reduce(collectAstDataValueNodes, [])
   .map(astDataToContent)
@@ -17,11 +18,12 @@ function nodesToFunctionUsages (nodes) {
   .reduce(concat, [])
   .filter(isIdentNode) // this collects the function name nodes
   .map(astDataToContent)
-  .filter(function (name) {
-    // we remove the standard css functions
-    return name !== 'rgb' && name !== 'rgba';
-  })
+  .filter(removeNativeFunctions)
   .reduce(countProps, {});
+}
+
+function removeNativeFunctions(str) {
+  return nativeFuncNames.indexOf(str) === -1;
 }
 
 module.exports = {

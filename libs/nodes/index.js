@@ -60,7 +60,8 @@ var isVariableNode = isNodeType('variable');
 
 // AstData->Boolean
 function isFontNode(node) {
-  return astDataToContent(node) === 'font';
+  var content = astDataToContent(node);
+  return content === 'font' || content === 'font-family';
 }
 
 // AstData->Boolean

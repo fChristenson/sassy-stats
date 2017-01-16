@@ -8,23 +8,28 @@ var countProps = require('../common').countProps;
 var concat = require('../common').concat;
 
 // [astData]->{}
-function nodesToFontUsages (nodes) {
+function nodesToFontUsages(nodes) {
   return findDeclarationNodes(nodes)
   .filter(isFontDeclaration)
   .reduce(collectAstDataValueNodes, [])
   .map(astDataToContent)
   .reduce(concat, [])
-  .filter(function (node) {
-    // this collects the font name nodes
-    return isIdentNode(node) || isStringNode(node);
-  })
+  .filter(isFontNode)
   .map(astDataToContent)
-  .map(function (str) {
-    return str
-           .replace(/[\s-]/g, '_') // slug font names
-           .replace(/["]/g, ''); // strip "" from names
-  })
+  .map(stringToSlug)
   .reduce(countProps, {});
+}
+
+// astData->bool
+function isFontNode(node) {
+  return isIdentNode(node) || isStringNode(node);
+}
+
+// String->String
+function stringToSlug(str) {
+  return str
+    .replace(/[\s-]/g, '_') // slug font names
+    .replace(/["]/g, ''); // strip "" from names
 }
 
 module.exports = {

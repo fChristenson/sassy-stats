@@ -16,5 +16,6 @@ Sassy-stats will spit out a list of how many references it found of:
 * Variables
 
 ## Submitting a bug report
-If you want to help make the tool better please submit the reference name,
-what you expect the number to be and the files where the reference is found.
+If you want to help make the tool better please submit the issue with the files
+that you ran the tool against, this will help us create a test against your
+specific problem.

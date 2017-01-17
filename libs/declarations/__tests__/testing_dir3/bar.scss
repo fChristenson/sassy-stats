@@ -1,0 +1,11 @@
+@mixin baz() {
+  padding: 10px;
+}
+
+.asd {
+  @include baz;
+  
+  &.bas {
+    margin: bar();
+  }
+}

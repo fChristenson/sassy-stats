@@ -1,5 +1,4 @@
 var D = require('../');
-var util = require('util');
 var path = require('path');
 var walk = require('../../directories').walk;
 var expect = require('chai').expect;
@@ -31,7 +30,10 @@ describe('declarations', function() {
 
   describe('findUnusedDeclaration', function() {
     it('returns a list of unused declarations', function() {
-      expect(1).to.equal(2);
+      var data = walk(path.join(__dirname, 'testing_dir3'));
+      var stats = D.findUnusedDeclaration(data);
+      expect(stats.length).to.equal(1);
+      expect(stats).to.include('foo');
     });
   });
 });

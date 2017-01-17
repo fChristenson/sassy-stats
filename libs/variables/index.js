@@ -6,7 +6,7 @@ var concat = require('../common').concat;
 var countProps = require('../common').countProps;
 
 // [astData]->{}
-function nodesToVariableUsages (nodes) {
+function nodesToVariableUsages(nodes) {
   return findDeclarationNodes(nodes)
   .reduce(collectAstDataValueNodes, [])
   .map(astDataToContent)

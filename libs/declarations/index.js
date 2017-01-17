@@ -1,6 +1,10 @@
 var get = require('lodash').get;
 var tail = require('lodash').tail;
 var head = require('lodash').head;
+var difference = require('lodash').difference;
+var nodesToVariableUsages = require('../variables').nodesToVariableUsages;
+var nodesToMixinUsages = require('../mixins').nodesToMixinUsages;
+var nodesToFunctionUsages = require('../functions').nodesToFunctionUsages;
 
 // [AstData]->[String]
 function findDeclarations(nodes) {
@@ -18,10 +22,12 @@ function nodesToNames(acc, node) {
   return acc;
 }
 
+// String->bool
 function removeEmptyString(str) {
   return get(str, 'length', 0) > 0;
 }
 
+// AstData->String
 function funcDeclarationNodeToName(node) {
   var childNode = get(node, 'content[2]', {});
 
@@ -72,10 +78,12 @@ function findDeclarationNodes(nodes, acc) {
   return findDeclarationNodes(tail(nodes), result);
 }
 
+// AstData->bool
 function isFunctionDeclarationNode(node) {
   return get(node, 'type') === 'atrule'; 
 }
 
+// AstData->bool
 function isMixinDeclarationNode(node) {
   return get(node, 'type') === 'mixin'; 
 }
@@ -91,6 +99,21 @@ function isDeclarationNode(node) {
   return get(node, 'type') === 'declaration';
 }
 
+// [AstData]->[String]
+function findUnusedDeclaration(nodes) {
+  var declarations = findDeclarations(nodes);
+  var vars = nodesToVariableUsages(nodes);
+  var mixins = nodesToMixinUsages(nodes);
+  var functions = nodesToFunctionUsages(nodes);
+
+  var refs = Object.keys(vars)
+    .concat(Object.keys(mixins))
+    .concat(Object.keys(functions));
+
+  return difference(declarations, refs);
+}
+
 module.exports = {
-  findDeclarations: findDeclarations
+  findDeclarations: findDeclarations,
+  findUnusedDeclaration: findUnusedDeclaration
 };

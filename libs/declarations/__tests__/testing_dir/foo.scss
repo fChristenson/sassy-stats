@@ -1,0 +1,9 @@
+$foo: 1px;
+
+@function bar() {
+  @return 10px;
+}
+
+@mixin baz() {
+  padding: 10px;
+}

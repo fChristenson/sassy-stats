@@ -1,0 +1,18 @@
+$foo: 1px;
+
+@function bar() {
+  @return 10px;
+}
+
+@mixin baz() {
+  padding: 10px;
+}
+
+.asd {
+  @include bas;
+  
+  &.bas {
+    padding: $foo;
+    margin: bar();
+  }
+}

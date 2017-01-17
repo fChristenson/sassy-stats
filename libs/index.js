@@ -4,7 +4,7 @@ var Mixins = require('./mixins');
 var Functions = require('./functions');
 var Colors = require('./colors');
 
-module.exports = function (astData) {
+module.exports = function(astData) {
 
   return {
     variables: Variables.nodesToVariableUsages(astData),

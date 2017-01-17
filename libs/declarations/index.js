@@ -1,7 +1,6 @@
 var get = require('lodash').get;
 var tail = require('lodash').tail;
 var head = require('lodash').head;
-var difference = require('lodash').difference;
 var nodesToVariableUsages = require('../variables').nodesToVariableUsages;
 var nodesToMixinUsages = require('../mixins').nodesToMixinUsages;
 var nodesToFunctionUsages = require('../functions').nodesToFunctionUsages;
@@ -9,55 +8,58 @@ var nodesToFunctionUsages = require('../functions').nodesToFunctionUsages;
 // [AstData]->[String]
 function findDeclarations(nodes) {
   return findDeclarationNodes(nodes)
-  .reduce(nodesToNames, [])
-  .filter(removeEmptyString);
+  .reduce(nodesToDeclarationTypes, [])
+  .filter(objectHasProps);
 }
 
 // []->AstData->
-function nodesToNames(acc, node) {
-  acc.push(varDeclarationNodeToName(node));
-  acc.push(funcDeclarationNodeToName(node));
-  acc.push(mixinDeclarationNodeToName(node));
+function nodesToDeclarationTypes(acc, node) {
+  acc.push(varDeclarationNodeToType(node));
+  acc.push(funcDeclarationNodeToType(node));
+  acc.push(mixinDeclarationNodeToType(node));
 
   return acc;
 }
 
-// String->bool
-function removeEmptyString(str) {
-  return get(str, 'length', 0) > 0;
+// {}->bool
+function objectHasProps(obj) {
+  return Object.keys(obj).length > 0;
 }
 
-// AstData->String
-function funcDeclarationNodeToName(node) {
+// AstData->{}
+function funcDeclarationNodeToType(node) {
   var childNode = get(node, 'content[2]', {});
 
   if (childNode.type === 'function') {
-    return get(childNode, 'content[0].content', '');
+    var name = get(childNode, 'content[0].content', '');
+    return makeDeclarationType('function', name);
   }
 
-  return '';
+  return {};
 }
 
-// AstData->String
-function mixinDeclarationNodeToName(node) {
+// AstData->{}
+function mixinDeclarationNodeToType(node) {
   var type = get(node, 'type');
 
   if(type === 'mixin') {
-    return get(node, 'content[2].content');
+    var name = get(node, 'content[2].content');
+    return makeDeclarationType('mixin', name);
   }
 
-  return '';
+  return {};
 }
 
-// AstData->String
-function varDeclarationNodeToName(node) {
+// AstData->{}
+function varDeclarationNodeToType(node) {
   var childNode = get(node, 'content[0].content[0]', {});
 
   if(childNode.type === 'variable') {
-    return get(childNode, 'content[0].content');
+    var name = get(childNode, 'content[0].content');
+    return makeDeclarationType('variable', name);
   }
 
-  return '';
+  return {};
 }
 
 // [AstData]->[AstData]
@@ -69,7 +71,10 @@ function findDeclarationNodes(nodes, acc) {
 
   var firstNode = head(nodes);
   var content = get(firstNode, 'content', []);
-  if(isDeclarationNode(firstNode) || isMixinDeclarationNode(firstNode) || isFunctionDeclarationNode(firstNode)) {
+  if(isDeclarationNode(firstNode) 
+    || isMixinDeclarationNode(firstNode) 
+    || isFunctionDeclarationNode(firstNode)) {
+    
     result.push(firstNode);
   }
     
@@ -99,18 +104,44 @@ function isDeclarationNode(node) {
   return get(node, 'type') === 'declaration';
 }
 
+// string->string->{}
+function makeDeclarationType(type, str) {
+  return {type: type, name: str};
+}
+
 // [AstData]->[String]
 function findUnusedDeclaration(nodes) {
   var declarations = findDeclarations(nodes);
-  var vars = nodesToVariableUsages(nodes);
+  var vars = findUnusedVars(declarations, nodes);
+  var mixins = findUnusedMixins(declarations, nodes);
+  var functions = findUnusedFunctions(declarations, nodes);
+
+  return vars.concat(mixins).concat(functions);
+}
+
+// []->[]->[]
+function findUnusedMixins(declarations, nodes) {
   var mixins = nodesToMixinUsages(nodes);
+  return declarations.filter(filterUnused('mixin', mixins));
+}
+
+// string->{}->({}->bool)
+function filterUnused(type, usages) {
+  return function(e) {
+    return Object.keys(usages).indexOf(e.name) === -1 && e.type === type;
+  };
+}
+
+// []->[]->[]
+function findUnusedFunctions(declarations, nodes) {
   var functions = nodesToFunctionUsages(nodes);
+  return declarations.filter(filterUnused('function', functions));
+}
 
-  var refs = Object.keys(vars)
-    .concat(Object.keys(mixins))
-    .concat(Object.keys(functions));
-
-  return difference(declarations, refs);
+// []->[]->[]
+function findUnusedVars(declarations, nodes) {
+  var vars = nodesToVariableUsages(nodes);
+  return declarations.filter(filterUnused('variable', vars));
 }
 
 module.exports = {

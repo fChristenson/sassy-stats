@@ -33,7 +33,7 @@ describe('declarations', function() {
       var data = walk(path.join(__dirname, 'testing_dir3'));
       var stats = D.findUnusedDeclaration(data);
       expect(stats.length).to.equal(1);
-      expect(stats).to.include('foo');
+      expect(stats[0]).to.deep.equal({type: 'variable', name: 'foo'});
     });
   });
 });

@@ -16,42 +16,40 @@ if (dirExists(rootDir)) {
 
   var modules = Object.keys(data);
 
-  modules
-    .forEach(function(key) {
-      // print header
-      console.log(key.toUpperCase().green);
-      console.log('----------------------------'.green);
-
-      printCounts(countsToArray(data[key]));
-
-      console.log('');
-    });
+  modules.forEach(printList);
 
   console.log('');
 } else {
   console.log(rootDir + ' is not a valid directory!');
 }
 
-function printCounts(counts) {
-  counts.forEach(function(count) {
-    // we split so slugs get a space
-    console.log(count.key
-      .trim()
-      .yellow + ': ' + count.val.toString().red);
-  });
+function printList(key) {
+  console.log(key.toUpperCase().green);
+  console.log('----------------------------'.green);
+  countsToArray(data[key]).forEach(printLine);
+  console.log('');
+}
+
+function printLine(count) {
+  console.log(count.key.trim().yellow + ': ' + count.val.toString().red);
 }
 
 // {}->[{}]
 function countsToArray(obj) {
   return Object.keys(obj)
-    .reduce(function(acc, key) {
-      acc.push({ key: key, val: obj[key] });
-      return acc;
+    .reduce(countsToObjects(obj), [])
+    .sort(sortByVal);
+}
 
-    }, [])
-    .sort(function(a, b) {
-      return b.val - a.val;
-    });
+function sortByVal(a, b) {
+  return b.val - a.val;
+}
+
+function countsToObjects(obj) {
+  return function(acc, key) {
+    acc.push({ key: key, val: obj[key] });
+    return acc;
+  };
 }
 
 function printName() {

@@ -33,9 +33,6 @@ var findIncludeNodes = findNodes('type', 'include');
 // String->[AstData]->[]
 var findDeclarationNodes = findNodes('type', 'declaration');
 
-// String->[AstData]->[]
-var findNodesWithContent = findNodes('content');
-
 // String->[]->AstData
 var addNodes = curry(function(prop, id, acc, node) {
   if (get(node, prop) === id) acc.push(node);
@@ -99,7 +96,6 @@ module.exports = {
   collectAstDataValueNodes: collectAstDataValueNodes,
   isFunctionNode: isFunctionNode,
   isVariableNode: isVariableNode,
-  findNodesWithContent: findNodesWithContent,
   findValueNodes: findValueNodes,
   findDeclarationNodes: findDeclarationNodes
 };

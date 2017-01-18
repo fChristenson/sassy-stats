@@ -1,6 +1,6 @@
 {
   "name": "sassy-stats",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "description": "CLI for displaying your usage statistics of things like colors, variables and fonts",
   "main": "bin/sassy.js",
   "scripts": {

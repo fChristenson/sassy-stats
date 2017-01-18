@@ -45,5 +45,12 @@ describe('variables', function() {
       expect(Object.keys(stats)).to.include('checkbox-color--selected');
       expect(stats['checkbox-color--selected']).to.equal(2);
     });
+
+    it('does not count params', function() {
+      var data = walk(path.join(__dirname, 'testing_dir4'));
+      var stats = V.nodesToVariableUsages(data);
+      expect(Object.keys(stats).length).to.equal(1);
+      expect(Object.keys(stats)).to.include('bar');
+    });
   });
 });

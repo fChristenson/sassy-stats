@@ -5,7 +5,7 @@ var nodesToVariableUsages = require('../variables').nodesToVariableUsages;
 var nodesToMixinUsages = require('../mixins').nodesToMixinUsages;
 var nodesToFunctionUsages = require('../functions').nodesToFunctionUsages;
 
-// [AstData]->[String]
+// []->[]
 function findDeclarations(nodes) {
   return findDeclarationNodes(nodes)
   .reduce(nodesToDeclarationTypes, [])

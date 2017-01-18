@@ -52,5 +52,14 @@ describe('variables', function() {
       expect(Object.keys(stats).length).to.equal(1);
       expect(Object.keys(stats)).to.include('bar');
     });
+
+    it.only('reports variables inside functions', function() {
+      var data = walk(path.join(__dirname, 'testing_dir5'));
+      var stats = V.nodesToVariableUsages(data);
+      console.log('stats', stats);
+      expect(Object.keys(stats).length).to.equal(2);
+      expect(Object.keys(stats)).to.include('foo');
+      expect(Object.keys(stats)).to.include('bar');
+    });
   });
 });

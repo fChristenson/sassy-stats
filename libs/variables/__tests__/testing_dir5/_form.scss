@@ -1,0 +1,9 @@
+$foo: 10px;
+@function foo($param, $param2) {
+  @return $foo;
+}
+
+$bar: 10px;
+@mixin baz($param) {
+  padding: $bar;
+}

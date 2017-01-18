@@ -25,6 +25,9 @@ var findNodes = curry(function(prop, id, nodes) {
 });
 
 // String->[AstData]->[]
+var findBlockNodes = findNodes('type', 'block');
+
+// String->[AstData]->[]
 var findValueNodes = findNodes('type', 'value');
 
 // String->[AstData]->[]
@@ -101,5 +104,6 @@ module.exports = {
   isFunctionNode: isFunctionNode,
   isVariableNode: isVariableNode,
   findValueNodes: findValueNodes,
-  findDeclarationNodes: findDeclarationNodes
+  findDeclarationNodes: findDeclarationNodes,
+  findBlockNodes: findBlockNodes
 };

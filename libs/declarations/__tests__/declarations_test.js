@@ -13,18 +13,18 @@ describe('declarations', function() {
       var data = walk(path.join(__dirname, 'testing_dir'));
       var stats = D.findDeclarations(data);
       expect(stats.length).to.equal(3);
-      expect(stats).to.include('foo');
-      expect(stats).to.include('bar');
-      expect(stats).to.include('baz');
+      expect(stats).to.include({type: 'variable', name: 'foo'});
+      expect(stats).to.include({type: 'function', name: 'bar'});
+      expect(stats).to.include({type: 'mixin', name: 'baz'});
     });
 
     it('only picks up declaration', function() {
       var data = walk(path.join(__dirname, 'testing_dir2'));
       var stats = D.findDeclarations(data);
       expect(stats.length).to.equal(3);
-      expect(stats).to.include('foo');
-      expect(stats).to.include('bar');
-      expect(stats).to.include('baz');
+      expect(stats).to.include({type: 'variable', name: 'foo'});
+      expect(stats).to.include({type: 'function', name: 'bar'});
+      expect(stats).to.include({type: 'mixin', name: 'baz'});
     });
   });
 

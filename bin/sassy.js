@@ -31,7 +31,18 @@ function printList(key) {
 }
 
 function printLine(count) {
-  console.log(count.key.trim().yellow + ': ' + count.val.toString().red);
+  var keyStr = count.key.trim() + ':';
+  console.log(keyStr.yellow + getSpaces(keyStr) + count.val.toString().red);
+}
+
+function getSpaces(str) {
+  var result = '';
+
+  for(var i = 0; i < 40 - str.length; i++) {
+    result += ' ';
+  }
+
+  return result;
 }
 
 // {}->[{}]

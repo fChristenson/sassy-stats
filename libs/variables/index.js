@@ -36,12 +36,7 @@ function nodesToArgumentVariableNames(nodes) {
 
 // [astData]->{}
 function nodesToVariableUsages(nodes) {
-  var blockNodes = findBlockNodes(nodes)
-  .map(function(e) {
-    console.log(util.inspect(e, false, Infinity));
-    console.log('------------------------------------');
-  return e;
-  });
+  //TODO: var blockNodes = findBlockNodes(nodes);
 
   var stats = findDeclarationNodes(nodes)
     .reduce(collectAstDataValueNodes, [])

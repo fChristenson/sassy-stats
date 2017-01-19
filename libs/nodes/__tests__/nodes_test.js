@@ -20,29 +20,29 @@ describe('nodes', function() {
 
   describe('findValueNodes', function() {
     it('finds value nodes', function() {
-      var data = walk(path.join(__dirname, 'testing_dir'));
-      var nodes = N.findValueNodes(data);
+      var files = walk(path.join(__dirname, 'testing_dir'));
+      var nodes = N.findValueNodes(files.data);
       expect(nodes.length).to.equal(1);
     });
 
     it('finds no value nodes', function() {
-      var data = walk(path.join(__dirname, 'testing_dir2'));
-      var nodes = N.findValueNodes(data);
+      var files = walk(path.join(__dirname, 'testing_dir2'));
+      var nodes = N.findValueNodes(files.data);
       expect(nodes.length).to.equal(0);
     });
   });
 
   describe('findDeclarationNodes', function() {
     it('finds a node', function() {
-      var data = walk(path.join(__dirname, 'testing_dir'));
-      var nodes = N.findDeclarationNodes(data);
+      var files = walk(path.join(__dirname, 'testing_dir'));
+      var nodes = N.findDeclarationNodes(files.data);
       expect(nodes.length).to.equal(1);
       expect(nodes[0].type).to.equal('declaration');
     });
 
     it('returns an emtpy array if no match is found', function() {
-      var data = walk(path.join(__dirname, 'testing_dir2'));
-      var nodes = N.findDeclarationNodes(data);
+      var files = walk(path.join(__dirname, 'testing_dir2'));
+      var nodes = N.findDeclarationNodes(files.data);
       expect(nodes.length).to.equal(0);
     });
   });

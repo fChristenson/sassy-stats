@@ -11,29 +11,29 @@ describe('variables', function() {
   describe('nodesToVariableUsages', function() {
     it('returns an object where each key is the var name and the value is the number of references',
       function() {
-        var data = walk(path.join(__dirname, 'testing_dir'));
-        var stats = V.nodesToVariableUsages(data);
+        var files = walk(path.join(__dirname, 'testing_dir'));
+        var stats = V.nodesToVariableUsages(files.data);
         expect(stats.bar).to.equal(1);
         expect(stats.baz).to.equal(2);
       });
 
     it('should not have any other keys apart from the names of the variables found', function() {
-      var data = walk(path.join(__dirname, 'testing_dir'));
-      var stats = V.nodesToVariableUsages(data);
+      var files = walk(path.join(__dirname, 'testing_dir'));
+      var stats = V.nodesToVariableUsages(files.data);
       expect(stats.bar).to.equal(1);
       expect(stats.baz).to.equal(2);
       expect(Object.keys(stats).length).to.equal(2);
     });
 
     it('counts var usages over multiple files', function() {
-      var data = walk(path.join(__dirname, 'testing_dir2'));
-      var stats = V.nodesToVariableUsages(data);
+      var files = walk(path.join(__dirname, 'testing_dir2'));
+      var stats = V.nodesToVariableUsages(files.data);
       expect(stats.bar).to.equal(4);
     });
 
     it('handles a case such as testing_dir3', function() {
-      var data = walk(path.join(__dirname, 'testing_dir3'));
-      var stats = V.nodesToVariableUsages(data);
+      var files = walk(path.join(__dirname, 'testing_dir3'));
+      var stats = V.nodesToVariableUsages(files.data);
       expect(Object.keys(stats).length).to.equal(3);
 
       expect(Object.keys(stats)).to.include('checkbox-tick');
@@ -47,15 +47,15 @@ describe('variables', function() {
     });
 
     it('does not count params', function() {
-      var data = walk(path.join(__dirname, 'testing_dir4'));
-      var stats = V.nodesToVariableUsages(data);
+      var files = walk(path.join(__dirname, 'testing_dir4'));
+      var stats = V.nodesToVariableUsages(files.data);
       expect(Object.keys(stats).length).to.equal(1);
       expect(Object.keys(stats)).to.include('bar');
     });
 
-    it.only('reports variables inside functions', function() {
-      var data = walk(path.join(__dirname, 'testing_dir5'));
-      var stats = V.nodesToVariableUsages(data);
+    it('reports variables inside functions', function() {
+      var files = walk(path.join(__dirname, 'testing_dir5'));
+      var stats = V.nodesToVariableUsages(files.data);
       console.log('stats', stats);
       expect(Object.keys(stats).length).to.equal(2);
       expect(Object.keys(stats)).to.include('foo');

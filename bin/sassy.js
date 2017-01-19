@@ -8,8 +8,8 @@ require('colors');
 var rootDir = process.argv[2];
 
 if (dirExists(rootDir)) {
-  var astData = walk(rootDir);
-  var data = lib(astData);
+  var files = walk(rootDir);
+  var data = lib(files.data);
 
   printName();
   console.log('');
@@ -18,9 +18,17 @@ if (dirExists(rootDir)) {
 
   modules.forEach(printList);
 
+  console.log('FILES'.green);
+  console.log('----------------------------'.green);
+  printTotalFilesWalked(files);
   console.log('');
 } else {
   console.log(rootDir + ' is not a valid directory!');
+}
+
+function printTotalFilesWalked(files) {
+  var text = 'total .scss files:';
+  console.log(text.yellow + getSpaces(text) + files.count.toString().red);
 }
 
 function printList(key) {

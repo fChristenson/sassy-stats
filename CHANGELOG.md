@@ -1,3 +1,6 @@
+#1.6.0
+* Added totals at end of each list
+
 #1.5.1
 * Mixin and function params should now not be part of the variable report
 

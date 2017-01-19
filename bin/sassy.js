@@ -26,7 +26,14 @@ if (dirExists(rootDir)) {
 function printList(key) {
   console.log(key.toUpperCase().green);
   console.log('----------------------------'.green);
-  countsToArray(data[key]).forEach(printLine);
+
+  var stats = data[key];
+  var counts = countsToArray(stats);
+  var total = counts.pop();
+
+  counts.forEach(printLine);
+  console.log('');
+  printLine(total);
   console.log('');
 }
 
@@ -47,9 +54,23 @@ function getSpaces(str) {
 
 // {}->[{}]
 function countsToArray(obj) {
-  return Object.keys(obj)
+  var result = Object.keys(obj)
     .reduce(countsToObjects(obj), [])
-    .sort(sortByVal);
+    .sort(sortByVal)
+    .concat([]);
+
+  result.push(getTotal(obj));
+  return result;
+}
+
+function getTotal(obj) {
+  return Object.keys(obj)
+    .reduce(function(acc, key) {
+
+      acc.val += obj[key];
+      return acc;
+
+    }, {key: 'total', val: 0});
 }
 
 function sortByVal(a, b) {

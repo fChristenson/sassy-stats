@@ -48,11 +48,28 @@ describe('selectors', function() {
     it('finds comma seperated selectors', function() {
       var files = walk(path.join(__dirname, 'testing_dir5'));
       var stats = D.findSelectors(files.data);
-      console.log('stats', stats);
       expect(stats.length).to.equal(3);
       expect(stats).to.include('a .foo');
       expect(stats).to.include('button .foo');
       expect(stats).to.include('input .foo');
+    });
+
+    it('finds comma seperated selectors with deep nesting', function() {
+      var files = walk(path.join(__dirname, 'testing_dir6'));
+      var stats = D.findSelectors(files.data);
+      console.log('stats', stats);
+      expect(stats.length).to.equal(9);
+      expect(stats).to.include('a button');
+      expect(stats).to.include('a .foo #bar .baz');
+      expect(stats).to.include('a .foo #bar .omg input');
+
+      expect(stats).to.include('body button');
+      expect(stats).to.include('body .foo #bar .baz');
+      expect(stats).to.include('body .foo #bar .omg input');
+
+      expect(stats).to.include('form button');
+      expect(stats).to.include('form .foo #bar .baz');
+      expect(stats).to.include('form .foo #bar .omg input');
     });
   });
 });

@@ -1,17 +1,17 @@
-var D = require('../');
+var S = require('../');
 var path = require('path');
 var walk = require('../../directories').walk;
 var expect = require('chai').expect;
 
 describe('selectors', function() {
   it('has a module', function() {
-    expect(D).to.be.ok;
+    expect(S).to.be.ok;
   });
 
   describe('findSelectors', function() {
     it('finds all selectors', function() {
       var files = walk(path.join(__dirname, 'testing_dir'));
-      var stats = D.findSelectors(files.data);
+      var stats = S.findSelectors(files.data);
       expect(stats.length).to.equal(3);
       expect(stats).to.include('#foo');
       expect(stats).to.include('.bar');
@@ -20,7 +20,7 @@ describe('selectors', function() {
 
     it('finds all nested selectors', function() {
       var files = walk(path.join(__dirname, 'testing_dir2'));
-      var stats = D.findSelectors(files.data);
+      var stats = S.findSelectors(files.data);
       expect(stats.length).to.equal(5);
       expect(stats).to.include('#foo .bar');
       expect(stats).to.include('#foo .foo');
@@ -31,14 +31,14 @@ describe('selectors', function() {
 
     it('finds deeply nested selectors', function() {
       var files = walk(path.join(__dirname, 'testing_dir3'));
-      var stats = D.findSelectors(files.data);
+      var stats = S.findSelectors(files.data);
       expect(stats.length).to.equal(1);
       expect(stats).to.include('a .foo #bar .baz');
     });
 
     it('finds deeply nested selectors with varying children', function() {
       var files = walk(path.join(__dirname, 'testing_dir4'));
-      var stats = D.findSelectors(files.data);
+      var stats = S.findSelectors(files.data);
       expect(stats.length).to.equal(3);
       expect(stats).to.include('a button');
       expect(stats).to.include('a .foo #bar .baz');
@@ -47,7 +47,7 @@ describe('selectors', function() {
 
     it('finds comma seperated selectors', function() {
       var files = walk(path.join(__dirname, 'testing_dir5'));
-      var stats = D.findSelectors(files.data);
+      var stats = S.findSelectors(files.data);
       expect(stats.length).to.equal(3);
       expect(stats).to.include('a .foo');
       expect(stats).to.include('button .foo');
@@ -56,7 +56,7 @@ describe('selectors', function() {
 
     it('finds comma seperated selectors with deep nesting', function() {
       var files = walk(path.join(__dirname, 'testing_dir6'));
-      var stats = D.findSelectors(files.data);
+      var stats = S.findSelectors(files.data);
       console.log('stats', stats);
       expect(stats.length).to.equal(9);
       expect(stats).to.include('a button');

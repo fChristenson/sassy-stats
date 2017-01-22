@@ -34,7 +34,13 @@ function countProps(acc, prop) {
   return acc;
 }
 
+// a->bool
+function isNotEmptyString(val) {
+  return val !== '';
+}
+
 module.exports = {
+  isNotEmptyString: isNotEmptyString,
   countProps: countProps,
   concat: concat,
   astDataToContent: astDataToContent,

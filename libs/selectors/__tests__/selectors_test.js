@@ -85,5 +85,12 @@ describe('selectors', function() {
       expect(stats).to.include('a:visited .foo');
       expect(stats).to.include('a:focus .foo');
     });
+
+    it('handles sibling selectors', function() {
+      var files = walk(path.join(__dirname, 'testing_dir9'));
+      var stats = S.findSelectors(files.data);
+      expect(stats.length).to.equal(1);
+      expect(stats).to.include('.bar .foo');
+    });
   });
 });

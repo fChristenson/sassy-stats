@@ -1,12 +1,12 @@
 var isVariableNode = require('../nodes').isVariableNode;
 var get = require('lodash').get;
 var findDeclarationNodes = require('../nodes').findDeclarationNodes;
-var findBlockNodes = require('../nodes').findBlockNodes;
 var findArgumentsNodes = require('../nodes').findArgumentsNodes;
 var collectAstDataValueNodes = require('../nodes').collectAstDataValueNodes;
 var astDataToContent = require('../common').astDataToContent;
 var concat = require('../common').concat;
 var countProps = require('../common').countProps;
+var isNotEmptyString = require('../common').isNotEmptyString;
 var util = require('util');
 
 // astData->[string]
@@ -15,11 +15,6 @@ function argNodeToParamNames(node) {
     .filter(isVariableNode)
     .map(variableNodeToName)
     .filter(isNotEmptyString);
-}
-
-// a->bool
-function isNotEmptyString(val) {
-  return val !== '';
 }
 
 // astData->string

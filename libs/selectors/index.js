@@ -3,6 +3,7 @@ var head = require('lodash').head;
 var tail = require('lodash').tail;
 var makeValueType = require('../common').makeValueType;
 var concat = require('../common').concat;
+var isNotEmptyString = require('../common').isNotEmptyString;
 var util = require('util');
 
 function trim(val) {
@@ -18,7 +19,8 @@ function findSelectors(nodes) {
   .reduce(concat, [])
   .map(selectorTypeToSelector)
   .reduce(concat, [])
-  .map(trim);
+  .map(trim)
+  .filter(isNotEmptyString);
 }
 
 function selectorTypeToSelector(selectorType) {
@@ -102,14 +104,40 @@ function nodeToContent(acc, node) {
 }
 
 function selectorNodeToType(node) {
-  var type = get(node, 'content[0].type');
-  var val = get(node, 'content[0].content[0].content', '') + getPseudoSelector(node);
+  var type = getType(node);
+  var val = getVal(node);
   
   if(type === 'id') return makeValueType('id', val);
   if(type === 'class') return makeValueType('class', val);
   if(type === 'typeSelector') return makeValueType('tag', val);
 
   return makeValueType();
+}
+
+function getType(node) {
+  if(isSiblingSelector(node)) return getSiblingType(node);
+
+  return get(node, 'content[0].type');
+}
+
+function isSiblingSelector(node) {
+  var type = get(node, 'content[2].type');
+  var content = get(node, 'content[2].content');
+
+  return type === 'combinator' && content === '+';
+}
+
+function getSiblingType(node) {
+  return get(node, 'content[4].type');
+}
+
+function getSiblingVal(node) {
+  return get(node, 'content[4].content[0].content');
+}
+
+function getVal(node) {
+  if(isSiblingSelector(node)) return getSiblingVal(node);
+  return get(node, 'content[0].content[0].content', '') + getPseudoSelector(node);
 }
 
 function getPseudoSelector(node) {

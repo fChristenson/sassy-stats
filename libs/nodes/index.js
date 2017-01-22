@@ -93,7 +93,20 @@ function collectAstDataValueNodes(acc, node) {
 // _->Number->Boolean
 var isIdentNode = isNodeType('ident');
 
+// AstData->bool
+function nodeHasChildren(node) {
+  var content = get(node, 'content');
+  return Array.isArray(content) && content.length > 0;
+}
+
+// AstData->bool
+function isDeclarationNode(node) {
+  return get(node, 'type') === 'declaration';
+}
+
 module.exports = {
+  isDeclarationNode: isDeclarationNode,
+  nodeHasChildren: nodeHasChildren,
   findArgumentsNodes: findArgumentsNodes,
   isNumberNode: isNumberNode,
   isStringNode: isStringNode,

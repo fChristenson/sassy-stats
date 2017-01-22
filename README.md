@@ -17,6 +17,7 @@ Sassy-stats will spit out a list of how many references it found of:
 * Mixins
 * Functions
 * Variables
+* Files
 
 ## Submitting a bug report
 If you want to help make the tool better please submit the issue with the files

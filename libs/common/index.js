@@ -13,6 +13,11 @@ function inspect(val) {
   return val;
 }
 
+// string->string->{}
+function makeValueType(type, str) {
+  return {type: type, name: str};
+}
+
 // []->[]->[]
 function concat(array1, array2) {
   return array1.concat(array2);
@@ -33,5 +38,6 @@ module.exports = {
   countProps: countProps,
   concat: concat,
   astDataToContent: astDataToContent,
-  inspect: inspect
+  inspect: inspect,
+  makeValueType: makeValueType
 };

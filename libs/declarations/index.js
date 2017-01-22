@@ -1,6 +1,8 @@
 var get = require('lodash').get;
 var tail = require('lodash').tail;
 var head = require('lodash').head;
+var N = require('../nodes');
+var makeValueType = require('../common').makeValueType;
 var nodesToVariableUsages = require('../variables').nodesToVariableUsages;
 var nodesToMixinUsages = require('../mixins').nodesToMixinUsages;
 var nodesToFunctionUsages = require('../functions').nodesToFunctionUsages;
@@ -32,7 +34,7 @@ function funcDeclarationNodeToType(node) {
 
   if (childNode.type === 'function') {
     var name = get(childNode, 'content[0].content', '');
-    return makeDeclarationType('function', name);
+    return makeValueType('function', name);
   }
 
   return {};
@@ -44,7 +46,7 @@ function mixinDeclarationNodeToType(node) {
 
   if(type === 'mixin') {
     var name = get(node, 'content[2].content');
-    return makeDeclarationType('mixin', name);
+    return makeValueType('mixin', name);
   }
 
   return {};
@@ -56,7 +58,7 @@ function varDeclarationNodeToType(node) {
 
   if(childNode.type === 'variable') {
     var name = get(childNode, 'content[0].content');
-    return makeDeclarationType('variable', name);
+    return makeValueType('variable', name);
   }
 
   return {};
@@ -71,14 +73,14 @@ function findDeclarationNodes(nodes, acc) {
 
   var firstNode = head(nodes);
   var content = get(firstNode, 'content', []);
-  if(isDeclarationNode(firstNode) 
+  if(N.isDeclarationNode(firstNode) 
     || isMixinDeclarationNode(firstNode) 
     || isFunctionDeclarationNode(firstNode)) {
     
     result.push(firstNode);
   }
     
-  if(nodeHasChildren(firstNode)) result = result.concat(findDeclarationNodes(content));
+  if(N.nodeHasChildren(firstNode)) result = result.concat(findDeclarationNodes(content));
 
   return findDeclarationNodes(tail(nodes), result);
 }
@@ -91,22 +93,6 @@ function isFunctionDeclarationNode(node) {
 // AstData->bool
 function isMixinDeclarationNode(node) {
   return get(node, 'type') === 'mixin'; 
-}
-
-// AstData->bool
-function nodeHasChildren(node) {
-  var content = get(node, 'content');
-  return Array.isArray(content) && content.length > 0;
-}
-
-// AstData->bool
-function isDeclarationNode(node) {
-  return get(node, 'type') === 'declaration';
-}
-
-// string->string->{}
-function makeDeclarationType(type, str) {
-  return {type: type, name: str};
 }
 
 // [AstData]->[String]
@@ -146,5 +132,5 @@ function findUnusedVars(declarations, nodes) {
 
 module.exports = {
   findDeclarations: findDeclarations,
-  findUnusedDeclaration: findUnusedDeclaration
+  findUnusedDeclaration: findUnusedDeclaration,
 };

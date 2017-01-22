@@ -44,5 +44,15 @@ describe('selectors', function() {
       expect(stats).to.include('a .foo #bar .baz');
       expect(stats).to.include('a .foo #bar .omg input');
     });
+
+    it('finds comma seperated selectors', function() {
+      var files = walk(path.join(__dirname, 'testing_dir5'));
+      var stats = D.findSelectors(files.data);
+      console.log('stats', stats);
+      expect(stats.length).to.equal(3);
+      expect(stats).to.include('a .foo');
+      expect(stats).to.include('button .foo');
+      expect(stats).to.include('input .foo');
+    });
   });
 });

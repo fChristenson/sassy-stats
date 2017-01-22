@@ -15,12 +15,8 @@ function findSelectors(nodes) {
   .reduce(nodeToContent, [])
   .filter(isRuleSetNode)
   .map(ruleSetToType)
+  .reduce(concat, [])
   .map(selectorTypeToSelector)
-  .map(function(e) {
-    console.log(util.inspect(e, false, Infinity));
-    console.log('------------------------------------');
-  return e;
-  })
   .reduce(concat, [])
   .map(trim);
 }
@@ -69,15 +65,36 @@ function typeToSelector(type) {
 }
 
 function ruleSetToType(node) {
-  var selectorNode = get(node, 'content[0]', []);
-  var selector = selectorNodeToType(selectorNode);
-  var block = get(node, 'content[2].content', []);
+  var selectors = getSelectorNodes(node).map(selectorNodeToType);
+  var block = getBlockNode(node);
+
   var childRules = block
   .filter(isRuleSetNode)
-  .map(ruleSetToType);
+  .map(ruleSetToType)
+  .reduce(concat, []);
 
-  selector.children = childRules;
-  return selector;
+  return selectors
+    .map(function(selector) {
+      selector.children = childRules;
+      return selector;
+    });
+}
+
+function getBlockNode(node) {
+  var content = get(node, 'content', []);
+  return get(content.filter(isBlockNode), '[0].content');
+}
+
+function isBlockNode(node) {
+  return get(node, 'type') === 'block';
+}
+
+function getSelectorNodes(node) {
+  return get(node, 'content', []).filter(isSelectorNode);
+}
+
+function isSelectorNode(node) {
+  return get(node, 'type') === 'selector';
 }
 
 function nodeToContent(acc, node) {

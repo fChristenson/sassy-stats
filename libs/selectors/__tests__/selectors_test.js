@@ -92,5 +92,19 @@ describe('selectors', function() {
       expect(stats.length).to.equal(1);
       expect(stats).to.include('.bar .foo');
     });
+
+    it('handles direct child selectors', function() {
+      var files = walk(path.join(__dirname, 'testing_dir10'));
+      var stats = S.findSelectors(files.data);
+      expect(stats.length).to.equal(1);
+      expect(stats).to.include('.bar .foo');
+    });
+
+    it('handles adjacent selectors', function() {
+      var files = walk(path.join(__dirname, 'testing_dir11'));
+      var stats = S.findSelectors(files.data);
+      expect(stats.length).to.equal(1);
+      expect(stats).to.include('.bar .foo');
+    });
   });
 });

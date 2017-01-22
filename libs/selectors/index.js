@@ -115,28 +115,33 @@ function selectorNodeToType(node) {
 }
 
 function getType(node) {
-  if(isSiblingSelector(node)) return getSiblingType(node);
+  if(isCombinatorNode(node)) return getCombinatorType(node);
 
   return get(node, 'content[0].type');
 }
 
-function isSiblingSelector(node) {
+function isCombinatorNode(node) {
   var type = get(node, 'content[2].type');
   var content = get(node, 'content[2].content');
 
-  return type === 'combinator' && content === '+';
+  return type === 'combinator' && isCombinator(content);
 }
 
-function getSiblingType(node) {
+function isCombinator(val) {
+  var combinators = ['+', '>', '~'];
+  return combinators.indexOf(val) !== -1;
+}
+
+function getCombinatorType(node) {
   return get(node, 'content[4].type');
 }
 
-function getSiblingVal(node) {
+function getCombinatorVal(node) {
   return get(node, 'content[4].content[0].content');
 }
 
 function getVal(node) {
-  if(isSiblingSelector(node)) return getSiblingVal(node);
+  if(isCombinatorNode(node)) return getCombinatorVal(node);
   return get(node, 'content[0].content[0].content', '') + getPseudoSelector(node);
 }
 

@@ -57,7 +57,6 @@ describe('selectors', function() {
     it('finds comma seperated selectors with deep nesting', function() {
       var files = walk(path.join(__dirname, 'testing_dir6'));
       var stats = S.findSelectors(files.data);
-      console.log('stats', stats);
       expect(stats.length).to.equal(9);
       expect(stats).to.include('a button');
       expect(stats).to.include('a .foo #bar .baz');
@@ -70,6 +69,13 @@ describe('selectors', function() {
       expect(stats).to.include('form button');
       expect(stats).to.include('form .foo #bar .baz');
       expect(stats).to.include('form .foo #bar .omg input');
+    });
+
+    it.only('handles pseudo selectors', function() {
+      var files = walk(path.join(__dirname, 'testing_dir7'));
+      var stats = S.findSelectors(files.data);
+      expect(stats.length).to.equal(1);
+      expect(stats).to.include('a:visited');
     });
   });
 });

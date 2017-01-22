@@ -71,11 +71,19 @@ describe('selectors', function() {
       expect(stats).to.include('form .foo #bar .omg input');
     });
 
-    it.only('handles pseudo selectors', function() {
+    it('handles pseudo selectors', function() {
       var files = walk(path.join(__dirname, 'testing_dir7'));
       var stats = S.findSelectors(files.data);
       expect(stats.length).to.equal(1);
       expect(stats).to.include('a:visited');
+    });
+
+    it('handles pseudo selectors with nesting', function() {
+      var files = walk(path.join(__dirname, 'testing_dir8'));
+      var stats = S.findSelectors(files.data);
+      expect(stats.length).to.equal(2);
+      expect(stats).to.include('a:visited .foo');
+      expect(stats).to.include('a:focus .foo');
     });
   });
 });

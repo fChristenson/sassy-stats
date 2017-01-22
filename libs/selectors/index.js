@@ -103,13 +103,21 @@ function nodeToContent(acc, node) {
 
 function selectorNodeToType(node) {
   var type = get(node, 'content[0].type');
-  var val = get(node, 'content[0].content[0].content', '');
+  var val = get(node, 'content[0].content[0].content', '') + getPseudoSelector(node);
   
   if(type === 'id') return makeValueType('id', val);
   if(type === 'class') return makeValueType('class', val);
   if(type === 'typeSelector') return makeValueType('tag', val);
 
   return makeValueType();
+}
+
+function getPseudoSelector(node) {
+  var type = get(node, 'content[1].type', '');
+
+  if(type !== 'pseudoClass') return '';
+
+  return ':' + get(node, 'content[1].content[0].content', '');
 }
 
 function isRuleSetNode(node) {

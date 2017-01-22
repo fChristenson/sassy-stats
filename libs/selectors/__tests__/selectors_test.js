@@ -8,6 +8,31 @@ describe('selectors', function() {
     expect(S).to.be.ok;
   });
 
+  describe('rulesetNodeToSelectorArray', function() {
+    it('turns a selector node into an array of strings', function() {
+      var files = walk(path.join(__dirname, 'testing_dir14'));
+
+      var selectorNode = files.data[0].content[0];
+      var array = S.rulesetNodeToSelectorArray(selectorNode);
+      expect(array.length).to.equal(5);
+
+      var expected = [
+        [
+          'a', ':visited', ' ', '.foo', ' ', 'input', '[name=foo]', 
+          ' ',
+          'button', ' ', '+', ' ', '#bar', ' ', '~', ' ', '.baz',
+          ' ',
+          '>', ' ', '.bax', ':first-child'
+        ],
+        ',',
+        ' ',
+        ['#omg'],
+        ' '
+      ];
+      expect(array).to.deep.equal(expected);
+    });
+  });
+
   describe('findSelectors', function() {
     it('finds all selectors', function() {
       var files = walk(path.join(__dirname, 'testing_dir'));
@@ -43,6 +68,13 @@ describe('selectors', function() {
       expect(stats).to.include('a button');
       expect(stats).to.include('a .foo #bar .baz');
       expect(stats).to.include('a .foo #bar .omg input');
+    });
+    
+    it('finds chained selectors', function() {
+      var files = walk(path.join(__dirname, 'testing_dir13'));
+      var stats = S.findSelectors(files.data);
+      expect(stats.length).to.equal(1);
+      expect(stats).to.include('a .foo .bar #baz');
     });
 
     it('finds comma seperated selectors', function() {
@@ -105,6 +137,13 @@ describe('selectors', function() {
       var stats = S.findSelectors(files.data);
       expect(stats.length).to.equal(1);
       expect(stats).to.include('.bar .foo');
+    });
+
+    it('handles attribute selectors', function() {
+      var files = walk(path.join(__dirname, 'testing_dir12'));
+      var stats = S.findSelectors(files.data);
+      expect(stats.length).to.equal(1);
+      expect(stats).to.include('input[name=foo] .bar .foo');
     });
   });
 });

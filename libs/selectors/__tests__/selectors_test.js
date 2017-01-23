@@ -143,7 +143,7 @@ describe('selectors', function() {
       var files = walk(path.join(__dirname, 'testing_dir12'));
       var stats = S.findSelectors(files.data);
       expect(stats.length).to.equal(1);
-      expect(stats).to.include('input[name=foo] .bar .foo');
+      expect(stats).to.include('input[name=foo] .foo');
     });
   });
 });

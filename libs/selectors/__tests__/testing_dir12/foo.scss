@@ -3,3 +3,33 @@ input[name=foo] {
 
   }
 }
+
+input[name~=foo] {
+  .foo {
+
+  }
+}
+
+input[name|=foo] {
+  .foo {
+
+  }
+}
+
+input[name^=foo] {
+  .foo {
+
+  }
+}
+
+input[name$=foo] {
+  .foo {
+
+  }
+}
+
+input[name*=foo] {
+  .foo {
+
+  }
+}

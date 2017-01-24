@@ -2,6 +2,7 @@ var S = require('../');
 var path = require('path');
 var walk = require('../../directories').walk;
 var expect = require('chai').expect;
+var util = require('util');
 
 describe('selectors', function() {
   it('has a module', function() {
@@ -70,9 +71,10 @@ describe('selectors', function() {
       expect(stats).to.include('a .foo #bar .omg input');
     });
     
-    it('finds chained selectors', function() {
+    it.only('finds chained selectors', function() {
       var files = walk(path.join(__dirname, 'testing_dir13'));
       var stats = S.findSelectors(files.data);
+      console.log(util.inspect(stats, false, Infinity));
       expect(stats.length).to.equal(1);
       expect(stats).to.include('a .foo .bar #baz');
     });

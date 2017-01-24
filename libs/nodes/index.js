@@ -32,6 +32,12 @@ var findValueNodes = findNodes('type', 'value');
 
 // String->[AstData]->[]
 var findIncludeNodes = findNodes('type', 'include');
+//
+
+// AstData->bool 
+function isSelectorNode(node) {
+  return get(node, 'type') === 'selector';
+}
 
 // String->[AstData]->[]
 var findDeclarationNodes = findNodes('type', 'declaration');
@@ -118,5 +124,6 @@ module.exports = {
   isVariableNode: isVariableNode,
   findValueNodes: findValueNodes,
   findDeclarationNodes: findDeclarationNodes,
-  findBlockNodes: findBlockNodes
+  findBlockNodes: findBlockNodes,
+  isSelectorNode: isSelectorNode
 };

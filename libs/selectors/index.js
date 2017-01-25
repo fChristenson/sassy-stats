@@ -4,7 +4,6 @@ var tail = require('lodash').tail;
 var makeValueType = require('../common').makeValueType;
 var concat = require('../common').concat;
 var isNotEmptyString = require('../common').isNotEmptyString;
-var util = require('util');
 var rulesetNodeToSelectorArray = require('./rulesetNodeToSelectorArray');
 
 function trim(val) {

@@ -2,7 +2,6 @@ var S = require('../');
 var path = require('path');
 var walk = require('../../directories').walk;
 var expect = require('chai').expect;
-var util = require('util');
 
 describe('selectors', function() {
   it('has a module', function() {
@@ -114,7 +113,6 @@ describe('selectors', function() {
     it('handles pseudo selectors with nesting', function() {
       var files = walk(path.join(__dirname, 'testing_dir8'));
       var stats = S.findSelectors(files.data);
-      console.log('stats', stats);
       expect(stats.length).to.equal(2);
       expect(stats).to.include('a:visited .bar .foo');
       expect(stats).to.include('a:focus .foo');

@@ -111,9 +111,10 @@ describe('selectors', function() {
       expect(stats).to.include('a:visited');
     });
 
-    it('handles pseudo selectors with nesting', function() {
+    it.only('handles pseudo selectors with nesting', function() {
       var files = walk(path.join(__dirname, 'testing_dir8'));
       var stats = S.findSelectors(files.data);
+      console.log('stats', stats);
       expect(stats.length).to.equal(2);
       expect(stats).to.include('a:visited .foo');
       expect(stats).to.include('a:focus .foo');
@@ -126,7 +127,7 @@ describe('selectors', function() {
       expect(stats).to.include('a + .bar .foo');
     });
 
-    it.only('handles direct child selectors', function() {
+    it('handles direct child selectors', function() {
       var files = walk(path.join(__dirname, 'testing_dir10'));
       var stats = S.findSelectors(files.data);
       expect(stats.length).to.equal(1);

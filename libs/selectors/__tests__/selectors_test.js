@@ -111,7 +111,7 @@ describe('selectors', function() {
       expect(stats).to.include('a:visited');
     });
 
-    it.only('handles pseudo selectors with nesting', function() {
+    it('handles pseudo selectors with nesting', function() {
       var files = walk(path.join(__dirname, 'testing_dir8'));
       var stats = S.findSelectors(files.data);
       console.log('stats', stats);

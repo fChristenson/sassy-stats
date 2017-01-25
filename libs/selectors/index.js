@@ -1,7 +1,6 @@
 var get = require('lodash').get;
 var head = require('lodash').head;
 var tail = require('lodash').tail;
-var flattenDeep = require('lodash').flattenDeep;
 var makeValueType = require('../common').makeValueType;
 var concat = require('../common').concat;
 var isNotEmptyString = require('../common').isNotEmptyString;
@@ -27,14 +26,13 @@ function findSelectors(nodes) {
 }
 
 function selectorTypeToSelector(selectorType) {
-  var selectorStr = typeToSelector(selectorType);
   var children = get(selectorType, 'children', []);
 
   if(children.length <= 0) {
-    return [selectorStr];
+    return [selectorType.name];
   }
 
-  var selectorAccumulator = {selector: selectorStr, selectors: []};
+  var selectorAccumulator = {selector: selectorType.name, selectors: []};
   return childrenToSelector(selectorAccumulator, children);
 }
 
@@ -70,7 +68,7 @@ function typeToSelector(type) {
 }
 
 function ruleSetToType(node) {
-  var selectors = ruleSetNodeToType(node).reduce(concat, []);
+  var selectors = [nodeToType(node)].reduce(concat, []);
   var block = getBlockNode(node);
 
   var childRules = block
@@ -98,13 +96,6 @@ function nodeToContent(acc, node) {
   return acc.concat(get(node, 'content', []));
 }
 
-function ruleSetNodeToType(node) {
-  return get(node, 'content', [])
-    .filter(isSelectorNode)
-    .map(nodeToType)
-    .concat([nodeToType(node)]);
-}
-
 function nodeToType(node) {
   var type = getType(node);
   var val = getVal(node);
@@ -118,10 +109,20 @@ function nodeToType(node) {
 
 function getType(node) {
   if(isCombinatorNode(node)) return getCombinatorType(node);
-  if(isChainedSelectorNode(node)) return getChainedSelectorType(node);
+  if(isChainedSelectorNode(node) || isSimpleSelectorNode(node)) return getChainedSelectorType(node);
   if(isSelectorNode(node)) return get(node, 'content[0].type'); 
 
   return '';
+}
+
+function isSimpleSelectorNode(node) {
+  if(!isRuleSetNode(node)) return false;
+
+  var selectors = rulesetNodeToSelectorArray(node);
+  var tmp = chainedSelectorArrayToStrings(selectors);
+  tmp = tmp.map(filterSubArray);
+  
+  return get(tmp, '[0]', []).length === 1;
 }
 
 function isChainedSelectorNode(node) {

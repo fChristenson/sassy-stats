@@ -71,10 +71,9 @@ describe('selectors', function() {
       expect(stats).to.include('a .foo #bar .omg input');
     });
     
-    it.only('finds chained selectors', function() {
+    it('finds chained selectors', function() {
       var files = walk(path.join(__dirname, 'testing_dir13'));
       var stats = S.findSelectors(files.data);
-      console.log(util.inspect(stats, false, Infinity));
       expect(stats.length).to.equal(1);
       expect(stats).to.include('a .foo .bar #baz');
     });
@@ -141,7 +140,7 @@ describe('selectors', function() {
       expect(stats).to.include('.bar .foo');
     });
 
-    it('handles attribute selectors', function() {
+    it.only('handles attribute selectors', function() {
       var files = walk(path.join(__dirname, 'testing_dir12'));
       var stats = S.findSelectors(files.data);
       console.log('stats', stats);

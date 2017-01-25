@@ -53,7 +53,7 @@ describe('variables', function() {
       expect(Object.keys(stats)).to.include('bar');
     });
 
-    it('reports variables inside functions', function() {
+    xit('reports variables inside functions', function() {
       var files = walk(path.join(__dirname, 'testing_dir5'));
       var stats = V.nodesToVariableUsages(files.data);
       console.log('stats', stats);

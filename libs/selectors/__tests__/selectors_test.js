@@ -123,27 +123,27 @@ describe('selectors', function() {
       var files = walk(path.join(__dirname, 'testing_dir9'));
       var stats = S.findSelectors(files.data);
       expect(stats.length).to.equal(1);
-      expect(stats).to.include('.bar .foo');
+      expect(stats).to.include('a + .bar .foo');
     });
 
-    it('handles direct child selectors', function() {
+    it.only('handles direct child selectors', function() {
       var files = walk(path.join(__dirname, 'testing_dir10'));
       var stats = S.findSelectors(files.data);
       expect(stats.length).to.equal(1);
-      expect(stats).to.include('.bar .foo');
+      expect(stats).to.include('a > .bar .foo');
     });
 
     it('handles adjacent selectors', function() {
       var files = walk(path.join(__dirname, 'testing_dir11'));
       var stats = S.findSelectors(files.data);
       expect(stats.length).to.equal(1);
-      expect(stats).to.include('.bar .foo');
+      expect(stats).to.include('a ~ .bar .foo');
     });
 
-    it.only('handles attribute selectors', function() {
+    it('handles attribute selectors', function() {
       var files = walk(path.join(__dirname, 'testing_dir12'));
       var stats = S.findSelectors(files.data);
-      console.log('stats', stats);
+
       expect(stats.length).to.equal(6);
       expect(stats).to.include('input[name=foo] .foo');
       expect(stats).to.include('input[name^=foo] .foo');

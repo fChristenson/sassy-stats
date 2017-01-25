@@ -107,12 +107,8 @@ function nodeToType(node) {
   return makeValueType();
 }
 
-function getType(node) {
-  if(isCombinatorNode(node)) return getCombinatorType(node);
-  if(isChainedSelectorNode(node) || isSimpleSelectorNode(node)) return getChainedSelectorType(node);
-  if(isSelectorNode(node)) return get(node, 'content[0].type'); 
-
-  return '';
+function getType(node) { 
+  return (isChainedSelectorNode(node) || isSimpleSelectorNode(node)) ? getChainedSelectorType(node) : '';
 }
 
 function isSimpleSelectorNode(node) {
@@ -180,7 +176,7 @@ function selectorToSelectorType(val) {
   if(/^\./.test(val)) return 'class';
   if(/^#/.test(val)) return 'id';
   
-  return 'tag';
+  return 'typeSelector';
 }
 
 function isAttributeNode(node) {
@@ -199,10 +195,6 @@ function isCombinatorNode(node) {
 function isCombinator(val) {
   var combinators = ['+', '>', '~'];
   return combinators.indexOf(val) !== -1;
-}
-
-function getCombinatorType(node) {
-  return get(node, 'content[4].type');
 }
 
 function getCombinatorVal(node) {
@@ -231,7 +223,13 @@ function getChainedSelectorVal(node) {
   var tmp = chainedSelectorArrayToStrings(selectors);
   var cleanArray = get(tmp.map(filterSubArray), '[0]', []);
 
-  return cleanArray.join(' ');
+  return isAttributeArray(cleanArray) ? cleanArray.join('') : cleanArray.join(' ');
+}
+
+function isAttributeArray(array) {
+  if(!Array.isArray(array) || array.length !== 2) return false;
+
+  return /^\[.+\]$/.test(array[1]);
 }
 
 function getPseudoSelector(node) {

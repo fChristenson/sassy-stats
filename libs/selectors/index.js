@@ -110,22 +110,14 @@ function nodeToTypes(node) {
     });
 }
 
-function getTypes(node) {
-  if(isMultiSelectorNode(node)) return multiSelectorNodeToTypes(node);
-  
-  return (isChainedSelectorNode(node) || isSimpleSelectorNode(node)) ? [getChainedSelectorType(node)] : [];
-}
+function getTypes(node) { 
+  var selectors = rulesetNodeToSelectorArray(node);
+  var tmp = chainedSelectorArrayToStrings(selectors);
+  tmp = tmp.map(filterSubArray);
 
-function multiSelectorNodeToTypes(node) {
-  return [];
-}
-
-function isMultiSelectorNode(node) {
-  return rulesetNodeToSelectorArray(node).filter(isArray).length > 1;
-}
-
-function isArray(val) {
-  return Array.isArray(val);
+  console.log(util.inspect(tmp, false, Infinity));
+  console.log('-----------------------------------------');
+  return (isChainedRuleSetNode(node) || isSimpleSelectorNode(node)) ? [getChainedSelectorType(node)] : [];
 }
 
 function isSimpleSelectorNode(node) {
@@ -138,7 +130,7 @@ function isSimpleSelectorNode(node) {
   return get(tmp, '[0]', []).length === 1;
 }
 
-function isChainedSelectorNode(node) {
+function isChainedRuleSetNode(node) {
   if(!isRuleSetNode(node)) return false;
 
   var selectors = rulesetNodeToSelectorArray(node);
@@ -224,7 +216,7 @@ function getAttributeVal(node) {
 function getVals(node) {
   if(isCombinatorNode(node)) return getCombinatorVal(node);
   if(isAttributeNode(node)) return getAttributeVal(node);
-  if(isChainedSelectorNode(node)) return getChainedSelectorVal(node);
+  if(isChainedRuleSetNode(node)) return getChainedSelectorVal(node);
   
   return get(node, 'content[0].content[0].content', '') + getPseudoSelector(node);
 }

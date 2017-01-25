@@ -116,7 +116,7 @@ describe('selectors', function() {
       var stats = S.findSelectors(files.data);
       console.log('stats', stats);
       expect(stats.length).to.equal(2);
-      expect(stats).to.include('a:visited .foo');
+      expect(stats).to.include('a:visited .bar .foo');
       expect(stats).to.include('a:focus .foo');
     });
 

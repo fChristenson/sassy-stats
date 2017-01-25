@@ -1,3 +1,6 @@
+#1.8.0
+* Added selector counts to report
+
 #1.7.0
 * Added total file count
 

@@ -1,7 +1,4 @@
- ____   __   ____  ____  _  _      ____  ____  __  ____  ____
-/ ___) / _\ / ___)/ ___)( \/ )___ / ___)(_  _)/ _\(_  _)/ ___)
-\___ \/    \\___ \\___ \ )  /(___)\___ \  )( /    \ )(  \___ \
-(____/\_/\_/(____/(____/(__/      (____/ (__)\_/\_/(__) (____/
+#Sassy-stats
 
 CLI for figuring out what you are using in your Sass files.
 
@@ -18,6 +15,7 @@ Sassy-stats will spit out a list of how many references it found of:
 * Functions
 * Variables
 * Files
+* Selectors
 
 ## Submitting a bug report
 If you want to help make the tool better please submit the issue with the files

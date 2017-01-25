@@ -6,11 +6,6 @@ var concat = require('../common').concat;
 var isNotEmptyString = require('../common').isNotEmptyString;
 var rulesetNodeToSelectorArray = require('./rulesetNodeToSelectorArray');
 
-function trim(val) {
-  var tmp = typeof val === 'string' ? val : '';
-  return tmp.trim();
-}
-
 function findSelectors(nodes) {
   return nodes
   .reduce(nodeToContent, [])
@@ -21,6 +16,11 @@ function findSelectors(nodes) {
   .reduce(concat, [])
   .map(trim)
   .filter(isNotEmptyString);
+}
+
+function trim(val) {
+  var tmp = typeof val === 'string' ? val : '';
+  return tmp.trim();
 }
 
 function selectorTypeToSelector(selectorType) {

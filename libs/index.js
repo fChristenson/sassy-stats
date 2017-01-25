@@ -3,7 +3,8 @@ var Variables = require('./variables');
 var Mixins = require('./mixins');
 var Functions = require('./functions');
 var Colors = require('./colors');
-var D = require('./declarations');
+var Declarations = require('./declarations');
+var Selectors = require('./selectors');
 var get = require('lodash').get;
 
 function isDeclaration(type) {
@@ -23,7 +24,7 @@ function unusedRefsToStats(acc, nextVar) {
 
 function getVariableStats(astData) {
   var varStats = Variables.nodesToVariableUsages(astData);
-  var unusedVars = D.findUnusedDeclaration(astData)
+  var unusedVars = Declarations.findUnusedDeclaration(astData)
     .filter(isVarDeclaration)
     .reduce(unusedRefsToStats, {});
 
@@ -32,7 +33,7 @@ function getVariableStats(astData) {
 
 function getMixinStats(astData) {
   var mixinStats = Mixins.nodesToMixinUsages(astData);
-  var unusedMixins = D.findUnusedDeclaration(astData)
+  var unusedMixins = Declarations.findUnusedDeclaration(astData)
     .filter(isMixinDeclaration)
     .reduce(unusedRefsToStats, {});
 
@@ -41,11 +42,31 @@ function getMixinStats(astData) {
 
 function getFunctionStats(astData) {
   var functionStats = Functions.nodesToFunctionUsages(astData);
-  var unusedfunctions = D.findUnusedDeclaration(astData)
+  var unusedfunctions = Declarations.findUnusedDeclaration(astData)
     .filter(isFunctionDeclaration)
     .reduce(unusedRefsToStats, {});
 
   return Object.assign({}, functionStats, unusedfunctions);
+}
+
+function getSelectorStats(astData) {
+  return Selectors.findSelectors(astData)
+    .reduce(collectSelectorStats, {id: 0, class: 0, tag: 0});
+}
+
+function collectSelectorStats(acc, selector) {
+  if(/^#/.test(selector)) {
+    acc.id++;
+    return acc;
+  }
+
+  if(/^\./.test(selector)) {
+    acc.class++;
+    return acc;
+  }
+
+  acc.tag++;
+  return acc;
 }
 
 module.exports = function(astData) {
@@ -54,6 +75,7 @@ module.exports = function(astData) {
     mixins: getMixinStats(astData),
     functions: getFunctionStats(astData),
     colors: Colors.nodesToColorUsages(astData),
-    fonts: Fonts.nodesToFontUsages(astData)
+    fonts: Fonts.nodesToFontUsages(astData),
+    selectors: getSelectorStats(astData)
   };
 };

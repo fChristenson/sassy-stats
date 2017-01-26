@@ -18,7 +18,13 @@ var isMixinDeclaration = isDeclaration('mixin');
 var isFunctionDeclaration = isDeclaration('function');
 
 function unusedRefsToStats(acc, nextVar) {
-  acc[get(nextVar, 'name', '')] = 0;
+  var name = get(nextVar, 'name', '');
+  if (Functions.isNativeFunction(name)) {
+    delete acc[name];
+    return acc;  
+  }
+  
+  acc[name] = 0;
   return acc; 
 }
 

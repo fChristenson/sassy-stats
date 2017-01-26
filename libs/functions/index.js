@@ -27,6 +27,11 @@ function removeNativeFunctions(str) {
   return nativeFuncNames.indexOf(str) === -1 && sassNativeFuncNames.indexOf(str) === -1;
 }
 
+function isNativeFunctions(str) {
+  return nativeFuncNames.indexOf(str) !== -1 || sassNativeFuncNames.indexOf(str) !== -1;
+}
+
 module.exports = {
+  isNativeFunction: isNativeFunctions,
   nodesToFunctionUsages: nodesToFunctionUsages
 };

@@ -27,5 +27,11 @@ describe('mixins', function() {
       var stats = M.nodesToMixinUsages(files.data);
       expect(stats.foo).to.equal(4);
     });
+
+    it('does not count mixin declarations', function() {
+      var files = walk(path.join(__dirname, 'testing_dir3'));
+      var stats = M.nodesToMixinUsages(files.data);
+      expect(Object.keys(stats).length).to.equal(0);
+    });
   });
 });

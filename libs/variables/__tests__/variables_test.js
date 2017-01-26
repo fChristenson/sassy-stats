@@ -63,5 +63,13 @@ describe('variables', function() {
       expect(stats.foo).to.equal(1);
       expect(stats.bar).to.equal(1);
     });
+
+    it('reports variables inside string interpolations', function() {
+      var files = walk(path.join(__dirname, 'testing_dir6'));
+      var stats = V.nodesToVariableUsages(files.data);
+      expect(Object.keys(stats).length).to.equal(1);
+      expect(Object.keys(stats)).to.include('sidebar-width');
+      expect(stats['sidebar-width']).to.equal(1);
+    });
   });
 });

@@ -6,6 +6,7 @@ var astDataToContent = require('../common').astDataToContent;
 var countProps = require('../common').countProps;
 var concat = require('../common').concat;
 var nativeFuncNames = require('./native_function_names');
+var sassNativeFuncNames = require('./sass_native_function_names');
 
 // [astData]->{}
 function nodesToFunctionUsages(nodes) {
@@ -23,7 +24,7 @@ function nodesToFunctionUsages(nodes) {
 }
 
 function removeNativeFunctions(str) {
-  return nativeFuncNames.indexOf(str) === -1;
+  return nativeFuncNames.indexOf(str) === -1 && sassNativeFuncNames.indexOf(str) === -1;
 }
 
 module.exports = {

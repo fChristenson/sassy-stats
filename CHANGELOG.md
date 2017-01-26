@@ -1,3 +1,6 @@
+#1.8.1
+* Native sass functions are removed from report
+
 #1.8.0
 * Added selector counts to report
 

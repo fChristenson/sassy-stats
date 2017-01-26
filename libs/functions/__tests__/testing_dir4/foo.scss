@@ -1,0 +1,75 @@
+a:after {
+    content: " (" attr(href) ")";
+    color: mix(red, blue);
+    background: hsl(1, 1, 1);
+}
+
+#div1 {
+    color: rgb(red, green, blue);
+    background: rgba(255, 255, 255, 1);
+    clip: rect();
+    position: absolute;
+    left: 50px;
+    width: calc(100% - 100px);
+    border: 1px solid black;
+    background-color: yellow;
+    padding: 5px;
+    text-align: center;
+}
+
+#grad {
+    background: -webkit-linear-gradient(red,yellow,blue); /* Safari 5.1-6.0 */
+    background: -o-linear-gradient(red,yellow,blue); /* Opera 11.1-12.0 */ 
+    background: -moz-linear-gradient(red,yellow,blue); /* Firefox 3.6-15 */
+    background: linear-gradient(red,yellow,blue); /* Standard syntax */
+}
+
+#grad2 {
+  background: -webkit-radial-gradient(red, green, blue); /* Safari 5.1- 6.0 */
+  background: -o-radial-gradient(red, green, blue); /* Opera 11.6-12.0 */
+  background: -moz-radial-gradient(red, green, blue); /* Firefox 3.6-15 */
+  background: radial-gradient(red, green, blue); /* Standard syntax */
+}
+
+#grad3 {
+  /* Safari 5.1 to 6.0 */
+  background: -webkit-repeating-linear-gradient(red, yellow 10%, green 20%);
+  /* Opera 11.1 to 12.0 */
+  background: -o-repeating-linear-gradient(red, yellow 10%, green 20%);
+  /* Firefox 3.6 to 15 */
+  background: -moz-repeating-linear-gradient(red, yellow 10%, green 20%);
+  /* Standard syntax */
+  background: repeating-linear-gradient(red, yellow 10%, green 20%);
+}
+
+.bar {
+  background: url('/foo');
+  transform: translateX(0);
+  transform: translateY(0);
+  transform: rotate(0);
+  transform: scale(0) cubic-bezier(0.25,0.1,0.25,1);;
+}
+
+.baz {
+  transform: matrix(n,n,n,n,n,n);
+  transform: matrix3d(n,n,n,n,n,n,n,n,n,n,n,n,n,n,n,n);
+  transform: translate(x,y);
+  transform: translate3d(x,y,z);
+  transform: translateX(x);
+  transform: translateY(y);
+  transform: translateZ(z);
+  transform: scale(x,y);
+  transform: scale3d(x,y,z);
+  transform: scaleX(x);
+  transform: scaleY(y);
+  transform: scaleZ(z);
+  transform: rotate(angle);
+  transform: rotate3d(x,y,z,angle);
+  transform: rotateX(angle);
+  transform: rotateY(angle);
+  transform: rotateZ(angle);
+  transform: skew(x-angle,y-angle);
+  transform: skewX(angle);
+  transform: skewY(angle);
+  transform: perspective(n);
+}

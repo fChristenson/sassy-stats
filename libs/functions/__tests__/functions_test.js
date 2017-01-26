@@ -35,5 +35,12 @@ describe('functions', function() {
       expect(Object.keys(stats).length).to.equal(1);
       expect(stats.foo).to.equal(2);
     });
+
+    it('does not count native scss functions', function() {
+      var files = walk(path.join(__dirname, 'testing_dir4'));
+      var stats = F.nodesToFunctionUsages(files.data);
+      expect(Object.keys(stats).length).to.equal(1);
+      expect(stats.foo).to.equal(2);
+    });
   });
 });

@@ -1,3 +1,6 @@
+#1.8.2
+* Native sass functions are removed from report (for real)
+
 #1.8.1
 * Native sass functions are removed from report
 

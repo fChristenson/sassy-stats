@@ -53,13 +53,15 @@ describe('variables', function() {
       expect(Object.keys(stats)).to.include('bar');
     });
 
-    xit('reports variables inside functions', function() {
+    it('reports variables inside functions', function() {
       var files = walk(path.join(__dirname, 'testing_dir5'));
       var stats = V.nodesToVariableUsages(files.data);
-      console.log('stats', stats);
+
       expect(Object.keys(stats).length).to.equal(2);
       expect(Object.keys(stats)).to.include('foo');
       expect(Object.keys(stats)).to.include('bar');
+      expect(stats.foo).to.equal(1);
+      expect(stats.bar).to.equal(1);
     });
   });
 });

@@ -71,5 +71,12 @@ describe('variables', function() {
       expect(Object.keys(stats)).to.include('sidebar-width');
       expect(stats['sidebar-width']).to.equal(1);
     });
+
+    it('finds the $white variable in a case like testing_dir7', function() {
+      var files = walk(path.join(__dirname, 'testing_dir7'));
+      var stats = V.nodesToVariableUsages(files.data);
+      expect(Object.keys(stats)).to.include('white');
+      expect(stats.white).to.equal(2);
+    });
   });
 });

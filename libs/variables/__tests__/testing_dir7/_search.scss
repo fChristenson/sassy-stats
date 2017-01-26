@@ -1,0 +1,213 @@
+%searchcontainer {
+  flex: 2 0 60%;
+  display: flex;
+  justify-content: flex-end;
+  margin: 15px;
+  text-align: right;
+
+  .no-flexbox & {
+    display: table;
+    float: right;
+    width: 60%;
+  }
+}
+
+%searchwrapper {
+  position: relative;
+  width: 60%;
+
+  .no-flexbox & {
+    float: left;
+    width: 90%;
+  }
+}
+
+%searchinput {
+  @include textinput;
+
+  height: 35px;
+  padding: 5px 8px;
+  line-height: 25px;
+  outline: 0;
+  font-size: 21px;
+  color: colour(text-primary-color);
+
+  &::placeholder {
+    opacity: 1;
+    color: colour(text-placeholder-color);
+  }
+
+  // hide IE default clear button
+  &::-ms-clear {
+    width: 0;
+    height: 0;
+  }
+}
+
+%clearbtn {
+  @include unstyledbutton;
+
+  @include icon(menuClose) {
+    vertical-align: baseline;
+  }
+
+  position: absolute;
+  top: -10px;
+  right: 5px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  font-size: 12px;
+  background-color: colour(btn-default-bg);
+
+  @include mediumlarge {
+    top: 5px;
+  }
+
+  &:hover {
+    background-color: colour(panel-default-bg);
+  }
+}
+
+%searchbutton {
+  @include small {
+    @include visuallyhidden;
+  }
+
+  @include button(primary);
+
+  border: 1px solid $primary;
+  border-radius: 0 3px 3px 0;
+  border-left: 0;
+  background-color: $white;
+  color: $primary;
+
+  &::before {
+    color: $primary;
+  }
+
+  &:hover {
+    &::before {
+      color: $white;
+    }
+  }
+
+  @include icon(search) {
+    font-size: 23px;
+    position: relative;
+    top: -1px;
+  }
+
+  @include mediumlarge {
+    padding: 4px 15px;
+    white-space: nowrap;
+
+    .no-flexbox & {
+      float: right;
+      width: 10%;
+    }
+  }
+}
+
+// original header styles
+// still needed for small screen
+.search {
+  display: flex;
+  padding-bottom: 5px;
+  border-bottom: 1px solid colour(border-mid);
+
+  .no-flexbox & {
+    display: table;
+    width: 100%;
+  }
+}
+
+.search__wrapper {
+  @extend %searchwrapper;
+
+  flex: 1;
+}
+
+.search__label {
+  @include visuallyhidden;
+}
+
+.search__input {
+  width: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  font-family: font(searchPanelTextField);
+  font-size: 16px;
+  letter-spacing: 0.015em;
+  background: transparent;
+  outline: 0;
+  color: colour(text-primary-color);
+
+  @include mediumlarge {
+    margin-top: 0;
+    font-size: 40px;
+  }
+
+  &::placeholder {
+    opacity: 1;
+    color: colour(text-muted-color);
+  }
+
+  // hide IE default clear button
+  &::-ms-clear {
+    width: 0;
+    height: 0;
+  }
+}
+
+.search__button {
+  @include button(primary);
+
+  @include small {
+    @include visuallyhidden;
+  }
+
+  @include mediumlarge {
+    padding: 8px 30px;
+    font-size: 16px;
+
+    .no-flexbox & {
+      display: table-cell;
+    }
+  }
+}
+
+// variations
+.search--outline {
+  @extend %searchcontainer;
+}
+
+.search--outline__wrapper {
+  @extend %searchwrapper;
+
+  border: 1px solid colour(border-primary);
+  border-radius: 3px 0 0 3px;
+}
+
+.search--outline__input {
+  @extend %searchinput;
+
+  border: 0;
+
+  @include mediumlarge {
+    border-radius: 5px;
+  }
+}
+
+.search--outline__input__clear {
+  @extend %clearbtn;
+}
+
+.search--outline__button {
+  @extend %searchbutton;
+}
+
+.search--outline__button__text {
+  @include visuallyhidden;
+}

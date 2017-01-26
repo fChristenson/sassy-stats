@@ -9,7 +9,6 @@ var astDataToContent = require('../common').astDataToContent;
 var concat = require('../common').concat;
 var countProps = require('../common').countProps;
 var isNotEmptyString = require('../common').isNotEmptyString;
-var util = require('util');
 
 // astData->[string]
 function argNodeToParamNames(node) {
@@ -33,8 +32,6 @@ function nodesToArgumentVariableNames(nodes) {
 
 // [astData]->{}
 function nodesToVariableUsages(nodes) {
-  var blockVars = getBlockNodeVars(nodes);
-
   var stats = findVariableNodes(nodes)
     .reduce(collectAstDataValueNodes, [])
     .map(astDataToContent)
@@ -43,15 +40,14 @@ function nodesToVariableUsages(nodes) {
     .map(astDataToContent)
     .reduce(concat, [])
     .map(astDataToContent)
-    .concat(blockVars)
+    .concat(getBlockNodeVars(nodes))
     .reduce(countProps, {});
 
   return nodesToArgumentVariableNames(nodes).reduce(removeProp, stats);
 }
 
 function getBlockNodeVars(nodes) {
-  return findUniqueVarNodes(nodes)
-    .map(variableNodeToName);
+  return findUniqueVarNodes(nodes).map(variableNodeToName);
 }
 
 function findUniqueVarNodes(nodes) {

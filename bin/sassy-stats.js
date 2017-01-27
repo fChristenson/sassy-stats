@@ -11,14 +11,13 @@ require('colors');
 
 commander
   .version(pkg.version)
+  .usage('[options] <directory>')
   .option('-j, --json', 'output as json')
   .option('-t, --text', 'output as html')
   .parse(process.argv);
 
-var rootDir = process.argv[2];
-
-if (dirExists(rootDir)) {
-  var files = walk(rootDir);
+if (dirExists(commander.args[0])) {
+  var files = walk(commander.args[0]);
   var data = lib(files.data);
 
   if (commander.json) {
@@ -29,7 +28,7 @@ if (dirExists(rootDir)) {
   }
 
 } else {
-  console.log(rootDir + ' is not a valid directory!');
+  console.log(commander.args[0] + ' is not a valid directory!');
 }
 
 function print() {

@@ -2,13 +2,13 @@
   "name": "sassy-stats",
   "version": "1.9.0",
   "description": "CLI for displaying your usage statistics of things like colors, variables and fonts",
-  "main": "bin/sassy.js",
+  "main": "bin/sassy-stats.js",
   "scripts": {
     "test": "mocha ./libs/**/__tests__/*_test.js",
     "tdd": "mocha --watch ./libs/**/*.js ./libs/**/__tests__/*_test.js"
   },
   "bin": {
-    "sassy-stats": "bin/sassy.js"
+    "sassy-stats": "bin/sassy-stats.js"
   },
   "author": "Fredrik Christenson",
   "license": "MIT",

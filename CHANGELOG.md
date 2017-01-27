@@ -1,3 +1,7 @@
+#1.9.1
+* Fixed CLI bugs
+* Added usage
+
 #1.9.0
 * Added commander to project
 * Use -h flag for help

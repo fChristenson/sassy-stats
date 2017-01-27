@@ -5,8 +5,7 @@
   "main": "bin/sassy.js",
   "scripts": {
     "test": "mocha ./libs/**/__tests__/*_test.js",
-    "tdd": "mocha --watch ./libs/**/*.js ./libs/**/__tests__/*_test.js",
-    "acceptance-test": "cucumber.js"
+    "tdd": "mocha --watch ./libs/**/*.js ./libs/**/__tests__/*_test.js"
   },
   "bin": {
     "sassy-stats": "bin/sassy.js"
@@ -21,7 +20,6 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
-    "cucumber": "^2.0.0-rc.2",
     "mocha": "^3.2.0"
   }
 }

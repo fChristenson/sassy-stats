@@ -3,7 +3,17 @@
 var dirExists = require('../libs/directories').dirExists;
 var walk = require('../libs/directories').walk;
 var lib = require('../libs');
+var P = require('./print_utils');
+var pkg = require('../package');
+var util = require('util');
+var commander = require('commander');
 require('colors');
+
+commander
+  .version(pkg.version)
+  .option('-j, --json', 'output as json')
+  .option('-t, --text', 'output as html')
+  .parse(process.argv);
 
 var rootDir = process.argv[2];
 
@@ -11,90 +21,24 @@ if (dirExists(rootDir)) {
   var files = walk(rootDir);
   var data = lib(files.data);
 
-  printName();
-  console.log('');
+  if (commander.json) {
+    data.files = files.count;
+    console.log(util.inspect(data, false, Infinity));
+  } else {
+    print(data);
+  }
 
-  var modules = Object.keys(data);
-
-  modules.forEach(printList);
-
-  console.log('FILES'.green);
-  console.log('----------------------------'.green);
-  printTotalFilesWalked(files);
-  console.log('');
 } else {
   console.log(rootDir + ' is not a valid directory!');
 }
 
-function printTotalFilesWalked(files) {
-  var text = 'total .scss files:';
-  console.log(text.yellow + getSpaces(text) + files.count.toString().red);
-}
-
-function printList(key) {
-  console.log(key.toUpperCase().green);
-  console.log('----------------------------'.green);
-
-  var stats = data[key];
-  var counts = countsToArray(stats);
-  var total = counts.pop();
-
-  counts.forEach(printLine);
+function print() {
+  P.printName();
   console.log('');
-  printLine(total);
-  console.log('');
-}
 
-function printLine(count) {
-  var keyStr = count.key.trim() + ':';
-  console.log(keyStr.yellow + getSpaces(keyStr) + count.val.toString().red);
-}
+  var modules = Object.keys(data);
 
-function getSpaces(str) {
-  var result = '';
+  modules.forEach(P.makePrintList(data));
 
-  for(var i = 0; i < 40 - str.length; i++) {
-    result += ' ';
-  }
-
-  return result;
-}
-
-// {}->[{}]
-function countsToArray(obj) {
-  var result = Object.keys(obj)
-    .reduce(countsToObjects(obj), [])
-    .sort(sortByVal)
-    .concat([]);
-
-  result.push(getTotal(obj));
-  return result;
-}
-
-function getTotal(obj) {
-  return Object.keys(obj)
-    .reduce(function(acc, key) {
-
-      acc.val += obj[key];
-      return acc;
-
-    }, {key: 'total', val: 0});
-}
-
-function sortByVal(a, b) {
-  return b.val - a.val;
-}
-
-function countsToObjects(obj) {
-  return function(acc, key) {
-    acc.push({ key: key, val: obj[key] });
-    return acc;
-  };
-}
-
-function printName() {
-  console.log(' ____   __   ____  ____  _  _      ____  ____  __  ____  ____ '.magenta);
-  console.log('/ ___) / _\\ / ___)/ ___)( \\/ )___ / ___)(_  _)/ _\\(_  _)/ ___)'.magenta);
-  console.log('\\___ \\/    \\\\___ \\\\___ \\ )  /(___)\\___ \\  )( /    \\ )(  \\___ \\'.magenta);
-  console.log('(____/\\_/\\_/(____/(____/(__/      (____/ (__)\\_/\\_/(__) (____/'.magenta);
+  P.printFiles(files);
 }

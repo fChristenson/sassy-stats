@@ -1,3 +1,8 @@
+#1.9.0
+* Added commander to project
+* Use -h flag for help
+* JSON output added
+
 #1.8.2
 * Native sass functions are removed from report (for real)
 

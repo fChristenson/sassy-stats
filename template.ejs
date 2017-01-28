@@ -120,6 +120,10 @@
       margin-right: 8px;
       margin-top: 4px;
     }
+
+    .total {
+      color: #4DC3FA;
+    }
   </style>
 </head>
 <body>
@@ -135,10 +139,10 @@
 <br>
 <br>
 <br>
-<% Object.keys(categories).forEach(function(category) { %>
+<% categories.forEach(function(stats) { %>
 <h1>
   <span class="blue">&lt;</span>
-  <%= category.toUpperCase() %>
+  <%= stats.category %>
   <span class="blue">&gt;</span>
 </h1>
 <table class="container">
@@ -148,14 +152,16 @@
     </tr>
   </thead>
   <tbody>
-    <% Object.keys(categories[category]).sort(function(a, b) {
-      return categories[category][b] - categories[category][a];
-    }).forEach(function(key) { %>
+    <% stats.rows.forEach(function(obj) { %>
     <tr>
-      <td><%= key %></td>
-      <td><%= categories[category][key] %></td>
+      <td><%= obj.key %></td>
+      <td><%= obj.val %></td>
     </tr>
     <% }) %>
+    <tr>
+      <td>Total</td>
+      <td><%= stats.total %></td>
+    </tr>
   </tbody>
 </table>
 <% }) %>

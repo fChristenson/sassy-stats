@@ -29,13 +29,41 @@ if (dirExists(commander.args[0])) {
   
   } else if(commander.text) {
     var templateStr = fs.readFileSync(path.join(__dirname, '..', 'template.ejs'), 'utf8');
-    console.log(ejs.render(templateStr, {categories: data, files: files}));
+    console.log(ejs.render(templateStr, {categories: getCategories(data), files: files}));
 
   } else {
     print(data);
   }
 } else {
   console.log(commander.args[0] + ' is not a valid directory!');
+}
+
+function getCategories(data) {
+  return Object.keys(data)
+    .map(function(key) {
+      return {
+        category: key.toUpperCase(), 
+        rows: getRows(data[key]), 
+        total: getTotal(data[key])
+      };
+    });
+}
+
+function getTotal(stats) {
+  return Object.keys(stats)
+    .reduce(function(acc, key) {
+      return acc+= stats[key];
+    }, 0);
+}
+
+function getRows(stats) {
+  return Object.keys(stats)
+    .map(function(key) {
+      return {key: key, val: stats[key]};
+    })
+    .sort(function(a, b) {
+      return b.val - a.val;
+    });
 }
 
 function print() {

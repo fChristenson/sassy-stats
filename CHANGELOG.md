@@ -1,3 +1,6 @@
+#1.11.0
+* Added totals row to html output
+
 #1.10.4
 * Fixed incorrect version number in CHANGELOG
 

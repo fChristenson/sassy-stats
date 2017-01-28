@@ -4,6 +4,8 @@ var dirExists = require('../libs/directories').dirExists;
 var walk = require('../libs/directories').walk;
 var lib = require('../libs');
 var P = require('./print_utils');
+var fs = require('fs');
+var ejs = require('ejs');
 var pkg = require('../package');
 var util = require('util');
 var commander = require('commander');
@@ -19,14 +21,18 @@ commander
 if (dirExists(commander.args[0])) {
   var files = walk(commander.args[0]);
   var data = lib(files.data);
+  data.files = files.count;
 
   if (commander.json) {
-    data.files = files.count;
     console.log(util.inspect(data, false, Infinity));
+  
+  } else if(commander.text) {
+    var templateStr = fs.readFileSync('template.ejs', 'utf8');
+    console.log(ejs.render(templateStr, {categories: data}));
+
   } else {
     print(data);
   }
-
 } else {
   console.log(commander.args[0] + ' is not a valid directory!');
 }

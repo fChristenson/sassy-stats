@@ -15,6 +15,7 @@
   "dependencies": {
     "colors": "1.1.2",
     "commander": "2.9.0",
+    "ejs": "2.5.5",
     "gonzales-pe": "4.0.3",
     "lodash": "4.17.2"
   },

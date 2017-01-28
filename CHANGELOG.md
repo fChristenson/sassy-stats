@@ -1,3 +1,7 @@
+#1.10.0
+* Added html template output
+* Use -t for html string
+
 #1.9.1
 * Fixed CLI bugs
 * Added usage

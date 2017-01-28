@@ -6,6 +6,7 @@ var lib = require('../libs');
 var P = require('./print_utils');
 var fs = require('fs');
 var ejs = require('ejs');
+var path = require('path');
 var pkg = require('../package');
 var util = require('util');
 var commander = require('commander');
@@ -27,7 +28,7 @@ if (dirExists(commander.args[0])) {
     console.log(util.inspect(data, false, Infinity));
   
   } else if(commander.text) {
-    var templateStr = fs.readFileSync('template.ejs', 'utf8');
+    var templateStr = fs.readFileSync(path.join(__dirname, '..', 'template.ejs'), 'utf8');
     console.log(ejs.render(templateStr, {categories: data}));
 
   } else {

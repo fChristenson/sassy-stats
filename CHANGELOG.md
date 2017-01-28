@@ -1,3 +1,6 @@
+#1.10.1
+* Fixed path error for html output
+
 #1.10.0
 * Added html template output
 * Use -t for html string

@@ -1,3 +1,6 @@
+#1.10.2
+* Removed files section from html report
+
 #1.10.1
 * Fixed path error for html output
 

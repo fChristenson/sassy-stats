@@ -22,14 +22,14 @@ commander
 if (dirExists(commander.args[0])) {
   var files = walk(commander.args[0]);
   var data = lib(files.data);
-  data.files = files.count;
 
   if (commander.json) {
+    data.files = files.count;
     console.log(util.inspect(data, false, Infinity));
   
   } else if(commander.text) {
     var templateStr = fs.readFileSync(path.join(__dirname, '..', 'template.ejs'), 'utf8');
-    console.log(ejs.render(templateStr, {categories: data}));
+    console.log(ejs.render(templateStr, {categories: data, files: files}));
 
   } else {
     print(data);

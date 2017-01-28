@@ -1,4 +1,7 @@
-#1.10.2
+#1.10.4
+* Fixed incorrect version number in CHANGELOG
+
+#1.10.3
 * Fixed files count error in html report
 
 #1.10.2

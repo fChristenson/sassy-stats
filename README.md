@@ -8,6 +8,8 @@ CLI for figuring out what you are using in your Sass files.
 ## Usage
 `sassy-stats <directory>`
 
+![alt tag](http://console.gif)
+
 Sassy-stats will spit out a list of how many references it found of:
 * Colors
 * Fonts

@@ -9,7 +9,7 @@ The project goal is to provide an easy to use tool that will tell you what is go
 ## Usage
 `sassy-stats <directory>`
 
-![alt tag](http://console.gif)
+![alt tag](https://github.com/fChristenson/sassy-stats/blob/master/console.gif)
 
 Sassy-stats will spit out a list of how many references it found of:
 * Colors

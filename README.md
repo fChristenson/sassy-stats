@@ -1,6 +1,7 @@
 #Sassy-stats
 
 CLI for figuring out what you are using in your Sass files.
+The project goal is to provide an easy to use tool that will tell you what is going on in your .scss files.
 
 ## Install
 `npm install -g sassy-stats`
@@ -19,7 +20,4 @@ Sassy-stats will spit out a list of how many references it found of:
 * Files
 * Selectors
 
-## Submitting a bug report
-If you want to help make the tool better please submit the issue with the files
-that you ran the tool against, this will help us create a test against your
-specific problem.
+For additional command help run `sassy-stats -h`

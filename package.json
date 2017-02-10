@@ -1,7 +1,7 @@
 {
   "name": "sassy-stats",
-  "version": "1.11.1",
-  "description": "CLI for displaying your usage statistics of things like colors, variables and fonts",
+  "version": "1.11.2",
+  "description": "CLI for figuring out what you are using in your Sass files.",
   "main": "bin/sassy-stats.js",
   "scripts": {
     "test": "mocha ./libs/**/__tests__/*_test.js",
@@ -9,6 +9,10 @@
   },
   "bin": {
     "sassy-stats": "bin/sassy-stats.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fChristenson/sassy-stats.git"
   },
   "author": "Fredrik Christenson",
   "license": "MIT",

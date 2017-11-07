@@ -1,4 +1,4 @@
-#Sassy-stats
+# Sassy-stats
 
 CLI for figuring out what you are using in your Sass files.
 The project goal is to provide an easy to use tool that will tell you what is going on in your .scss files.

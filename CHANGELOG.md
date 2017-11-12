@@ -1,3 +1,6 @@
+# 1.11.5
+* Fixed doc formatting
+
 # 1.11.0
 * Added totals row to html output
 

@@ -1,6 +1,6 @@
 {
   "name": "sassy-stats",
-  "version": "1.11.5",
+  "version": "1.11.6",
   "description": "CLI for figuring out what you are using in your Sass files.",
   "main": "bin/sassy-stats.js",
   "scripts": {

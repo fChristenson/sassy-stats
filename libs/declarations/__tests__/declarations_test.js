@@ -22,9 +22,9 @@ describe('declarations', function() {
       var files = walk(path.join(__dirname, 'testing_dir2'));
       var stats = D.findDeclarations(files.data);
       expect(stats.length).to.equal(3);
-      expect(stats).to.include({ type: 'variable', name: 'foo' });
-      expect(stats).to.include({ type: 'function', name: 'bar' });
-      expect(stats).to.include({ type: 'mixin', name: 'baz' });
+      expect(stats).to.deep.include({ type: 'variable', name: 'foo' });
+      expect(stats).to.deep.include({ type: 'function', name: 'bar' });
+      expect(stats).to.deep.include({ type: 'mixin', name: 'baz' });
     });
   });
 
